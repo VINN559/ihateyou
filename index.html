@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Kelas 8.3</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #FF9A8B, #FFC3A0, #FFB6B9);
+            /* Latar belakang dengan gradasi warna cerah */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        details {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #FF6F61;
+            /* Warna cerah untuk menarik perhatian */
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gaya untuk running text */
+        .running-text {
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+            background-color: #ff6f61;
+            /* Warna cerah dan enerjik */
+            color: white;
+            padding: 0.5rem;
+            font-weight: bold;
+        }
+
+        .running-text span {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Kelas 8.3 Info Section Styling */
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            background-color: #FFFAF0;
+            /* Warna pastel lembut */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            /* Mengangkat kotak saat di-hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #FF6F61;
+            /* Warna cerah untuk judul */
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* Hover Effect on Menu Items */
+        .hover-effect:hover {
+            background-color: #FFEBEE;
+            /* Warna lembut saat hover */
+            color: #ff6f61;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            z-index: 10;
+            /* Menambah z-index supaya di atas konten lain */
+            display: none;
+        }
+
+        .mobile-menu-link {
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            color: #ff6f61;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .mobile-menu-link:hover {
+            background-color: #FFEBEE;
+            color: #ff6f61;
+        }
+
+        /* Navbar button fix */
+        #menu-toggle {
+            z-index: 20;
+            /* Pastikan tombol di atas menu */
+        }
+
+        /* Gaya untuk gambar di samping logo */
+        .navbar-logo img {
+            max-width: 50px;
+            /* Menetapkan lebar maksimal gambar */
+            height: auto;
+            /* Menjaga proporsi gambar */
+            margin-left: 10px;
+            /* Menambahkan margin kiri untuk memberi jarak antara teks dan gambar */
+        }
+
+        /* Gambar kedua di navbar */
+        .navbar-logo img:last-child {
+            max-width: 50px;
+            /* Ukuran gambar kedua */
+            height: auto;
+            margin-left: 10px;
+            /* Jarak antara gambar pertama dan kedua */
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-pink-600 to-orange-500 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center py-4">
+            <div class="flex items-center">
+                <span class="font-semibold text-white text-2xl">Kelas 8.3</span>
+                <!-- Menambahkan gambar di samping kanan teks -->
+                <div class="navbar-logo flex items-center">
+                    <img src="PGRI.CLR_..webp" alt="Logo Kelas 8.3"> <!-- Gambar logo pertama -->
+                    <img src="34.png" alt="Logo Kelas 8.3 2"> <!-- Gambar logo kedua -->
+                    <img src="opg.png" alt="Logo Kelas 8.3 3"> <!-- Gambar logo ketiga -->
+                </div>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <div class="flex space-x-4">
+                <a href="https://www.instagram.com/8.3_charming?igsh=d2lxZDJ0MDVyMmly"
+                    class="text-white hover:text-blue-900 transition duration-300 ease-in-out">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white text-gray-800 absolute w-full left-0 z-10 transition-transform transform origin-top">
+            <div class="flex flex-col">
+                <a href="https://www.instagram.com/8.3_charming?igsh=d2lxZDJ0MDVyMmly"
+                    class="block px-4 py-2 hover:bg-gray-200 transition duration-200 mobile-menu-link">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="running-text bg-orange-500 text-white py-2">
+        <span>"Selamat Datang Di Kelas 8.3!! One Team One Dream!"</span>
+    </div>
+
+    <!-- Informasi Kelas 8.3 -->
+    <section class="info-section">
+        <div class="info-card hover-effect">
+            <h3>Visi Kelas 8.3</h3>
+            <p>Kami berkomitmen untuk bersama-sama belajar dan berprestasi dengan semangat kebersamaan yang tinggi.</p>
+        </div>
+        <div class="info-card hover-effect">
+            <h3>Tujuan Kelas 8.3</h3>
+            <p>Mencapai hasil terbaik dalam akademik dan non-akademik serta menjalin hubungan yang harmonis.</p>
+        </div>
+        <div class="info-card hover-effect">
+            <h3>Agenda Kegiatan</h3>
+            <p>Ayo ikuti berbagai kegiatan seru di kelas 8.3, mulai dari lomba, outing class, hingga kegiatan sosial.
+            </p>
+        </div>
+        <div class="info-card hover-effect">
+            <h3>Informasi web ini</h3>
+            <p>Web ini dibangun 80% oleh KECERDASAN BUATAN (AI),20% sisanya dibangun menggunakan kecerdasan manusia.</p>
+        </div>
+    </section>
+</body>
+
+</html>
+
+
+<!-- Konten Utama -->
+<div class="container mx-auto px-4 py-8">
+    <!-- Informasi Kelas -->
+    <details close>
+        <summary class="text-2xl font-bold mb-4 text-gray-600 cursor-pointer">Informasi Kelas</summary>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="informasi-kelas">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold mb-2">Wali Kelas</h3>
+                    <p>Ahmad Mussofa</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Ketua Kelas</h3>
+                    <p>Albertus Kevin Daniswara</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Wakil Ketua Kelas</h3>
+                    <p>Aulia Isra Supandi</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Sekretaris</h3>
+                    <p>Sahira Aulya</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Wakil Sekretaris</h3>
+                    <p>Reyhan Rahadian Maulana Saputra</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Bendahara</h3>
+                    <p>Muamar Khaikal Al-Kahfi</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Wakil Bendahara</h3>
+                    <p>Siti Maulinda</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Keamanan</h3>
+                    <p>Bayu Saktiawan</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Wakil Keamanan</h3>
+                    <p>Siti Hanna</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Kebersihan</h3>
+                    <p>Muhamad Fauzan Faddilah</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Wakil Kebersihan</h3>
+                    <p>Septia Fitriani</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Rohis</h3>
+                    <p>Febrian Aryanto</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Wakil Rohis</h3>
+                    <p>Andien Mauliddina Rizki</p>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <!-- Jadwal Pelajaran -->
+    <details close>
+        <summary>Jadwal Pelajaran</summary>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="jadwal-pelajaran">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Jadwal Pelajaran</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="py-2 px-4 border border-gray-300 text-left">Hari</th>
+                            <th class="py-2 px-4 border border-gray-300 text-left">Mata Pelajaran</th>
+                            <th class="py-2 px-4 border border-gray-300 text-left">Guru</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">Senin</td>
+                            <td class="py-2 px-4 border border-gray-300">Ilmu Pengetahuan Sosial</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Nurjihan S.Pd</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Matematika</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Nurwanti Ayu M S.Pd</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Bahasa Sunda</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Siska S.Pd.I</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Bahasa Inggris</td>
+                            <td class="py-2 px-4 border border-gray-300">Miss Naely U M S.Pd.I</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">Selasa</td>
+                            <td class="py-2 px-4 border border-gray-300">Pendidikan Kewarganegaraan</td>
+                            <td class="py-2 px-4 border border-gray-300">Pak Mussofa S.Pd.I</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Ilmu Pengetahuan Alam</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Elisza S.Pd</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Pendidikan Agama Islam</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Anita Rahayu S.Pd.I</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">Rabu</td>
+                            <td class="py-2 px-4 border border-gray-300">Bahasa Indonesia</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Yolanda Lebertian S.Pd</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Seni Budaya</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Suryani Oktaviani</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Pendidikan Jasmani</td>
+                            <td class="py-2 px-4 border border-gray-300">Pak Dede Bunyamin S.Pd</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">Kamis</td>
+                            <td class="py-2 px-4 border border-gray-300">Ilmu Pengetahuan Alam</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Elisza S.Pd</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Bahasa Inggris</td>
+                            <td class="py-2 px-4 border border-gray-300">Miss Naely U M S.Pd.I</td>
+                        </tr>
+                        <tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Matematika</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Nurwanti Ayu M S.Pd</td>
+                        </tr>
+                        <tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Informatika</td>
+                            <td class="py-2 px-4 border border-gray-300">Pak Rizky Magfiroh S.I.Kom</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">Jumat</td>
+                            <td class="py-2 px-4 border border-gray-300">Informatika</td>
+                            <td class="py-2 px-4 border border-gray-300">Pak Rizky Magfiroh S.I.Kom</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Ilmu Pengetahuan Sosial</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Nurjihan S.Pd</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">-</td>
+                            <td class="py-2 px-4 border border-gray-300">Bahasa Indonesia</td>
+                            <td class="py-2 px-4 border border-gray-300">Ibu Yolanda Lebertian S.Pd</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </details>
+
+    <!-- Daftar Siswa Kelas 8.3 -->
+    <details close>
+        <summary>Daftar Siswa Kelas 8.3</summary>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Daftar Siswa Kelas 8.3</h2>
+            <ul class="list-disc pl-6">
+                <li>1. Albertus Kevin Daniswara</li>
+                <li>2. Alya</li>
+                <li>3. Alycia Tan</li>
+                <li>4. Andien Maulidina Rizki</li>
+                <li>5. Aulia Irsa Supandi</li>
+                <li>6. Bayu Saktiawan</li>
+                <li>7. Devara Alvarizki</li>
+                <li>8. Evita Desta Riyani</li>
+                <li>9. Fanny</li>
+                <li>10. Febrian Aryanto</li>
+                <li>11. Hayfa Inka Siti Luthfiyah</li>
+                <li>12. Jovanka Olivia</li>
+                <li>13. Lie Owen</li>
+                <li>14. M. Syahril Syahputra</li>
+                <li>15. Marsya Nazila</li>
+                <li>16. Muamar Haikal Al Kahfi</li>
+                <li>17. Muhammad Fauzan Fadilah</li>
+                <li>18. Muhammad Ibnu Rajib</li>
+                <li>19. Muhammad Fayumi</li>
+                <li>20. Nofi Putri Alifiah</li>
+                <li>21. Prabu Trimo Ngalah</li>
+                <li>22. Rapi</li>
+                <li>23. Restianti Anjarwati</li>
+                <li>24. Reyhan Rahadian Maulana Saputra</li>
+                <li>25. Rizki Haris Riyadi</li>
+                <li>26. Muhammad Sandi</li>
+                <li>27. Robi Ardiansyah</li>
+                <li>28. Safa Julia Putri Ar-Rohmah</li>
+                <li>29. Sahira Aulya</li>
+                <li>30. Salma Nur Kholisah</li>
+                <li>31. Septia Fitriani</li>
+                <li>32. Shalsabela Suherman</li>
+                <li>33. Siti Hana Putri</li>
+                <li>34. Siti Maulinda</li>
+                <li>35. Siti Nurul Zakhiah Maulidah</li>
+                <li>36. Widya Raissa Annazura</li>
+                <li>37. Zhahira Syailla</li>
+            </ul>
+        </div>
+    </details>
+
+
+
+    <!-- Jadwal Piket -->
+    <details close>
+        <summary>Jadwal Piket</summary>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="jadwal-piket">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Jadwal Piket</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold mb-2">Senin</h3>
+                    <p>Kevin</p>
+                    <p>Bayu</p>
+                    <p>Hayfa</p>
+                    <p>Haikal</p>
+                    <p>Prabu</p>
+                    <p>Rizki</p>
+                    <p>Septia</p>
+                    <p>Widya</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Selasa</h3>
+                    <p>Alya</p>
+                    <p>Devara</p>
+                    <p>Jovanka</p>
+                    <p>Fauzan</p>
+                    <p>Rapi</p>
+                    <p>Robi</p>
+                    <p>Shalsabela</p>
+                    <p>Zhahira</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Rabu</h3>
+                    <p>Alycia</p>
+                    <p>Evita</p>
+                    <p>Owen</p>
+                    <p>Ibnu</p>
+                    <p>Resti</p>
+                    <p>Safa</p>
+                    <p>Hanna</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Kamis</h3>
+                    <p>Andien</p>
+                    <p>Fanny</p>
+                    <p>Syahril</p>
+                    <p>Fayumi</p>
+                    <p>Reyhan</p>
+                    <p>Sahira</p>
+                    <p>Linda</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Jumat</h3>
+                    <p>Aulia</p>
+                    <p>Febri</p>
+                    <p>Marsya</p>
+                    <p>Novi</p>
+                    <p>Sandi</p>
+                    <p>Salma</p>
+                    <p>Nurul</p>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <!-- Jadwal Seragam -->
+    <details close>
+        <summary>Jadwal Seragam</summary>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="seragam">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Seragam</h2>
+            <ul class="list-disc pl-5">
+                <li>Senin: Baju Putih Biru</li>
+                <li>Selasa: Baju Batik</li>
+                <li>Rabu: Baju Putih Biru Dan Rompi</li>
+                <li>Kamis: Baju Pramuka</li>
+                <li>Jumat: Baju Muslim</li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- Jadwal Ekstrakurikuler -->
+    <details close>
+        <summary>Jadwal Ekstrakurikuler</summary>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="eskul">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Ekstrakurikuler</h2>
+            <ul class="list-disc pl-5">
+                <li>Senin: Tahfidz - 10:00 WIB</li>
+                <li>Senin: Futsal - 15:30 WIB</li>
+                <li>Selasa: Tari - 14:00 WIB</li>
+                <li>Selasa: Marawis Dan Basket - 15:30</li>
+                <li>Rabu: Karate - 14:30</li>
+                <li>Kamis: Pramuka - Pulang Sekolah</li>
+                <li>Kamis: Paduan Suara Dan Volly - 14:30</li>
+                <li>Jumat: Tahfidz - 13:30</li>
+                <li>Jumat: Silat Dan Badminton - 14:00</li>
+                <li>Sabtu: Palang Merah Remaja - 10:00</li>
+                <li>Sabtu: Paskibra - 13:00</li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- Kegiatan -->
+    <details close>
+        <summary>Informasi Tambahan</summary>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Informasi</h2>
+            <ul class="list-disc pl-6">
+                <li>Setiap Senin Dan Jumat Wajib Membawa Buku Cerita Dan Topi</li>
+                <li>Setiap Rabu Wajib Membawa Baju Ganti Olahraga dan Membawa Buku Lagu</li>
+                <li>Setiap Pakai Baju Pramuka Wajib Pakai Kacu</li>
+                <li>Kaos Kaki Harus sesuai Dengan Harinnya </li>
+            </ul>
+        </div>
+    </details>
+
+    <details close>
+        <summary>Informasi Digital</summary>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer" onclick="toggleMode()">Informasi Digital
+            </h2>
+            <div id="informasi-digital" class="info-content">
+                <p><strong>Pentingnya Memahami Teknologi Digital:</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Teknologi sebagai Penunjang Kehidupan:</strong> Di era digital ini, teknologi
+                        memengaruhi hampir setiap aspek kehidupan kita. Mulai dari pendidikan, kesehatan, hingga
+                        pekerjaan, teknologi semakin memudahkan kita dalam menjalankan aktivitas sehari-hari.</li>
+                    <li><strong>Peningkatan Keterampilan Digital:</strong> Memahami teknologi digital menjadi
+                        keterampilan yang sangat penting. Penggunaan perangkat lunak, pemrograman, dan kemampuan
+                        beradaptasi dengan perkembangan teknologi menjadi nilai tambah yang sangat dibutuhkan di dunia
+                        kerja modern.</li>
+                    <li><strong>Penggunaan Teknologi untuk Efisiensi:</strong> Teknologi membantu meningkatkan efisiensi
+                        dalam berbagai sektor, seperti dalam pekerjaan kantor dengan perangkat lunak produktivitas,
+                        dalam sektor kesehatan dengan perangkat medis berbasis teknologi, dan lain-lain.</li>
+                </ul>
+
+                <p><strong>Pengenalan AI (Kecerdasan Buatan):</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Apa itu AI?</strong> AI (Artificial Intelligence) adalah bidang dalam ilmu komputer yang
+                        berfokus pada pembuatan sistem atau mesin yang dapat melakukan tugas-tugas yang membutuhkan
+                        kecerdasan manusia, seperti pengambilan keputusan, pengenalan gambar, dan pemrosesan bahasa
+                        alami.</li>
+                    <li><strong>Fungsi dan Manfaat AI:</strong> AI digunakan untuk mempercepat berbagai proses bisnis
+                        dan industri, dari analisis data hingga automasi tugas-tugas yang berulang. Contohnya, AI dalam
+                        aplikasi seperti Siri, Google Assistant, atau bahkan di sistem keamanan otomatis dan kendaraan
+                        otonom (self-driving cars).</li>
+                    <li><strong>Contoh Aplikasi AI:</strong> Sistem rekomendasi seperti yang digunakan oleh Netflix atau
+                        YouTube, yang memberikan saran berdasarkan preferensi pengguna, adalah contoh AI yang sudah
+                        diterapkan di kehidupan sehari-hari.</li>
+                    <li><strong>Perkembangan AI:</strong> AI terus berkembang dengan pesat, dan banyak industri yang
+                        mengadopsi teknologi ini untuk meningkatkan efisiensi dan mengurangi biaya. Penggunaan AI di
+                        bidang kesehatan, misalnya, dapat membantu dokter dalam mendiagnosis penyakit lebih akurat.</li>
+                </ul>
+
+                <p><strong>Data dan Keamanan Digital:</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Peran Data dalam Dunia Digital:</strong> Data adalah bahan bakar bagi banyak teknologi
+                        digital saat ini. Setiap kali kita menggunakan aplikasi atau layanan online, data kita diproses
+                        untuk meningkatkan pengalaman dan memberikan informasi yang lebih akurat.</li>
+                    <li><strong>Pentingnya Keamanan Data:</strong> Keamanan data menjadi masalah utama di dunia digital.
+                        Dengan semakin banyaknya data yang dikumpulkan oleh perusahaan dan platform digital, penting
+                        untuk menjaga data pribadi kita dari akses yang tidak sah dan ancaman cyber seperti peretasan
+                        atau pencurian identitas.</li>
+                    <li><strong>Enkripsi dan Perlindungan Data:</strong> Teknologi enkripsi digunakan untuk melindungi
+                        data pribadi dan sensitif saat ditransfer melalui jaringan. Penggunaan HTTPS pada situs web
+                        adalah salah satu contoh di mana data kita dilindungi saat mengakses internet.</li>
+                </ul>
+
+                <p><strong>Perkembangan Teknologi Blockchain:</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Apa itu Blockchain?</strong> Blockchain adalah teknologi yang digunakan untuk mencatat
+                        transaksi secara aman dan transparan. Teknologi ini memungkinkan data untuk disimpan dalam blok
+                        yang saling terhubung dan terenkripsi, sehingga hampir tidak mungkin untuk dimanipulasi.</li>
+                    <li><strong>Aplikasi Blockchain:</strong> Blockchain tidak hanya digunakan untuk cryptocurrency
+                        seperti Bitcoin, tetapi juga dapat diterapkan dalam berbagai sektor, termasuk logistik,
+                        keuangan, dan sistem voting digital yang aman.</li>
+                    <li><strong>Keamanan dan Transparansi:</strong> Salah satu keuntungan utama blockchain adalah
+                        kemampuan untuk menyediakan sistem yang transparan dan terdesentralisasi, di mana transaksi
+                        dapat dilacak tanpa melibatkan pihak ketiga yang dapat memanipulasi data.</li>
+                </ul>
+
+                <p><strong>NFC (Near Field Communication):</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Apa itu NFC?</strong> NFC adalah teknologi komunikasi jarak dekat yang memungkinkan
+                        perangkat untuk berkomunikasi satu sama lain dalam jarak yang sangat dekat, biasanya kurang dari
+                        10 cm. Ini banyak digunakan dalam pembayaran digital, tiket elektronik, dan pengenalan
+                        identitas.</li>
+                    <li><strong>Fungsi NFC:</strong> NFC memfasilitasi pembayaran tanpa kontak melalui perangkat seperti
+                        smartphone atau kartu NFC. Selain itu, NFC juga digunakan untuk mentransfer data antar perangkat
+                        dengan hanya mendekatkan perangkat tersebut satu sama lain.</li>
+                    <li><strong>Contoh Penggunaan NFC:</strong> Pembayaran digital dengan aplikasi seperti Google Pay,
+                        Apple Pay, dan Samsung Pay menggunakan teknologi NFC untuk melakukan transaksi dengan cepat dan
+                        aman.</li>
+                </ul>
+
+                <p><strong>Wireless (Nirkabel):</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Apa itu Wireless?</strong> Wireless atau nirkabel adalah teknologi yang memungkinkan
+                        perangkat berkomunikasi tanpa menggunakan kabel fisik. Teknologi ini meliputi Wi-Fi, Bluetooth,
+                        dan komunikasi seluler, yang memungkinkan perangkat untuk mentransfer data secara efisien dan
+                        cepat.</li>
+                    <li><strong>Keuntungan Wireless:</strong> Wireless memberikan kebebasan untuk bergerak tanpa batasan
+                        kabel. Pengguna dapat mengakses internet dengan Wi-Fi atau berkomunikasi dengan perangkat lain
+                        menggunakan Bluetooth tanpa terikat oleh kabel atau koneksi fisik.</li>
+                </ul>
+
+                <p><strong>Gadget Pertama di Dunia:</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Handheld Calculator:</strong> Salah satu gadget pertama yang diperkenalkan pada 1970-an
+                        adalah kalkulator genggam elektronik yang dirancang untuk melakukan perhitungan matematika
+                        secara praktis tanpa memerlukan alat hitung mekanik.</li>
+                    <li><strong>Smartphone Pertama:</strong> "IBM Simon Personal Communicator", dirilis pada tahun 1994,
+                        adalah salah satu perangkat pertama yang menggabungkan fungsi telepon dan komputer genggam, yang
+                        menjadi fondasi bagi smartphone modern.</li>
+                </ul>
+
+                <p><strong>Pembuat Coding Adalah Perempuan:</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Ada Lovelace:</strong> Ada Lovelace adalah programmer pertama yang dikenal, yang bekerja
+                        dengan Charles Babbage pada mesin analitik pada abad ke-19. Ia menulis algoritma pertama yang
+                        digunakan untuk menghitung angka Bernoulli, dan dianggap sebagai "programmer pertama" dalam
+                        sejarah.</li>
+                    <li><strong>Grace Hopper:</strong> Grace Hopper adalah seorang pionir dalam dunia komputer yang
+                        menciptakan bahasa pemrograman "COBOL", yang digunakan di banyak aplikasi bisnis. Hopper juga
+                        dikenal karena pengembangan konsep "debugging" dalam pemrograman komputer.</li>
+                </ul>
+
+                <p><strong>Apa Jadinya Jika Tidak Ada Teknologi?</strong></p>
+                <ul class="list-disc pl-6">
+                    <li>Tanpa teknologi, kehidupan sehari-hari kita akan sangat terbatas. Banyak pekerjaan yang akan
+                        menjadi sangat manual, dan proses yang biasanya cepat dan efisien akan menjadi jauh lebih
+                        lambat.</li>
+                    <li>Pendidikan, komunikasi, dan sistem ekonomi yang kita nikmati saat ini tidak akan ada tanpa
+                        teknologi. Kita mungkin masih bergantung pada cara-cara tradisional yang lebih sulit dan tidak
+                        efisien untuk berbagi informasi dan melakukan pekerjaan.</li>
+                    <li>Inovasi medis dan pengobatan modern yang kita andalkan juga tidak akan ada, sehingga banyak
+                        penyakit yang dapat disembuhkan atau dikelola dengan teknologi akan tetap menjadi masalah besar.
+                    </li>
+                </ul>
+
+                <p><strong>Komponen-Komponen Perangkat Keras (Hardware):</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Motherboard:</strong> Papan sirkuit utama yang menghubungkan semua komponen komputer dan
+                        memungkinkan komunikasi antar komponen.</li>
+                    <li><strong>Power Supply (PSU):</strong> Memberikan daya listrik ke seluruh sistem komputer,
+                        mengubah arus listrik dari sumber eksternal menjadi arus yang diperlukan oleh komponen.</li>
+                    <li><strong>Baterai (Laptop):</strong> Sumber daya cadangan untuk laptop, memungkinkan penggunaan
+                        tanpa koneksi listrik eksternal.</li>
+                    <li><strong>Cooling System:</strong> Mencegah komponen komputer dari panas berlebih dengan kipas
+                        atau sistem pendingin lainnya.</li>
+                    <li><strong>Optical Drive (DVD/Blu-ray):</strong> Membaca dan menulis data pada media optik,
+                        meskipun semakin jarang digunakan.</li>
+                    <li><strong>Port dan Slot Ekspansi:</strong> Port memungkinkan perangkat eksternal terhubung,
+                        sementara slot ekspansi menambah fungsionalitas komputer (misalnya, kartu grafis tambahan).</li>
+                    <li><strong>RAM (Random Access Memory):</strong> RAM adalah memori sementara yang digunakan oleh
+                        komputer untuk menyimpan data yang sedang aktif digunakan oleh sistem dan aplikasi. Semakin
+                        besar kapasitas RAM, semakin cepat kinerja sistem dalam mengolah data.</li>
+                    <li><strong>CPU (Central Processing Unit):</strong> CPU adalah otak dari komputer yang bertugas
+                        untuk menjalankan instruksi dari program dan aplikasi. Kecepatan dan jumlah inti (cores) pada
+                        CPU sangat berpengaruh terhadap kinerja komputer.</li>
+                    <li><strong>GPU (Graphics Processing Unit):</strong> GPU bertanggung jawab untuk memproses gambar
+                        dan video. Ini penting untuk game, desain grafis, dan aplikasi yang membutuhkan pemrosesan
+                        visual tinggi.</li>
+                    <li><strong>Hard Drive / SSD (Solid-State Drive):</strong> Tempat penyimpanan data jangka panjang.
+                        SSD lebih cepat dibandingkan HDD, yang memungkinkan waktu booting dan transfer data lebih cepat.
+                    </li>
+                </ul>
+
+                <p><strong>Komponen-Komponen Perangkat Lunak (Software):</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Sistem Operasi (Operating System):</strong> Sistem operasi adalah perangkat lunak dasar
+                        yang mengelola perangkat keras komputer dan menyediakan antarmuka pengguna. Contoh sistem
+                        operasi adalah Windows, macOS, dan Linux. Sistem operasi bertanggung jawab untuk manajemen file,
+                        memori, perangkat keras, serta menjalankan aplikasi.</li>
+                    <li><strong>Aplikasi (Applications):</strong> Aplikasi adalah perangkat lunak yang dirancang untuk
+                        memenuhi tugas tertentu, seperti pengolah kata (Microsoft Word), browser web (Google Chrome),
+                        dan aplikasi desain grafis (Adobe Photoshop). Aplikasi ini memungkinkan pengguna untuk melakukan
+                        berbagai pekerjaan sesuai kebutuhan.</li>
+                    <li><strong>Driver Perangkat (Device Drivers):</strong> Driver adalah perangkat lunak yang
+                        memungkinkan sistem operasi untuk berkomunikasi dengan perangkat keras komputer, seperti
+                        printer, kartu grafis, atau keyboard. Tanpa driver, perangkat keras tersebut tidak dapat
+                        berfungsi dengan baik.</li>
+                    <li><strong>Perangkat Lunak Utilitas (Utility Software):</strong> Perangkat lunak ini dirancang
+                        untuk membantu mengoptimalkan dan memelihara kinerja sistem, seperti perangkat lunak antivirus,
+                        program pencadangan data, atau perangkat lunak pengelola disk.</li>
+                </ul>
+
+                <p><strong>Komponen-Komponen Perangkat Manusia (Brainware):</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Pengguna (Users):</strong> Pengguna adalah orang yang mengoperasikan komputer atau
+                        perangkat teknologi lainnya. Mereka menggunakan perangkat keras dan perangkat lunak untuk
+                        melakukan berbagai tugas, mulai dari pekerjaan sehari-hari hingga penelitian dan pengembangan.
+                    </li>
+                    <li><strong>Administrator Sistem (System Administrators):</strong> Administrator sistem bertanggung
+                        jawab untuk mengelola dan mengonfigurasi perangkat keras, perangkat lunak, dan jaringan agar
+                        tetap berjalan dengan efisien dan aman. Mereka juga bertanggung jawab untuk pemeliharaan rutin
+                        dan pemecahan masalah.</li>
+                    <li><strong>Pengembang Perangkat Lunak (Software Developers):</strong> Pengembang perangkat lunak
+                        adalah individu atau tim yang menulis, menguji, dan memelihara kode perangkat lunak. Mereka
+                        merancang aplikasi dan sistem yang digunakan oleh pengembang lainnya atau pengguna akhir.</li>
+                    <li><strong>Analis Sistem (System Analysts):</strong> Analis sistem bekerja untuk memahami kebutuhan
+                        pengguna dan merancang solusi perangkat lunak yang dapat memenuhi kebutuhan tersebut, serta
+                        memastikan bahwa sistem yang dibuat berjalan dengan baik dan efektif.</li>
+                </ul>
+
+                <p><strong>Komponen-Komponen Perangkat Lunak Berbahaya (Malware):</strong></p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Virus:</strong> Virus adalah perangkat lunak berbahaya yang dapat menyebar dengan
+                        menempelkan diri pada program atau file lain. Begitu program yang terinfeksi dijalankan, virus
+                        akan aktif dan menyebar, menyebabkan kerusakan pada data atau sistem.</li>
+                    <li><strong>Trojan Horse:</strong> Trojan horse adalah perangkat lunak yang menyamar sebagai
+                        aplikasi yang sah namun mengandung kode berbahaya. Ketika pengguna menginstalnya, malware ini
+                        akan membuka celah keamanan pada sistem dan memberi akses kepada peretas.</li>
+                    <li><strong>Spyware:</strong> Spyware adalah perangkat lunak yang diam-diam mengumpulkan informasi
+                        pribadi pengguna tanpa izin mereka. Ini sering digunakan untuk mencuri data sensitif seperti
+                        password, nomor kartu kredit, dan lainnya.</li>
+                    <li><strong>Ransomware:</strong> Ransomware adalah jenis malware yang mengenkripsi file pengguna dan
+                        meminta tebusan untuk membuka kunci file yang terkunci. Ini dapat menyebabkan kerugian besar
+                        bagi individu maupun perusahaan.</li>
+                </ul>
+
+                <p><strong>Kesimpulan:</strong></p>
+                <ul class="list-disc pl-6">
+                    <li>Memahami dan beradaptasi dengan teknologi digital adalah kunci untuk sukses di era modern ini.
+                    </li>
+                    <li>AI, NFC, wireless, blockchain, dan keamanan data dan lain-lain adalah komponen penting yang akan
+                        terus berkembang dan membentuk masa depan kita.</li>
+                    <li>Penting untuk selalu belajar dan mengikuti perkembangan teknologi untuk tetap relevan dan
+                        kompetitif di dunia digital.</li>
+                </ul>
+            </div>
+        </div>
+    </details>
+
+    <script>
+        function toggleMode() {
+            var tambahan = document.getElementById('informasi-tambahan');
+            var digital = document.getElementById('informasi-digital');
+
+            // Toggle visibility between informasi tambahan and informasi digital
+            if (tambahan.classList.contains('hidden')) {
+                tambahan.classList.remove('hidden');
+                digital.classList.add('hidden');
+            } else {
+                tambahan.classList.add('hidden');
+                digital.classList.remove('hidden');
+            }
+        }
+    </script>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .info-content {
+            padding-left: 20px;
+        }
+    </style>
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Waktu dan Hitung Mundur</title>
+        <style>
+            .bg-white {
+                background-color: white;
+            }
+
+            .rounded-lg {
+                border-radius: 8px;
+            }
+
+            .shadow-md {
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .p-6 {
+                padding: 1.5rem;
+            }
+
+            .mb-6 {
+                margin-bottom: 1.5rem;
+            }
+
+            .text-2xl {
+                font-size: 1.5rem;
+            }
+
+            .font-bold {
+                font-weight: bold;
+            }
+
+            .text-blue-600 {
+                color: #1d4ed8;
+            }
+
+            .cursor-pointer {
+                cursor: pointer;
+            }
+
+            .border {
+                border: 1px solid #ccc;
+            }
+
+            .calc-button {
+                background-color: #4a90e2;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin: 5px 0;
+            }
+
+            .clear-button {
+                background-color: #e94e77;
+            }
+
+            .calc-button:hover {
+                opacity: 0.9;
+            }
+
+            .countdown {
+                font-size: 1.5rem;
+                color: #ff5733;
+                font-weight: bold;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Waktu dan Hitung Mundur</title>
+            <style>
+                .bg-white {
+                    background-color: white;
+                }
+
+                .rounded-lg {
+                    border-radius: 8px;
+                }
+
+                .shadow-md {
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                .p-6 {
+                    padding: 1.5rem;
+                }
+
+                .mb-6 {
+                    margin-bottom: 1.5rem;
+                }
+
+                .text-2xl {
+                    font-size: 1.5rem;
+                }
+
+                .font-bold {
+                    font-weight: bold;
+                }
+
+                .text-blue-600 {
+                    color: #1d4ed8;
+                }
+
+                .cursor-pointer {
+                    cursor: pointer;
+                }
+
+                .border {
+                    border: 1px solid #ccc;
+                }
+
+                .calc-button {
+                    background-color: #4a90e2;
+                    color: white;
+                    padding: 10px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    margin: 5px 0;
+                }
+
+                .clear-button {
+                    background-color: #e94e77;
+                }
+
+                .calc-button:hover {
+                    opacity: 0.9;
+                }
+
+                .countdown {
+                    font-size: 1.25rem;
+                    color: #ff5733;
+                    font-weight: bold;
+                }
+            </style>
+        </head>
+
+        <body>
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Waktu dan Hitung Mundur</title>
+                <style>
+                    .bg-white {
+                        background-color: white;
+                    }
+
+                    .rounded-lg {
+                        border-radius: 8px;
+                    }
+
+                    .shadow-md {
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .p-6 {
+                        padding: 1.5rem;
+                    }
+
+                    .mb-6 {
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .text-2xl {
+                        font-size: 1.5rem;
+                    }
+
+                    .font-bold {
+                        font-weight: bold;
+                    }
+
+                    .text-blue-600 {
+                        color: #1d4ed8;
+                    }
+
+                    .cursor-pointer {
+                        cursor: pointer;
+                    }
+
+                    .border {
+                        border: 1px solid #ccc;
+                    }
+
+                    .calc-button {
+                        background-color: #4a90e2;
+                        color: white;
+                        padding: 10px;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        margin: 5px 0;
+                    }
+
+                    .clear-button {
+                        background-color: #e94e77;
+                    }
+
+                    .calc-button:hover {
+                        opacity: 0.9;
+                    }
+
+                    .countdown {
+                        font-size: 1.25rem;
+                        color: #ff5733;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+
+            <body>
+                <details>
+                    <summary>Waktu</summary>
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Waktu</h2>
+                        <ul class="list-disc pl-6">
+                            <li id="waktuReal">Waktu Sekarang (Jakarta): </li>
+                            <li id="waktuNorwegia">Waktu Norwegia: </li>
+                            <li id="waktuSwiss">Waktu Swiss: </li>
+                            <li id="waktuSwedia">Waktu Swedia: </li>
+                            <li id="waktuKanada">Waktu Kanada: </li>
+                            <li id="waktuFinlandia">Waktu Finlandia: </li>
+                            <li id="waktuDenmark">Waktu Denmark: </li>
+                            <li id="waktuAustralia">Waktu Australia: </li>
+                            <li id="waktuBelanda">Waktu Belanda: </li>
+                            <li id="waktuJerman">Waktu Jerman: </li>
+                            <li id="waktuIslandia">Waktu Islandia: </li>
+                            <li id="waktuSingapura">Waktu Singapura: </li>
+                            <li id="waktuMalaysia">Waktu Malaysia: </li>
+                            <li id="waktuThailand">Waktu Thailand: </li>
+                            <li id="waktuFilipina">Waktu Filipina: </li>
+                            <li id="waktuVietnam">Waktu Vietnam: </li>
+                            <li id="waktuBrunei">Waktu Brunei: </li>
+                            <li id="waktuKamboja">Waktu Kamboja: </li>
+                            <li id="waktuLaos">Waktu Laos: </li>
+                            <li id="waktuMyanmar">Waktu Myanmar: </li>
+                            <li id="waktuIndonesia">Waktu Indonesia: </li>
+                            <li id="waktuJepang">Waktu Jepang: </li>
+                            <li id="waktuRusia">Waktu Rusia: </li>
+                            <li id="waktuKoreaSelatan">Waktu Korea Selatan: </li>
+                            <li id="waktuKoreaUtara">Waktu Korea Utara: </li>
+                            <li id="waktuChina">Waktu China: </li>
+                            <li id="waktuArabSaudi">Waktu Arab Saudi: </li>
+                            <li id="waktuUAE">Waktu Uni Emirat Arab: </li>
+                            <li id="waktuQatar">Waktu Qatar: </li>
+                            <li id="waktuKuwait">Waktu Kuwait: </li>
+                            <li id="waktuOman">Waktu Oman: </li>
+                            <li id="countdown" class="countdown">Hitung Mundur: </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <script>
+                    // Update current time for each country
+                    function updateTime() {
+                        const now = new Date();
+                        const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+                        // Jakarta Time
+                        document.getElementById('waktuReal').innerText = `Waktu Sekarang (Jakarta): ${now.toLocaleTimeString('id-ID', { ...options, timeZone: 'Asia/Jakarta' })}`;
+
+                        // Norway Time
+                        document.getElementById('waktuNorwegia').innerText = `Waktu Norwegia: ${now.toLocaleTimeString('en-GB', { ...options, timeZone: 'Europe/Oslo' })}`;
+
+                        // Switzerland Time
+                        document.getElementById('waktuSwiss').innerText = `Waktu Swiss: ${now.toLocaleTimeString('en-GB', { ...options, timeZone: 'Europe/Zurich' })}`;
+
+                        // Sweden Time
+                        document.getElementById('waktuSwedia').innerText = `Waktu Swedia: ${now.toLocaleTimeString('sv-SE', { ...options, timeZone: 'Europe/Stockholm' })}`;
+
+                        // Canada Time (Toronto)
+                        document.getElementById('waktuKanada').innerText = `Waktu Kanada: ${now.toLocaleTimeString('en-CA', { ...options, timeZone: 'America/Toronto' })}`;
+
+                        // Finland Time
+                        document.getElementById('waktuFinlandia').innerText = `Waktu Finlandia: ${now.toLocaleTimeString('fi-FI', { ...options, timeZone: 'Europe/Helsinki' })}`;
+
+                        // Denmark Time
+                        document.getElementById('waktuDenmark').innerText = `Waktu Denmark: ${now.toLocaleTimeString('da-DK', { ...options, timeZone: 'Europe/Copenhagen' })}`;
+
+                        // Australia Time (Sydney)
+                        document.getElementById('waktuAustralia').innerText = `Waktu Australia: ${now.toLocaleTimeString('en-AU', { ...options, timeZone: 'Australia/Sydney' })}`;
+
+                        // Netherlands Time
+                        document.getElementById('waktuBelanda').innerText = `Waktu Belanda: ${now.toLocaleTimeString('nl-NL', { ...options, timeZone: 'Europe/Amsterdam' })}`;
+
+                        // Germany Time
+                        document.getElementById('waktuJerman').innerText = `Waktu Jerman: ${now.toLocaleTimeString('de-DE', { ...options, timeZone: 'Europe/Berlin' })}`;
+
+                        // Iceland Time
+                        document.getElementById('waktuIslandia').innerText = `Waktu Islandia: ${now.toLocaleTimeString('is-IS', { ...options, timeZone: 'Atlantic/Reykjavik' })}`;
+
+                        // ASEAN countries
+                        document.getElementById('waktuSingapura').innerText = `Waktu Singapura: ${now.toLocaleTimeString('en-SG', { ...options, timeZone: 'Asia/Singapore' })}`;
+                        document.getElementById('waktuMalaysia').innerText = `Waktu Malaysia: ${now.toLocaleTimeString('ms-MY', { ...options, timeZone: 'Asia/Kuala_Lumpur' })}`;
+                        document.getElementById('waktuThailand').innerText = `Waktu Thailand: ${now.toLocaleTimeString('th-TH', { ...options, timeZone: 'Asia/Bangkok' })}`;
+                        document.getElementById('waktuFilipina').innerText = `Waktu Filipina: ${now.toLocaleTimeString('en-PH', { ...options, timeZone: 'Asia/Manila' })}`;
+                        document.getElementById('waktuVietnam').innerText = `Waktu Vietnam: ${now.toLocaleTimeString('vi-VN', { ...options, timeZone: 'Asia/Ho_Chi_Minh' })}`;
+                        document.getElementById('waktuBrunei').innerText = `Waktu Brunei: ${now.toLocaleTimeString('ms-BN', { ...options, timeZone: 'Asia/Brunei' })}`;
+                        document.getElementById('waktuKamboja').innerText = `Waktu Kamboja: ${now.toLocaleTimeString('km-KH', { ...options, timeZone: 'Asia/Phnom_Penh' })}`;
+                        document.getElementById('waktuLaos').innerText = `Waktu Laos: ${now.toLocaleTimeString('lo-LA', { ...options, timeZone: 'Asia/Vientiane' })}`;
+                        document.getElementById('waktuMyanmar').innerText = `Waktu Myanmar: ${now.toLocaleTimeString('my-MM', { ...options, timeZone: 'Asia/Yangon' })}`;
+                        document.getElementById('waktuIndonesia').innerText = `Waktu Indonesia: ${now.toLocaleTimeString('id-ID', { ...options, timeZone: 'Asia/Jakarta' })}`;
+
+                        // Adding new countries
+                        document.getElementById('waktuJepang').innerText = `Waktu Jepang: ${now.toLocaleTimeString('ja-JP', { ...options, timeZone: 'Asia/Tokyo' })}`;
+                        document.getElementById('waktuRusia').innerText = `Waktu Rusia: ${now.toLocaleTimeString('ru-RU', { ...options, timeZone: 'Europe/Moscow' })}`;
+                        document.getElementById('waktuKoreaSelatan').innerText = `Waktu Korea Selatan: ${now.toLocaleTimeString('ko-KR', { ...options, timeZone: 'Asia/Seoul' })}`;
+                        document.getElementById('waktuKoreaUtara').innerText = `Waktu Korea Utara: ${now.toLocaleTimeString('ko-KP', { ...options, timeZone: 'Asia/Pyongyang' })}`;
+                        document.getElementById('waktuChina').innerText = `Waktu China: ${now.toLocaleTimeString('zh-CN', { ...options, timeZone: 'Asia/Shanghai' })}`;
+
+                        // Middle Eastern Countries
+                        document.getElementById('waktuArabSaudi').innerText = `Waktu Arab Saudi: ${now.toLocaleTimeString('ar-SA', { ...options, timeZone: 'Asia/Riyadh' })}`;
+                        document.getElementById('waktuUAE').innerText = `Waktu Uni Emirat Arab: ${now.toLocaleTimeString('ar-AE', { ...options, timeZone: 'Asia/Dubai' })}`;
+                        document.getElementById('waktuQatar').innerText = `Waktu Qatar: ${now.toLocaleTimeString('ar-QA', { ...options, timeZone: 'Asia/Qatar' })}`;
+                        document.getElementById('waktuKuwait').innerText = `Waktu Kuwait: ${now.toLocaleTimeString('ar-KW', { ...options, timeZone: 'Asia/Kuwait' })}`;
+                        document.getElementById('waktuOman').innerText = `Waktu Oman: ${now.toLocaleTimeString('ar-OM', { ...options, timeZone: 'Asia/Muscat' })}`;
+                    }
+
+                    // Start the countdown timer for December 16, 2024
+                    function startCountdown() {
+                        const endTime = new Date('2024-12-16T00:00:00').getTime();
+
+                        const countdownInterval = setInterval(() => {
+                            const now = new Date().getTime();
+                            const distance = endTime - now;
+
+                            // Time calculations for days, hours, minutes, and seconds
+                            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                            // Display the result without the colon after 'Hitung Mundur'
+                            document.getElementById('countdown').innerText = `Hitung Mundur ${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+
+                            // If the countdown is over, display a message without the colon
+                            if (distance < 0) {
+                                clearInterval(countdownInterval);
+                                document.getElementById('countdown').innerText = "Waktu telah habis";
+                            }
+                        }, 1000);
+                    }
+
+                    // Initialize the clock and countdown on page load
+                    setInterval(updateTime, 1000);
+                    startCountdown();
+
+                </script>
+            </body>
+
+            </html>
+
+            <!-- Kalkulator Pertukaran Mata Uang -->
+            <details close>
+                <summary>Kalkulator Pertukaran Mata Uang</summary>
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Kalkulator Nilai Tukar</h2>
+
+                    <!-- Formulir konversi dari mata uang asing ke IDR -->
+                    <form id="currency-form">
+                        <div class="mb-4">
+                            <label for="foreign-amount" class="block text-gray-700">Jumlah Mata Uang Asing</label>
+                            <input type="number" id="foreign-amount" class="p-2 border rounded mt-1 w-full"
+                                placeholder="Masukkan jumlah mata uang asing" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="foreign-currency" class="block text-gray-700">Pilih Mata Uang Asing</label>
+                            <select id="foreign-currency" class="p-2 border rounded mt-1 w-full">
+                                <option value="USD">Dollar AS (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">Poundsterling Inggris (GBP)</option>
+                                <option value="JPY">Yen Jepang (JPY)</option>
+                                <option value="AUD">Dolar Australia (AUD)</option>
+                                <option value="MYR">Ringgit Malaysia (MYR)</option>
+                                <option value="KWD">Dinar Kuwait (KWD)</option>
+                                <option value="BHD">Dinar Bahrain (BHD)</option>
+                                <option value="OMR">Rial Oman (OMR)</option>
+                                <option value="JOD">Dinar Yordania (JOD)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Konversi ke IDR</button>
+                    </form>
+
+                    <div id="result" class="mt-4 text-lg font-semibold text-gray-800">Hasil: -</div>
+
+                    <hr class="my-4">
+
+                    <!-- Formulir konversi dari IDR ke mata uang asing -->
+                    <form id="reverse-currency-form">
+                        <div class="mb-4">
+                            <label for="idr-amount" class="block text-gray-700">Jumlah dalam Rupiah (IDR)</label>
+                            <input type="number" id="idr-amount" class="p-2 border rounded mt-1 w-full"
+                                placeholder="Masukkan jumlah IDR" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="target-currency" class="block text-gray-700">Pilih Mata Uang Tujuan</label>
+                            <select id="target-currency" class="p-2 border rounded mt-1 w-full">
+                                <option value="USD">Dollar AS (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">Poundsterling Inggris (GBP)</option>
+                                <option value="JPY">Yen Jepang (JPY)</option>
+                                <option value="AUD">Dolar Australia (AUD)</option>
+                                <option value="MYR">Ringgit Malaysia (MYR)</option>
+                                <option value="KWD">Dinar Kuwait (KWD)</option>
+                                <option value="BHD">Dinar Bahrain (BHD)</option>
+                                <option value="OMR">Rial Oman (OMR)</option>
+                                <option value="JOD">Dinar Yordania (JOD)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Konversi ke Mata
+                            Uang</button>
+                    </form>
+
+                    <div id="reverse-result" class="mt-4 text-lg font-semibold text-gray-800">Hasil: -</div>
+
+                    <p class="text-sm text-gray-500 mt-4">*Nilai tukar dapat berubah sewaktu-waktu sesuai dengan pasar
+                        dan kebijakan bank.</p>
+                    <p id="last-update" class="text-sm text-gray-500 mt-4 hidden">Terakhir diperbarui: <span
+                            id="update-time">-</span></p>
+                </div>
+            </details>
+
+            <script>
+                const exchangeRates = {
+                    USD: 15900,         // 1 USD = 15.900 IDR
+                    EUR: 17200,      // 1 Euro = 17.200 IDR
+                    GBP: 20250,    // 1 Poundsterling Inggris = 20.250 IDR
+                    JPY: 106,       // 1 Yen Jepang = 102,375 IDR
+                    AUD: 10350,    // 1 Dolar Australia = 10.285,9375 IDR
+                    MYR: 3380,     // 1 Ringgit Malaysia = 3.565,3125 IDR
+                    KWD: 52800,      // 1 Dinar Kuwait = 51.175,12 IDR
+                    BHD: 42000,      // 1 Dinar Bahrain = 41.656,65 IDR
+                    OMR: 41178,      // 1 Rial Oman = 40.995,12 IDR
+                    JOD: 22500       // 1 Dinar Yordania = 22.088,76 IDR
+                };
+
+                // Fungsi untuk menambahkan pemisah ribuan (titik) pada angka
+                function formatNumber(number) {
+                    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                }
+
+                // Fungsi untuk konversi dari mata uang asing ke IDR
+                function convertToIDR() {
+                    const foreignAmount = parseFloat(document.getElementById('foreign-amount').value);
+                    const foreignCurrency = document.getElementById('foreign-currency').value;
+
+                    // Validasi input
+                    if (isNaN(foreignAmount) || foreignAmount <= 0) {
+                        document.getElementById('result').innerText = "Masukkan jumlah yang valid.";
+                        return;
+                    }
+
+                    // Mengambil nilai tukar sesuai pilihan mata uang asing
+                    const exchangeRate = exchangeRates[foreignCurrency];
+                    if (exchangeRate) {
+                        const result = (foreignAmount * exchangeRate).toFixed(2);  // Mengalikan jumlah mata uang asing dengan nilai tukar ke IDR
+                        document.getElementById('result').innerText = `Hasil: Rp ${formatNumber(result)}`;
+                        updateLastUpdateTime();
+                    } else {
+                        document.getElementById('result').innerText = "Gagal mendapatkan nilai tukar.";
+                    }
+                }
+
+                // Fungsi untuk konversi dari IDR ke mata uang asing
+                function convertFromIDR() {
+                    const idrAmount = parseFloat(document.getElementById('idr-amount').value);
+                    const targetCurrency = document.getElementById('target-currency').value;
+
+                    // Validasi input
+                    if (isNaN(idrAmount) || idrAmount <= 0) {
+                        document.getElementById('reverse-result').innerText = "Masukkan jumlah yang valid.";
+                        return;
+                    }
+
+                    // Mengambil nilai tukar sesuai pilihan mata uang yang dituju
+                    const exchangeRate = exchangeRates[targetCurrency];
+                    if (exchangeRate) {
+                        const result = (idrAmount / exchangeRate).toFixed(2);  // Membagi jumlah IDR dengan nilai tukar ke mata uang asing
+                        document.getElementById('reverse-result').innerText = `Hasil: ${formatNumber(result)} ${targetCurrency}`;
+                        updateLastUpdateTime();
+                    } else {
+                        document.getElementById('reverse-result').innerText = "Gagal mendapatkan nilai tukar.";
+                    }
+                }
+
+                // Fungsi untuk menyimpan waktu pembaruan
+                function updateLastUpdateTime() {
+                    const currentTime = new Date().toLocaleString();
+                    document.getElementById('update-time').innerText = currentTime;
+                    document.getElementById('last-update').classList.remove('hidden');
+                }
+
+                // Event listener untuk formulir konversi mata uang asing ke IDR
+                document.getElementById('currency-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    convertToIDR();
+                });
+
+                // Event listener untuk formulir konversi dari IDR ke mata uang asing
+                document.getElementById('reverse-currency-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    convertFromIDR();
+                });
+
+                // Auto-update hasil konversi berdasarkan input pengguna tanpa tombol
+                document.getElementById('foreign-amount').addEventListener('input', convertToIDR);
+                document.getElementById('foreign-currency').addEventListener('change', convertToIDR);
+                document.getElementById('idr-amount').addEventListener('input', convertFromIDR);
+                document.getElementById('target-currency').addEventListener('change', convertFromIDR);
+
+            </script>
+
+            <details close>
+                <summary>Instagram</summary>
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="instagram">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Akun Instagram</h2>
+                    <p>gak terlalu penting,tapi gapapa</p>
+                    <ul class="list-none pl-0 mt-4">
+                        <li>
+                            <a href="https://www.instagram.com/8.3_charming?igsh=d2lxZDJ0MDVyMmly" target="_blank"
+                                class="flex items-center text-blue-600 hover:text-blue-800">
+                                <i class="fab fa-instagram mr-2"></i> Instagram Kelas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/smppgriciteureup?igsh=MXRwcWdmdXd2NTV5cQ=="
+                                target="_blank" class="flex items-center text-blue-600 hover:text-blue-800">
+                                <i class="fab fa-instagram mr-2"></i> Instagram Sekolah
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/osis.smppgriciteureup?igsh=MTRzY2xsMDIycWVveg=="
+                                target="_blank" class="flex items-center text-blue-600 hover:text-blue-800">
+                                <i class="fab fa-instagram mr-2"></i> Instagram OSIS Sekolah
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <details close>
+                <summary>Dokumentasi Gambar</summary>
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="documentation">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Dokumentasi Gambar</h2>
+                    <p>Beberapa gambar dokumentasi.</p>
+                    <ul class="list-none pl-0 mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <li>
+                            <a href="1.png" target="_blank" class="flex flex-col items-center">
+                                <img src="1.png" alt="Gambar 1" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                <span class="text-center text-black-600">Gambar 1</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="2.png" target="_blank" class="flex flex-col items-center">
+                                <img src="2.png" alt="Gambar 2" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                <span class="text-center text-black-600">Gambar 2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="3.png" target="_blank" class="flex flex-col items-center">
+                                <img src="3.png" alt="Gambar 3" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                <span class="text-center text-black-600">Gambar 3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="4.png" target="_blank" class="flex flex-col items-center">
+                                <img src="4.png" alt="Gambar 4" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                <span class="text-center text-black-600">Gambar 4</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="5.png" target="_blank" class="flex flex-col items-center">
+                                <img src="5.png" alt="Gambar 5" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                <span class="text-center text-black-600">Gambar 5</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="6.png" target="_blank" class="flex flex-col items-center">
+                                <img src="6.png" alt="Gambar 6" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                <span class="text-center text-black-600">Gambar 6</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="7.png" target="_blank" class="flex flex-col items-center">
+                                <img src="7.png" alt="Gambar 7" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                <span class="text-center text-black-600">Gambar 7</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="8.png" target="_blank" class="flex flex-col items-center">
+                                <img src="8.png" alt="Gambar 8" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                <span class="text-center text-black-600">Gambar 8</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+
+
+            <!-- Footer Section -->
+            <footer class="text-center py-4 mt-6">
+                <div class="container mx-auto">
+                    <!-- Copyright Text -->
+                    <p class="text-base font-medium hover:text-darkblue-300 transition-colors duration-300">
+                        <a href="https://peraturan.bpk.go.id/Details/38690" class="text-black-400 hover:underline"
+                            target="_blank">
+                            © 2024 8.3 - Semua Hak Dilindungi
+                        </a>
+                    </p>
+                </div>
+                </fotter>
+
+        </html>
