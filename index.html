@@ -4,15 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beranda - Kelas 8.3</title>
+    <title>Software - Kelas 8.3</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="34.png" type="image/x-icon">
+    <!-- Atau jika menggunakan gambar PNG -->
+    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background: linear-gradient(to bottom, #FF9A8B, #FFC3A0, #FFB6B9);
-            /* Latar belakang dengan gradasi warna cerah */
+            background: linear-gradient(to bottom, #FEA7A4, #FFB9A7, #FFDDC0);
             font-family: 'Poppins', sans-serif;
         }
 
@@ -28,17 +33,14 @@
             cursor: pointer;
             font-weight: bold;
             color: #FF6F61;
-            /* Warna cerah untuk menarik perhatian */
             margin-bottom: 0.5rem;
         }
 
-        /* Gaya untuk running text */
         .running-text {
             white-space: nowrap;
             overflow: hidden;
             box-sizing: border-box;
-            background-color: #ff6f61;
-            /* Warna cerah dan enerjik */
+            background-color: #FF6F61;
             color: white;
             padding: 0.5rem;
             font-weight: bold;
@@ -59,53 +61,47 @@
             }
         }
 
-        /* Kelas 8.3 Info Section Styling */
         .info-section {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1.5rem;
             padding: 2rem;
             background-color: #FFFAF0;
-            /* Warna pastel lembut */
             border-radius: 0.75rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .info-card {
             background-color: #ffffff;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             padding: 1.25rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
         .info-card:hover {
-            transform: translateY(-8px);
-            /* Mengangkat kotak saat di-hover */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-6px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
         }
 
         .info-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             font-weight: 600;
             color: #FF6F61;
-            /* Warna cerah untuk judul */
         }
 
         .info-card p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #333;
+            line-height: 1.6;
         }
 
-        /* Hover Effect on Menu Items */
         .hover-effect:hover {
             background-color: #FFEBEE;
-            /* Warna lembut saat hover */
-            color: #ff6f61;
+            color: #FF6F61;
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Mobile Menu */
         #mobile-menu {
             position: absolute;
             top: 0;
@@ -113,7 +109,6 @@
             right: 0;
             background-color: #ffffff;
             z-index: 10;
-            /* Menambah z-index supaya di atas konten lain */
             display: none;
         }
 
@@ -121,38 +116,60 @@
             padding: 1rem;
             text-align: center;
             font-weight: bold;
-            color: #ff6f61;
+            color: #FF6F61;
             border-bottom: 1px solid #ddd;
         }
 
         .mobile-menu-link:hover {
             background-color: #FFEBEE;
-            color: #ff6f61;
+            color: #FF6F61;
         }
 
-        /* Navbar button fix */
         #menu-toggle {
             z-index: 20;
-            /* Pastikan tombol di atas menu */
         }
 
-        /* Gaya untuk gambar di samping logo */
         .navbar-logo img {
-            max-width: 50px;
-            /* Menetapkan lebar maksimal gambar */
+            max-width: 60px;
             height: auto;
-            /* Menjaga proporsi gambar */
             margin-left: 10px;
-            /* Menambahkan margin kiri untuk memberi jarak antara teks dan gambar */
         }
 
-        /* Gambar kedua di navbar */
-        .navbar-logo img:last-child {
-            max-width: 50px;
-            /* Ukuran gambar kedua */
-            height: auto;
-            margin-left: 10px;
-            /* Jarak antara gambar pertama dan kedua */
+        .notification {
+            position: fixed;
+            top: 10px;
+            /* Posisi dari atas */
+            left: 50%;
+            transform: translateX(-50%) translateY(-50px);
+            /* Mengatur posisi tengah dan sedikit ke atas */
+            background-color: #FF6F61;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 16px;
+            border-radius: 8px;
+            z-index: 1000;
+            opacity: 0;
+            animation: showNotification 1s forwards;
+            /* Animasi untuk muncul */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes showNotification {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-50px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
         }
     </style>
 </head>
@@ -163,11 +180,10 @@
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center py-4">
             <div class="flex items-center">
                 <span class="font-semibold text-white text-2xl">Kelas 8.3</span>
-                <!-- Menambahkan gambar di samping kanan teks -->
                 <div class="navbar-logo flex items-center">
-                    <img src="PGRI.CLR_..webp" alt="Logo Kelas 8.3"> <!-- Gambar logo pertama -->
-                    <img src="34.png" alt="Logo Kelas 8.3 2"> <!-- Gambar logo kedua -->
-                    <img src="opg.png" alt="Logo Kelas 8.3 3"> <!-- Gambar logo ketiga -->
+                    <img src="89.png" alt="Logo Kelas 8.3 2">
+                    <img src="34.png" alt="Logo Kelas 8.3 2">
+                    <img src="opg.png" alt="Logo Kelas 8.3 3">
                 </div>
             </div>
             <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
@@ -201,7 +217,6 @@
         <span>"Selamat Datang Di Kelas 8.3!! One Team One Dream!"</span>
     </div>
 
-    <!-- Informasi Kelas 8.3 -->
     <section class="info-section">
         <div class="info-card hover-effect">
             <h3>Visi Kelas 8.3</h3>
@@ -218,15 +233,41 @@
         </div>
         <div class="info-card hover-effect">
             <h3>Informasi web ini</h3>
-            <p>Web ini dibangun 80% oleh KECERDASAN BUATAN (AI),20% sisanya dibangun menggunakan kecerdasan manusia.</p>
+            <p>Web ini dibangun 80% oleh KECERDASAN BUATAN (AI), 20% sisanya dibangun menggunakan kecerdasan manusia.
+            </p>
+        </div>
+        <div class="info-card hover-effect">
+            <h3>Informasi PR</h3>
+            <p>-Nothing-</p>
         </div>
     </section>
+
+    <!-- Notifikasi saat halaman dimuat -->
+    <script>
+        if (!localStorage.getItem("hasSeenUpdate")) {
+            window.onload = function () {
+                let notification = document.createElement("div");
+                notification.textContent = "Website telah diperbarui! Lihat apakah ada PR.";
+                notification.classList.add("notification");
+
+                document.body.appendChild(notification);
+
+                localStorage.setItem("hasSeenUpdate", "true");
+
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+            };
+        }
+    </script>
+
 </body>
 
 </html>
 
 
-<!-- Konten Utama -->
+
+
 <div class="container mx-auto px-4 py-8">
     <!-- Informasi Kelas -->
     <details close>
@@ -288,6 +329,7 @@
             </div>
         </div>
     </details>
+
 
     <!-- Jadwal Pelajaran -->
     <details close>
