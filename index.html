@@ -48,16 +48,19 @@
 
         .running-text span {
             display: inline-block;
-            animation: marquee 15s linear infinite;
+            animation: marquee 30s linear infinite;
+            /* Durasi animasi diperpanjang menjadi 30 detik */
         }
 
         @keyframes marquee {
             0% {
                 transform: translateX(100%);
+                /* Mulai dari kanan luar */
             }
 
             100% {
                 transform: translateX(-100%);
+                /* Berhenti di kiri luar */
             }
         }
 
@@ -77,6 +80,18 @@
             padding: 1.25rem;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            /* Mulai dengan transparan */
+            transform: translateY(30px);
+            /* Mulai dari bawah */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .info-card.visible {
+            opacity: 1;
+            /* Menampilkan elemen */
+            transform: translateY(0);
+            /* Geser elemen ke posisi normal */
         }
 
         .info-card:hover {
@@ -181,7 +196,7 @@
             <div class="flex items-center">
                 <span class="font-semibold text-white text-2xl">Kelas 8.3</span>
                 <div class="navbar-logo flex items-center">
-                    <img src="89.png" alt="Logo Kelas 8.3 2">
+                    <img src="89.png" alt="Logo Kelas 8.3 1">
                     <img src="34.png" alt="Logo Kelas 8.3 2">
                     <img src="opg.png" alt="Logo Kelas 8.3 3">
                 </div>
@@ -239,8 +254,8 @@
         <div class="info-card hover-effect">
             <h3>Informasi PR</h3>
             <p>PKN : penilaian sikap HAL: 71&72</p>
-            <p> AGAMA/PAI : membuat peta konsep hal 62 dan catat periode pertama samapai periode kelima hal 64 dan
-                jangan lupa DI HIAS DAN DI WARNAI</p>
+            <p>AGAMA/PAI : membuat peta konsep hal 62 dan catat periode pertama sampai periode kelima hal 64 dan jangan
+                lupa DI HIAS DAN DI WARNAI</p>
         </div>
     </section>
 
@@ -261,12 +276,25 @@
                 }, 5000);
             };
         }
+
+        // Intersection Observer untuk animasi scroll
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible'); // Menambahkan kelas 'visible' saat elemen terlihat
+                    observer.unobserve(entry.target); // Hentikan pengamatan setelah elemen terlihat
+                }
+            });
+        }, { threshold: 0.2 }); // Mulai animasi saat 20% elemen terlihat
+
+        // Menargetkan semua elemen dengan kelas 'info-card'
+        const cards = document.querySelectorAll('.info-card');
+        cards.forEach(card => observer.observe(card));
     </script>
 
 </body>
 
 </html>
-
 
 
 
@@ -278,55 +306,55 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <h3 class="font-semibold mb-2">Wali Kelas</h3>
-                    <p>Ahmad Mussofa</p>
+                    <p>Ahmad Mussopa S.Pd.I</p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Ketua Kelas</h3>
-                    <p>Albertus Kevin Daniswara</p>
+                    <p>Albertus Kevin Daniswara <span class="text-green-500">(A+)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Ketua Kelas</h3>
-                    <p>Aulia Isra Supandi</p>
+                    <p>Aulia Isra Supandi <span class="text-green-500">(A+)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Sekretaris</h3>
-                    <p>Sahira Aulya</p>
+                    <p>Sahira Aulya <span class="text-green-500">(A+)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Sekretaris</h3>
-                    <p>Reyhan Rahadian Maulana Saputra</p>
+                    <p>Reyhan Rahadian Maulana Saputra <span class="text-yellow-500">(B)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Bendahara</h3>
-                    <p>Muamar Khaikal Al-Kahfi</p>
+                    <p>Muamar Khaikal Al-Kahfi <span class="text-green-500">(A+)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Bendahara</h3>
-                    <p>Siti Maulinda</p>
+                    <p>Siti Maulinda <span class="text-yellow-500">(B)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Keamanan</h3>
-                    <p>Bayu Saktiawan</p>
+                    <p>Bayu Saktiawan <span class="text-red-500">(C)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Keamanan</h3>
-                    <p>Siti Hanna</p>
+                    <p>Siti Hanna <span class="text-yellow-500">(B)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Kebersihan</h3>
-                    <p>Muhamad Fauzan Faddilah</p>
+                    <p>Muhamad Fauzan Faddilah <span class="text-green-500">(A+)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Kebersihan</h3>
-                    <p>Septia Fitriani</p>
+                    <p>Septia Fitriani <span class="text-red-500">(C)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Rohis</h3>
-                    <p>Febrian Aryanto</p>
+                    <p>Febrian Aryanto <span class="text-yellow-500">(B)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Rohis</h3>
-                    <p>Andien Mauliddina Rizki</p>
+                    <p>Andien Mauliddina Rizki <span class="text-yellow-500">(B)</span></p>
                 </div>
             </div>
         </div>
@@ -610,215 +638,43 @@
             <div id="informasi-digital" class="info-content">
                 <p><strong>Pentingnya Memahami Teknologi Digital:</strong></p>
                 <ul class="list-disc pl-6">
-                    <li><strong>Teknologi sebagai Penunjang Kehidupan:</strong> Di era digital ini, teknologi
-                        memengaruhi hampir setiap aspek kehidupan kita. Mulai dari pendidikan, kesehatan, hingga
-                        pekerjaan, teknologi semakin memudahkan kita dalam menjalankan aktivitas sehari-hari.</li>
-                    <li><strong>Peningkatan Keterampilan Digital:</strong> Memahami teknologi digital menjadi
-                        keterampilan yang sangat penting. Penggunaan perangkat lunak, pemrograman, dan kemampuan
-                        beradaptasi dengan perkembangan teknologi menjadi nilai tambah yang sangat dibutuhkan di dunia
-                        kerja modern.</li>
-                    <li><strong>Penggunaan Teknologi untuk Efisiensi:</strong> Teknologi membantu meningkatkan efisiensi
-                        dalam berbagai sektor, seperti dalam pekerjaan kantor dengan perangkat lunak produktivitas,
-                        dalam sektor kesehatan dengan perangkat medis berbasis teknologi, dan lain-lain.</li>
+                    <li><strong>Teknologi sebagai Penunjang Kehidupan:</strong> Mempermudah kehidupan dalam pendidikan,
+                        kesehatan, dan pekerjaan.</li>
+                    <li><strong>Peningkatan Keterampilan Digital:</strong> Keterampilan teknologi seperti pemrograman
+                        dan penggunaan perangkat lunak penting dalam dunia kerja modern.</li>
+                    <li><strong>Penggunaan Teknologi untuk Efisiensi:</strong> Meningkatkan efisiensi dalam pekerjaan
+                        dan sektor lainnya.</li>
                 </ul>
 
                 <p><strong>Pengenalan AI (Kecerdasan Buatan):</strong></p>
                 <ul class="list-disc pl-6">
-                    <li><strong>Apa itu AI?</strong> AI (Artificial Intelligence) adalah bidang dalam ilmu komputer yang
-                        berfokus pada pembuatan sistem atau mesin yang dapat melakukan tugas-tugas yang membutuhkan
-                        kecerdasan manusia, seperti pengambilan keputusan, pengenalan gambar, dan pemrosesan bahasa
-                        alami.</li>
-                    <li><strong>Fungsi dan Manfaat AI:</strong> AI digunakan untuk mempercepat berbagai proses bisnis
-                        dan industri, dari analisis data hingga automasi tugas-tugas yang berulang. Contohnya, AI dalam
-                        aplikasi seperti Siri, Google Assistant, atau bahkan di sistem keamanan otomatis dan kendaraan
-                        otonom (self-driving cars).</li>
-                    <li><strong>Contoh Aplikasi AI:</strong> Sistem rekomendasi seperti yang digunakan oleh Netflix atau
-                        YouTube, yang memberikan saran berdasarkan preferensi pengguna, adalah contoh AI yang sudah
-                        diterapkan di kehidupan sehari-hari.</li>
-                    <li><strong>Perkembangan AI:</strong> AI terus berkembang dengan pesat, dan banyak industri yang
-                        mengadopsi teknologi ini untuk meningkatkan efisiensi dan mengurangi biaya. Penggunaan AI di
-                        bidang kesehatan, misalnya, dapat membantu dokter dalam mendiagnosis penyakit lebih akurat.</li>
+                    <li><strong>Apa itu AI?</strong> Teknologi yang memungkinkan mesin melakukan tugas yang biasanya
+                        membutuhkan kecerdasan manusia.</li>
+                    <li><strong>Manfaat AI:</strong> Mengoptimalkan proses bisnis, seperti dalam analisis data dan
+                        automasi.</li>
+                    <li><strong>Contoh Aplikasi AI:</strong> Sistem rekomendasi seperti di Netflix atau YouTube.</li>
                 </ul>
 
                 <p><strong>Data dan Keamanan Digital:</strong></p>
                 <ul class="list-disc pl-6">
-                    <li><strong>Peran Data dalam Dunia Digital:</strong> Data adalah bahan bakar bagi banyak teknologi
-                        digital saat ini. Setiap kali kita menggunakan aplikasi atau layanan online, data kita diproses
-                        untuk meningkatkan pengalaman dan memberikan informasi yang lebih akurat.</li>
-                    <li><strong>Pentingnya Keamanan Data:</strong> Keamanan data menjadi masalah utama di dunia digital.
-                        Dengan semakin banyaknya data yang dikumpulkan oleh perusahaan dan platform digital, penting
-                        untuk menjaga data pribadi kita dari akses yang tidak sah dan ancaman cyber seperti peretasan
-                        atau pencurian identitas.</li>
-                    <li><strong>Enkripsi dan Perlindungan Data:</strong> Teknologi enkripsi digunakan untuk melindungi
-                        data pribadi dan sensitif saat ditransfer melalui jaringan. Penggunaan HTTPS pada situs web
-                        adalah salah satu contoh di mana data kita dilindungi saat mengakses internet.</li>
+                    <li><strong>Pentingnya Keamanan Data:</strong> Data pribadi harus dijaga dari ancaman seperti
+                        peretasan dan pencurian identitas.</li>
+                    <li><strong>Enkripsi Data:</strong> Teknologi untuk melindungi data pribadi saat ditransfer melalui
+                        jaringan.</li>
                 </ul>
 
-                <p><strong>Perkembangan Teknologi Blockchain:</strong></p>
+                <p><strong>Blockchain:</strong></p>
                 <ul class="list-disc pl-6">
-                    <li><strong>Apa itu Blockchain?</strong> Blockchain adalah teknologi yang digunakan untuk mencatat
-                        transaksi secara aman dan transparan. Teknologi ini memungkinkan data untuk disimpan dalam blok
-                        yang saling terhubung dan terenkripsi, sehingga hampir tidak mungkin untuk dimanipulasi.</li>
-                    <li><strong>Aplikasi Blockchain:</strong> Blockchain tidak hanya digunakan untuk cryptocurrency
-                        seperti Bitcoin, tetapi juga dapat diterapkan dalam berbagai sektor, termasuk logistik,
-                        keuangan, dan sistem voting digital yang aman.</li>
-                    <li><strong>Keamanan dan Transparansi:</strong> Salah satu keuntungan utama blockchain adalah
-                        kemampuan untuk menyediakan sistem yang transparan dan terdesentralisasi, di mana transaksi
-                        dapat dilacak tanpa melibatkan pihak ketiga yang dapat memanipulasi data.</li>
+                    <li><strong>Apa itu Blockchain?</strong> Teknologi yang digunakan untuk mencatat transaksi secara
+                        aman dan transparan.</li>
+                    <li><strong>Aplikasi Blockchain:</strong> Digunakan dalam cryptocurrency, logistik, dan sistem
+                        voting yang aman.</li>
                 </ul>
 
-                <p><strong>NFC (Near Field Communication):</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Apa itu NFC?</strong> NFC adalah teknologi komunikasi jarak dekat yang memungkinkan
-                        perangkat untuk berkomunikasi satu sama lain dalam jarak yang sangat dekat, biasanya kurang dari
-                        10 cm. Ini banyak digunakan dalam pembayaran digital, tiket elektronik, dan pengenalan
-                        identitas.</li>
-                    <li><strong>Fungsi NFC:</strong> NFC memfasilitasi pembayaran tanpa kontak melalui perangkat seperti
-                        smartphone atau kartu NFC. Selain itu, NFC juga digunakan untuk mentransfer data antar perangkat
-                        dengan hanya mendekatkan perangkat tersebut satu sama lain.</li>
-                    <li><strong>Contoh Penggunaan NFC:</strong> Pembayaran digital dengan aplikasi seperti Google Pay,
-                        Apple Pay, dan Samsung Pay menggunakan teknologi NFC untuk melakukan transaksi dengan cepat dan
-                        aman.</li>
-                </ul>
-
-                <p><strong>Wireless (Nirkabel):</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Apa itu Wireless?</strong> Wireless atau nirkabel adalah teknologi yang memungkinkan
-                        perangkat berkomunikasi tanpa menggunakan kabel fisik. Teknologi ini meliputi Wi-Fi, Bluetooth,
-                        dan komunikasi seluler, yang memungkinkan perangkat untuk mentransfer data secara efisien dan
-                        cepat.</li>
-                    <li><strong>Keuntungan Wireless:</strong> Wireless memberikan kebebasan untuk bergerak tanpa batasan
-                        kabel. Pengguna dapat mengakses internet dengan Wi-Fi atau berkomunikasi dengan perangkat lain
-                        menggunakan Bluetooth tanpa terikat oleh kabel atau koneksi fisik.</li>
-                </ul>
-
-                <p><strong>Gadget Pertama di Dunia:</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Handheld Calculator:</strong> Salah satu gadget pertama yang diperkenalkan pada 1970-an
-                        adalah kalkulator genggam elektronik yang dirancang untuk melakukan perhitungan matematika
-                        secara praktis tanpa memerlukan alat hitung mekanik.</li>
-                    <li><strong>Smartphone Pertama:</strong> "IBM Simon Personal Communicator", dirilis pada tahun 1994,
-                        adalah salah satu perangkat pertama yang menggabungkan fungsi telepon dan komputer genggam, yang
-                        menjadi fondasi bagi smartphone modern.</li>
-                </ul>
-
-                <p><strong>Pembuat Coding Adalah Perempuan:</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Ada Lovelace:</strong> Ada Lovelace adalah programmer pertama yang dikenal, yang bekerja
-                        dengan Charles Babbage pada mesin analitik pada abad ke-19. Ia menulis algoritma pertama yang
-                        digunakan untuk menghitung angka Bernoulli, dan dianggap sebagai "programmer pertama" dalam
-                        sejarah.</li>
-                    <li><strong>Grace Hopper:</strong> Grace Hopper adalah seorang pionir dalam dunia komputer yang
-                        menciptakan bahasa pemrograman "COBOL", yang digunakan di banyak aplikasi bisnis. Hopper juga
-                        dikenal karena pengembangan konsep "debugging" dalam pemrograman komputer.</li>
-                </ul>
-
-                <p><strong>Apa Jadinya Jika Tidak Ada Teknologi?</strong></p>
-                <ul class="list-disc pl-6">
-                    <li>Tanpa teknologi, kehidupan sehari-hari kita akan sangat terbatas. Banyak pekerjaan yang akan
-                        menjadi sangat manual, dan proses yang biasanya cepat dan efisien akan menjadi jauh lebih
-                        lambat.</li>
-                    <li>Pendidikan, komunikasi, dan sistem ekonomi yang kita nikmati saat ini tidak akan ada tanpa
-                        teknologi. Kita mungkin masih bergantung pada cara-cara tradisional yang lebih sulit dan tidak
-                        efisien untuk berbagi informasi dan melakukan pekerjaan.</li>
-                    <li>Inovasi medis dan pengobatan modern yang kita andalkan juga tidak akan ada, sehingga banyak
-                        penyakit yang dapat disembuhkan atau dikelola dengan teknologi akan tetap menjadi masalah besar.
-                    </li>
-                </ul>
-
-                <p><strong>Komponen-Komponen Perangkat Keras (Hardware):</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Motherboard:</strong> Papan sirkuit utama yang menghubungkan semua komponen komputer dan
-                        memungkinkan komunikasi antar komponen.</li>
-                    <li><strong>Power Supply (PSU):</strong> Memberikan daya listrik ke seluruh sistem komputer,
-                        mengubah arus listrik dari sumber eksternal menjadi arus yang diperlukan oleh komponen.</li>
-                    <li><strong>Baterai (Laptop):</strong> Sumber daya cadangan untuk laptop, memungkinkan penggunaan
-                        tanpa koneksi listrik eksternal.</li>
-                    <li><strong>Cooling System:</strong> Mencegah komponen komputer dari panas berlebih dengan kipas
-                        atau sistem pendingin lainnya.</li>
-                    <li><strong>Optical Drive (DVD/Blu-ray):</strong> Membaca dan menulis data pada media optik,
-                        meskipun semakin jarang digunakan.</li>
-                    <li><strong>Port dan Slot Ekspansi:</strong> Port memungkinkan perangkat eksternal terhubung,
-                        sementara slot ekspansi menambah fungsionalitas komputer (misalnya, kartu grafis tambahan).</li>
-                    <li><strong>RAM (Random Access Memory):</strong> RAM adalah memori sementara yang digunakan oleh
-                        komputer untuk menyimpan data yang sedang aktif digunakan oleh sistem dan aplikasi. Semakin
-                        besar kapasitas RAM, semakin cepat kinerja sistem dalam mengolah data.</li>
-                    <li><strong>CPU (Central Processing Unit):</strong> CPU adalah otak dari komputer yang bertugas
-                        untuk menjalankan instruksi dari program dan aplikasi. Kecepatan dan jumlah inti (cores) pada
-                        CPU sangat berpengaruh terhadap kinerja komputer.</li>
-                    <li><strong>GPU (Graphics Processing Unit):</strong> GPU bertanggung jawab untuk memproses gambar
-                        dan video. Ini penting untuk game, desain grafis, dan aplikasi yang membutuhkan pemrosesan
-                        visual tinggi.</li>
-                    <li><strong>Hard Drive / SSD (Solid-State Drive):</strong> Tempat penyimpanan data jangka panjang.
-                        SSD lebih cepat dibandingkan HDD, yang memungkinkan waktu booting dan transfer data lebih cepat.
-                    </li>
-                </ul>
-
-                <p><strong>Komponen-Komponen Perangkat Lunak (Software):</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Sistem Operasi (Operating System):</strong> Sistem operasi adalah perangkat lunak dasar
-                        yang mengelola perangkat keras komputer dan menyediakan antarmuka pengguna. Contoh sistem
-                        operasi adalah Windows, macOS, dan Linux. Sistem operasi bertanggung jawab untuk manajemen file,
-                        memori, perangkat keras, serta menjalankan aplikasi.</li>
-                    <li><strong>Aplikasi (Applications):</strong> Aplikasi adalah perangkat lunak yang dirancang untuk
-                        memenuhi tugas tertentu, seperti pengolah kata (Microsoft Word), browser web (Google Chrome),
-                        dan aplikasi desain grafis (Adobe Photoshop). Aplikasi ini memungkinkan pengguna untuk melakukan
-                        berbagai pekerjaan sesuai kebutuhan.</li>
-                    <li><strong>Driver Perangkat (Device Drivers):</strong> Driver adalah perangkat lunak yang
-                        memungkinkan sistem operasi untuk berkomunikasi dengan perangkat keras komputer, seperti
-                        printer, kartu grafis, atau keyboard. Tanpa driver, perangkat keras tersebut tidak dapat
-                        berfungsi dengan baik.</li>
-                    <li><strong>Perangkat Lunak Utilitas (Utility Software):</strong> Perangkat lunak ini dirancang
-                        untuk membantu mengoptimalkan dan memelihara kinerja sistem, seperti perangkat lunak antivirus,
-                        program pencadangan data, atau perangkat lunak pengelola disk.</li>
-                </ul>
-
-                <p><strong>Komponen-Komponen Perangkat Manusia (Brainware):</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Pengguna (Users):</strong> Pengguna adalah orang yang mengoperasikan komputer atau
-                        perangkat teknologi lainnya. Mereka menggunakan perangkat keras dan perangkat lunak untuk
-                        melakukan berbagai tugas, mulai dari pekerjaan sehari-hari hingga penelitian dan pengembangan.
-                    </li>
-                    <li><strong>Administrator Sistem (System Administrators):</strong> Administrator sistem bertanggung
-                        jawab untuk mengelola dan mengonfigurasi perangkat keras, perangkat lunak, dan jaringan agar
-                        tetap berjalan dengan efisien dan aman. Mereka juga bertanggung jawab untuk pemeliharaan rutin
-                        dan pemecahan masalah.</li>
-                    <li><strong>Pengembang Perangkat Lunak (Software Developers):</strong> Pengembang perangkat lunak
-                        adalah individu atau tim yang menulis, menguji, dan memelihara kode perangkat lunak. Mereka
-                        merancang aplikasi dan sistem yang digunakan oleh pengembang lainnya atau pengguna akhir.</li>
-                    <li><strong>Analis Sistem (System Analysts):</strong> Analis sistem bekerja untuk memahami kebutuhan
-                        pengguna dan merancang solusi perangkat lunak yang dapat memenuhi kebutuhan tersebut, serta
-                        memastikan bahwa sistem yang dibuat berjalan dengan baik dan efektif.</li>
-                </ul>
-
-                <p><strong>Komponen-Komponen Perangkat Lunak Berbahaya (Malware):</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Virus:</strong> Virus adalah perangkat lunak berbahaya yang dapat menyebar dengan
-                        menempelkan diri pada program atau file lain. Begitu program yang terinfeksi dijalankan, virus
-                        akan aktif dan menyebar, menyebabkan kerusakan pada data atau sistem.</li>
-                    <li><strong>Trojan Horse:</strong> Trojan horse adalah perangkat lunak yang menyamar sebagai
-                        aplikasi yang sah namun mengandung kode berbahaya. Ketika pengguna menginstalnya, malware ini
-                        akan membuka celah keamanan pada sistem dan memberi akses kepada peretas.</li>
-                    <li><strong>Spyware:</strong> Spyware adalah perangkat lunak yang diam-diam mengumpulkan informasi
-                        pribadi pengguna tanpa izin mereka. Ini sering digunakan untuk mencuri data sensitif seperti
-                        password, nomor kartu kredit, dan lainnya.</li>
-                    <li><strong>Ransomware:</strong> Ransomware adalah jenis malware yang mengenkripsi file pengguna dan
-                        meminta tebusan untuk membuka kunci file yang terkunci. Ini dapat menyebabkan kerugian besar
-                        bagi individu maupun perusahaan.</li>
-                </ul>
-
-                <p><strong>Kesimpulan:</strong></p>
-                <ul class="list-disc pl-6">
-                    <li>Memahami dan beradaptasi dengan teknologi digital adalah kunci untuk sukses di era modern ini.
-                    </li>
-                    <li>AI, NFC, wireless, blockchain, dan keamanan data dan lain-lain adalah komponen penting yang akan
-                        terus berkembang dan membentuk masa depan kita.</li>
-                    <li>Penting untuk selalu belajar dan mengikuti perkembangan teknologi untuk tetap relevan dan
-                        kompetitif di dunia digital.</li>
-                </ul>
             </div>
         </div>
     </details>
+
 
     <script>
         function toggleMode() {
