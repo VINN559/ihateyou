@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelas 8.3 - Version 3.0.4</title>
+    <title>Kelas 8.3</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="34.png" type="image/x-icon">
@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background: linear-gradient(to bottom, #FF6F61, #FFB9A7, #FFDDC0);
-            /* Gradasi warna hangat dan cerah */
+            background: linear-gradient(to bottom, #d65f5f, #f28a8a, #ffb3b3, #ffffff);
             font-family: 'Poppins', sans-serif;
         }
 
@@ -25,14 +24,13 @@
             padding: 1rem;
             border-radius: 0.5rem;
             margin-bottom: 1rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         summary {
             cursor: pointer;
             font-weight: bold;
-            color: #333333;
-            /* Teks gelap agar mudah dibaca */
+            color: #000000;
             margin-bottom: 0.5rem;
         }
 
@@ -41,7 +39,6 @@
             overflow: hidden;
             box-sizing: border-box;
             background-color: #FF6F61;
-            /* Warna latar belakang berjalan */
             color: white;
             padding: 0.5rem;
             font-weight: bold;
@@ -68,7 +65,6 @@
             gap: 1.5rem;
             padding: 2rem;
             background-color: #FFFAF0;
-            /* Warna latar belakang lembut */
             border-radius: 0.75rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -98,21 +94,17 @@
             font-size: 1.35rem;
             font-weight: 600;
             color: #FF6F61;
-            /* Warna judul menggunakan warna hangat yang cerah */
         }
 
         .info-card p {
             font-size: 1.05rem;
             color: #333333;
-            /* Teks utama dengan warna gelap */
             line-height: 1.6;
         }
 
         .hover-effect:hover {
             background-color: #FFEBEE;
-            /* Warna lembut untuk efek hover */
             color: #FF6F61;
-            /* Ubah warna teks ke pink pada hover */
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -131,7 +123,6 @@
             text-align: center;
             font-weight: bold;
             color: #FF6F61;
-            /* Warna link menu menggunakan warna hangat */
             border-bottom: 1px solid #ddd;
         }
 
@@ -156,7 +147,6 @@
             left: 50%;
             transform: translateX(-50%) translateY(-50px);
             background-color: #FF6F61;
-            /* Notifikasi dengan warna cerah */
             color: white;
             text-align: center;
             padding: 1rem;
@@ -208,18 +198,20 @@
         </div>
         <div class="hidden md:flex space-x-8">
             <div class="flex space-x-4">
-                <a href="https://www.instagram.com/8.3_charming?igsh=d2lxZDJ0MDVyMmly"
+                <!-- Ganti link Instagram menjadi Account -->
+                <a href="https://account.example.com"
                     class="text-white hover:text-blue-900 transition duration-300 ease-in-out">
-                    <i class="fab fa-instagram"></i> Instagram
+                    <i class="fas fa-user"></i> Account
                 </a>
             </div>
         </div>
         <div id="mobile-menu"
             class="hidden md:hidden bg-white text-gray-800 absolute w-full left-0 z-10 transition-transform transform origin-top">
             <div class="flex flex-col">
-                <a href="https://www.instagram.com/8.3_charming?igsh=d2lxZDJ0MDVyMmly"
+                <!-- Ganti link Instagram menjadi Account di menu mobile -->
+                <a href="https://account.example.com"
                     class="block px-4 py-2 hover:bg-gray-200 transition duration-200 mobile-menu-link">
-                    <i class="fab fa-instagram"></i> Instagram
+                    <i class="fas fa-user"></i> Account
                 </a>
             </div>
         </div>
@@ -260,7 +252,7 @@
         if (!localStorage.getItem("hasSeenUpdate")) {
             window.onload = function () {
                 let notification = document.createElement("div");
-                notification.textContent = "Website telah diperbarui! Lihat apakah ada PR.";
+                notification.textContent = "Website telah diperbarui! Lihat apakah ada PR dan informasi tambahan.";
                 notification.classList.add("notification");
 
                 document.body.appendChild(notification);
@@ -272,6 +264,14 @@
                 }, 5000);
             };
         }
+
+        // Hamburger menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+        });
 
         // Intersection Observer untuk animasi scroll
         const observer = new IntersectionObserver((entries, observer) => {
@@ -291,6 +291,8 @@
 </body>
 
 </html>
+
+
 
 
 
@@ -395,7 +397,7 @@
                         <tr>
                             <td class="py-2 px-4 border border-gray-300">Selasa</td>
                             <td class="py-2 px-4 border border-gray-300">Pendidikan Kewarganegaraan</td>
-                            <td class="py-2 px-4 border border-gray-300">Pak Mussofa S.Pd.I</td>
+                            <td class="py-2 px-4 border border-gray-300">Pak Mussopa S.Pd.I</td>
                         </tr>
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 border border-gray-300">-</td>
@@ -930,7 +932,7 @@
                     <div class="bg-white rounded-lg shadow-md p-6 mb-6">
                         <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Waktu</h2>
                         <ul class="list-disc pl-6">
-                            <li id="waktuReal">Waktu Sekarang (Jakarta): </li>
+                            <li id="waktuReal">Waktu Sekarang (Bogor): </li>
                             <li id="waktuNorwegia">Waktu Norwegia: </li>
                             <li id="waktuSwiss">Waktu Swiss: </li>
                             <li id="waktuSwedia">Waktu Swedia: </li>
@@ -973,7 +975,7 @@
                         const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
 
                         // Jakarta Time
-                        document.getElementById('waktuReal').innerText = `Waktu Sekarang (Jakarta): ${now.toLocaleTimeString('id-ID', { ...options, timeZone: 'Asia/Jakarta' })}`;
+                        document.getElementById('waktuReal').innerText = `Waktu Sekarang (Bogor): ${now.toLocaleTimeString('id-ID', { ...options, timeZone: 'Asia/Jakarta' })}`;
 
                         // Norway Time
                         document.getElementById('waktuNorwegia').innerText = `Waktu Norwegia: ${now.toLocaleTimeString('en-GB', { ...options, timeZone: 'Europe/Oslo' })}`;
