@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software - Kelas 8.3</title>
+    <title>Kelas 8.3 - Version 3.0.4</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="34.png" type="image/x-icon">
-    <!-- Atau jika menggunakan gambar PNG -->
-    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
 
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background: linear-gradient(to bottom, #FEA7A4, #FFB9A7, #FFDDC0);
+            background: linear-gradient(to bottom, #FF6F61, #FFB9A7, #FFDDC0);
+            /* Gradasi warna hangat dan cerah */
             font-family: 'Poppins', sans-serif;
         }
 
@@ -32,7 +31,8 @@
         summary {
             cursor: pointer;
             font-weight: bold;
-            color: #FF6F61;
+            color: #333333;
+            /* Teks gelap agar mudah dibaca */
             margin-bottom: 0.5rem;
         }
 
@@ -41,6 +41,7 @@
             overflow: hidden;
             box-sizing: border-box;
             background-color: #FF6F61;
+            /* Warna latar belakang berjalan */
             color: white;
             padding: 0.5rem;
             font-weight: bold;
@@ -49,18 +50,15 @@
         .running-text span {
             display: inline-block;
             animation: marquee 30s linear infinite;
-            /* Durasi animasi diperpanjang menjadi 30 detik */
         }
 
         @keyframes marquee {
             0% {
                 transform: translateX(100%);
-                /* Mulai dari kanan luar */
             }
 
             100% {
                 transform: translateX(-100%);
-                /* Berhenti di kiri luar */
             }
         }
 
@@ -70,6 +68,7 @@
             gap: 1.5rem;
             padding: 2rem;
             background-color: #FFFAF0;
+            /* Warna latar belakang lembut */
             border-radius: 0.75rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -81,17 +80,13 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
             opacity: 0;
-            /* Mulai dengan transparan */
             transform: translateY(30px);
-            /* Mulai dari bawah */
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         .info-card.visible {
             opacity: 1;
-            /* Menampilkan elemen */
             transform: translateY(0);
-            /* Geser elemen ke posisi normal */
         }
 
         .info-card:hover {
@@ -103,17 +98,21 @@
             font-size: 1.35rem;
             font-weight: 600;
             color: #FF6F61;
+            /* Warna judul menggunakan warna hangat yang cerah */
         }
 
         .info-card p {
             font-size: 1.05rem;
-            color: #333;
+            color: #333333;
+            /* Teks utama dengan warna gelap */
             line-height: 1.6;
         }
 
         .hover-effect:hover {
             background-color: #FFEBEE;
+            /* Warna lembut untuk efek hover */
             color: #FF6F61;
+            /* Ubah warna teks ke pink pada hover */
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -132,6 +131,7 @@
             text-align: center;
             font-weight: bold;
             color: #FF6F61;
+            /* Warna link menu menggunakan warna hangat */
             border-bottom: 1px solid #ddd;
         }
 
@@ -153,11 +153,10 @@
         .notification {
             position: fixed;
             top: 10px;
-            /* Posisi dari atas */
             left: 50%;
             transform: translateX(-50%) translateY(-50px);
-            /* Mengatur posisi tengah dan sedikit ke atas */
             background-color: #FF6F61;
+            /* Notifikasi dengan warna cerah */
             color: white;
             text-align: center;
             padding: 1rem;
@@ -166,7 +165,6 @@
             z-index: 1000;
             opacity: 0;
             animation: showNotification 1s forwards;
-            /* Animasi untuk muncul */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
@@ -253,9 +251,7 @@
         </div>
         <div class="info-card hover-effect">
             <h3>Informasi PR</h3>
-            <p>PKN : penilaian sikap HAL: 71&72</p>
-            <p>AGAMA/PAI : membuat peta konsep hal 62 dan catat periode pertama sampai periode kelima hal 64 dan jangan
-                lupa DI HIAS DAN DI WARNAI</p>
+            <p>-Nothing-</p>
         </div>
     </section>
 
@@ -281,11 +277,11 @@
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible'); // Menambahkan kelas 'visible' saat elemen terlihat
-                    observer.unobserve(entry.target); // Hentikan pengamatan setelah elemen terlihat
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.2 }); // Mulai animasi saat 20% elemen terlihat
+        }, { threshold: 0.2 });
 
         // Menargetkan semua elemen dengan kelas 'info-card'
         const cards = document.querySelectorAll('.info-card');
@@ -301,7 +297,7 @@
 <div class="container mx-auto px-4 py-8">
     <!-- Informasi Kelas -->
     <details close>
-        <summary class="text-2xl font-bold mb-4 text-gray-600 cursor-pointer">Informasi Kelas</summary>
+        <summary class="text-2xl font-bold mb-4 text-black-600 cursor-pointer">Informasi Kelas</summary>
         <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="informasi-kelas">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -322,7 +318,7 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Sekretaris</h3>
-                    <p>Reyhan Rahadian Maulana Saputra <span class="text-yellow-500">(B)</span></p>
+                    <p>Reyhan Rahadian Maulana Saputra <span class="text-yellow-500">(B-)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Bendahara</h3>
@@ -330,11 +326,11 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Bendahara</h3>
-                    <p>Siti Maulinda <span class="text-yellow-500">(B)</span></p>
+                    <p>Siti Maulinda <span class="text-yellow-500">(B-)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Keamanan</h3>
-                    <p>Bayu Saktiawan <span class="text-red-500">(C)</span></p>
+                    <p>Bayu Saktiawan <span class="text-red-500">(C-)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Keamanan</h3>
@@ -354,7 +350,7 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Rohis</h3>
-                    <p>Andien Mauliddina Rizki <span class="text-yellow-500">(B)</span></p>
+                    <p>Andien Mauliddina Rizki <span class="text-yellow-500">(B+)</span></p>
                 </div>
             </div>
         </div>
@@ -1096,6 +1092,17 @@
                                 <option value="BHD">Dinar Bahrain (BHD)</option>
                                 <option value="OMR">Rial Oman (OMR)</option>
                                 <option value="JOD">Dinar Yordania (JOD)</option>
+                                <option value="CAD">Dolar Kanada (CAD)</option>
+                                <option value="CHF">Franc Swiss (CHF)</option>
+                                <option value="CNY">Yuan Cina (CNY)</option>
+                                <option value="INR">Rupee India (INR)</option>
+                                <option value="SGD">Dolar Singapura (SGD)</option>
+                                <option value="NZD">Dolar Selandia Baru (NZD)</option>
+                                <option value="MXN">Peso Meksiko (MXN)</option>
+                                <option value="BRL">Real Brasil (BRL)</option>
+                                <option value="ZAR">Rand Afrika Selatan (ZAR)</option>
+                                <option value="TRY">Lira Turki (TRY)</option>
+                                <option value="PHP">Peso Filipina (PHP)</option>
                             </select>
                         </div>
                         <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Konversi ke IDR</button>
@@ -1125,6 +1132,17 @@
                                 <option value="BHD">Dinar Bahrain (BHD)</option>
                                 <option value="OMR">Rial Oman (OMR)</option>
                                 <option value="JOD">Dinar Yordania (JOD)</option>
+                                <option value="CAD">Dolar Kanada (CAD)</option>
+                                <option value="CHF">Franc Swiss (CHF)</option>
+                                <option value="CNY">Yuan Cina (CNY)</option>
+                                <option value="INR">Rupee India (INR)</option>
+                                <option value="SGD">Dolar Singapura (SGD)</option>
+                                <option value="NZD">Dolar Selandia Baru (NZD)</option>
+                                <option value="MXN">Peso Meksiko (MXN)</option>
+                                <option value="BRL">Real Brasil (BRL)</option>
+                                <option value="ZAR">Rand Afrika Selatan (ZAR)</option>
+                                <option value="TRY">Lira Turki (TRY)</option>
+                                <option value="PHP">Peso Filipina (PHP)</option>
                             </select>
                         </div>
                         <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Konversi ke Mata
@@ -1142,16 +1160,27 @@
 
             <script>
                 const exchangeRates = {
-                    USD: 15900,         // 1 USD = 15.900 IDR
-                    EUR: 17200,      // 1 Euro = 17.200 IDR
-                    GBP: 20250,    // 1 Poundsterling Inggris = 20.250 IDR
-                    JPY: 106,       // 1 Yen Jepang = 102,375 IDR
-                    AUD: 10350,    // 1 Dolar Australia = 10.285,9375 IDR
-                    MYR: 3380,     // 1 Ringgit Malaysia = 3.565,3125 IDR
-                    KWD: 52800,      // 1 Dinar Kuwait = 51.175,12 IDR
-                    BHD: 42000,      // 1 Dinar Bahrain = 41.656,65 IDR
-                    OMR: 41178,      // 1 Rial Oman = 40.995,12 IDR
-                    JOD: 22500       // 1 Dinar Yordania = 22.088,76 IDR
+                    USD: 15827,         // 1 USD = 15.900 IDR
+                    EUR: 16733,         // 1 Euro = 17.200 IDR
+                    GBP: 19217,         // 1 Poundsterling Inggris = 20.250 IDR
+                    JPY: 106,           // 1 Yen Jepang = 102,375 IDR
+                    AUD: 10287,         // 1 Dolar Australia = 10.285,9375 IDR
+                    MYR: 3354,          // 1 Ringgit Malaysia = 3.565,3125 IDR
+                    KWD: 51500,         // 1 Dinar Kuwait = 51.175,12 IDR
+                    BHD: 41900,         // 1 Dinar Bahrain = 41.656,65 IDR
+                    OMR: 41300,         // 1 Rial Oman = 40.995,12 IDR
+                    JOD: 22300,         // 1 Dinar Yordania = 22.088,76 IDR
+                    CAD: 11879,         // 1 Dolar Kanada = 11.879,00 IDR
+                    CHF: 17789,         // 1 Franc Swiss = 17.789,00 IDR
+                    CNY: 2200,          // 1 Yuan Cina = 2.200,00 IDR
+                    INR: 190,           // 1 Rupee India = 190,00 IDR
+                    SGD: 11650,         // 1 Dolar Singapura = 11.650,00 IDR
+                    NZD: 10250,         // 1 Dolar Selandia Baru = 10.250,00 IDR
+                    MXN: 880,           // 1 Peso Meksiko = 880,00 IDR
+                    BRL: 3320,          // 1 Real Brasil = 3.320,00 IDR
+                    ZAR: 845,           // 1 Rand Afrika Selatan = 845,00 IDR
+                    TRY: 610,           // 1 Lira Turki = 610,00 IDR
+                    PHP: 280,           // 1 Peso Filipina = 280,00 IDR
                 };
 
                 // Fungsi untuk menambahkan pemisah ribuan (titik) pada angka
@@ -1229,6 +1258,7 @@
                 document.getElementById('target-currency').addEventListener('change', convertFromIDR);
 
             </script>
+
 
             <details close>
                 <summary>Google Form & Instagram</summary>
