@@ -13,6 +13,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         body {
             background: linear-gradient(to bottom, #d65f5f, #f28a8a, #ffb3b3, #ffffff);
@@ -146,17 +147,90 @@
             top: 10px;
             left: 50%;
             transform: translateX(-50%) translateY(-50px);
-            background-color: #FF6F61;
-            color: white;
+            background-color: #ff6f61;
+            /* Warna latar belakang lebih gelap */
+            color: #ecf0f1;
+            /* Warna teks yang lebih terang */
             text-align: center;
-            padding: 1rem;
-            font-size: 16px;
-            border-radius: 8px;
+            padding: 1.2rem 2rem;
+            font-size: 18px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Font modern */
+            border-radius: 12px;
             z-index: 1000;
             opacity: 0;
-            animation: showNotification 1s forwards;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-out forwards, fadeIn 0.5s forwards;
+            /* Menambahkan animasi sliding dan fade */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            /* Bayangan yang lebih tajam */
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            /* Efek transisi */
         }
+
+        /* Animasi masuk dan fade */
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-50%) translateY(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Efek saat notifikasi menghilang */
+        .notification.fade-out {
+            opacity: 0;
+            transform: translateX(-50%) translateY(50px);
+            transition: opacity 0.5s, transform 0.5s ease;
+        }
+
+        /* Optional: Warna latar belakang yang berubah sesuai dengan tipe notifikasi */
+        .success {
+            background-color: #27ae60;
+            /* Hijau untuk notifikasi sukses */
+        }
+
+        .error {
+            background-color: #e74c3c;
+            /* Merah untuk notifikasi error */
+        }
+
+        .warning {
+            background-color: #f39c12;
+            /* Kuning untuk notifikasi peringatan */
+        }
+
+        /* Tombol close (opsional) */
+        .notification .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #ecf0f1;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .notification .close-btn:hover {
+            color: #e74c3c;
+            /* Mengubah warna tombol close saat hover */
+        }
+
 
         @keyframes showNotification {
             0% {
@@ -198,7 +272,6 @@
         </div>
         <div class="hidden md:flex space-x-8">
             <div class="flex space-x-4">
-                <!-- Ganti link Instagram menjadi Account -->
                 <a href="https://account.example.com"
                     class="text-white hover:text-blue-900 transition duration-300 ease-in-out">
                     <i class="fas fa-user"></i> Account
@@ -208,7 +281,6 @@
         <div id="mobile-menu"
             class="hidden md:hidden bg-white text-gray-800 absolute w-full left-0 z-10 transition-transform transform origin-top">
             <div class="flex flex-col">
-                <!-- Ganti link Instagram menjadi Account di menu mobile -->
                 <a href="https://account.example.com"
                     class="block px-4 py-2 hover:bg-gray-200 transition duration-200 mobile-menu-link">
                     <i class="fas fa-user"></i> Account
@@ -247,53 +319,41 @@
         </div>
     </section>
 
-    <!-- Notifikasi saat halaman dimuat -->
     <script>
-        if (!localStorage.getItem("hasSeenUpdate")) {
-            window.onload = function () {
-                let notification = document.createElement("div");
-                notification.textContent = "Website telah diperbarui! Lihat apakah ada PR dan informasi tambahan.";
-                notification.classList.add("notification");
+        const cards = document.querySelectorAll('.info-card');
 
-                document.body.appendChild(notification);
+        window.addEventListener('scroll', () => {
+            cards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight) {
+                    card.classList.add('visible');
+                }
+            });
+        });
 
-                localStorage.setItem("hasSeenUpdate", "true");
-
-                setTimeout(() => {
-                    notification.remove();
-                }, 5000);
-            };
-        }
-
-        // Hamburger menu toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuToggle.addEventListener('click', function () {
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Intersection Observer untuk animasi scroll
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
+        // Notification fade
+        setTimeout(() => {
+            const notification = document.createElement('div');
+            notification.classList.add('notification');
+            notification.textContent = 'Selamat datang di halaman kelas 8.3!';
+            document.body.appendChild(notification);
 
-        // Menargetkan semua elemen dengan kelas 'info-card'
-        const cards = document.querySelectorAll('.info-card');
-        cards.forEach(card => observer.observe(card));
+            setTimeout(() => {
+                notification.style.opacity = 0;
+            }, 3000);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 4000);
+        }, 1000);
     </script>
-
 </body>
 
 </html>
-
-
-
 
 
 <div class="container mx-auto px-4 py-8">
@@ -320,7 +380,7 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Sekretaris</h3>
-                    <p>Reyhan Rahadian Maulana Saputra <span class="text-yellow-500">(B-)</span></p>
+                    <p>Reyhan Rahadian Maulana Saputra <span class="text-red-500">(C)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Bendahara</h3>
@@ -336,7 +396,7 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Keamanan</h3>
-                    <p>Siti Hanna <span class="text-yellow-500">(B)</span></p>
+                    <p>Siti Hanna <span class="text-yellow-500">(B-)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Kebersihan</h3>
@@ -357,7 +417,6 @@
             </div>
         </div>
     </details>
-
 
     <!-- Jadwal Pelajaran -->
     <details close>
@@ -432,7 +491,7 @@
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 border border-gray-300">-</td>
                             <td class="py-2 px-4 border border-gray-300">Bahasa Inggris</td>
-                            <td class="py-2 px-4 border border-gray-300">Miss Naely U M S.Pd.I</td>
+                            <td class="py-2 px-4 border border-gray-300">Miss Naely U S S.Pd.I</td>
                         </tr>
                         <tr>
                         <tr class="bg-gray-50">
@@ -587,7 +646,7 @@
                 <li>Senin: Baju Putih Biru</li>
                 <li>Selasa: Baju Batik</li>
                 <li>Rabu: Baju Putih Biru Dan Rompi</li>
-                <li>Kamis: Baju Pramuka</li>
+                <li>Kamis: Baju Pramuka Dengan Kacu</li>
                 <li>Jumat: Baju Muslim</li>
             </ul>
         </div>
