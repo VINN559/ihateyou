@@ -313,6 +313,8 @@
 
 </html>
 
+
+
 <div class="container mx-auto px-4 py-8">
     <!-- Informasi Kelas -->
     <details close>
@@ -325,7 +327,8 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Ketua Kelas</h3>
-                    <p>Albertus Kevin Daniswara <span class="text-green-500">(A+)</span></p>
+                    <p><a href="https://vinn559.github.io/portofolio/" class="text-blue-500 hover:underline">Albertus
+                            Kevin Daniswara</a> <span class="text-green-500">(A+)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Ketua Kelas</h3>
@@ -375,11 +378,22 @@
         </div>
     </details>
 
+
     <!-- Jadwal Pelajaran -->
     <details close>
         <summary>Jadwal Pelajaran</summary>
         <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="jadwal-pelajaran">
             <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Jadwal Pelajaran</h2>
+
+            <!-- Search Bar -->
+            <div class="mb-4">
+                <label for="search" class="block text-sm font-medium text-gray-700">Search</label>
+                <input type="text" id="search"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Search by subject or teacher" onkeyup="filterTable()">
+            </div>
+
+            <!-- Table for Schedule -->
             <div class="overflow-x-auto">
                 <table class="min-w-full border-collapse border border-gray-300">
                     <thead>
@@ -450,7 +464,6 @@
                             <td class="py-2 px-4 border border-gray-300">Bahasa Inggris</td>
                             <td class="py-2 px-4 border border-gray-300">Miss Naely U S S.Pd.I</td>
                         </tr>
-                        <tr>
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 border border-gray-300">-</td>
                             <td class="py-2 px-4 border border-gray-300">Matematika</td>
@@ -482,6 +495,52 @@
             </div>
         </div>
     </details>
+
+    <script>
+        // Function to filter table based on search input
+        function filterTable() {
+            const searchInput = document.getElementById('search').value.toLowerCase();
+            const tableRows = document.querySelectorAll('#jadwal-pelajaran tbody tr');
+
+            tableRows.forEach(row => {
+                const columns = row.querySelectorAll('td');
+                let match = false;
+
+                columns.forEach(col => {
+                    if (col.textContent.toLowerCase().includes(searchInput)) {
+                        match = true;
+                    }
+                });
+
+                if (match) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+    <style>
+        /* Responsive design for the table */
+        @media screen and (max-width: 768px) {
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            table th,
+            table td {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .overflow-x-auto {
+                overflow-x: auto;
+            }
+        }
+    </style>
+
 
     <!-- Daftar Siswa Kelas 8.3 -->
     <details close>
