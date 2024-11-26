@@ -1143,226 +1143,6 @@
 
             </html>
 
-            <!DOCTYPE html>
-            <html lang="id">
-
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Kalkulator Pertukaran Mata Uang</title>
-                <script src="https://cdn.tailwindcss.com"></script>
-            </head>
-
-            <body>
-                <!-- Kalkulator Pertukaran Mata Uang -->
-                <details close>
-                    <summary>Kalkulator Pertukaran Mata Uang</summary>
-                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-                        <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Kalkulator Nilai Tukar</h2>
-
-                        <!-- Formulir konversi dari mata uang asing ke IDR -->
-                        <form id="currency-form">
-                            <div class="mb-4">
-                                <label for="foreign-amount" class="block text-gray-700">Jumlah Mata Uang Asing</label>
-                                <input type="number" id="foreign-amount" class="p-2 border rounded mt-1 w-full"
-                                    placeholder="Masukkan jumlah mata uang asing" />
-                            </div>
-                            <div class="mb-4">
-                                <label for="foreign-currency" class="block text-gray-700">Pilih Mata Uang Asing</label>
-                                <select id="foreign-currency" class="p-2 border rounded mt-1 w-full">
-                                    <option value="USD">Dollar AS (USD)</option>
-                                    <option value="EUR">Euro (EUR)</option>
-                                    <option value="GBP">Poundsterling Inggris (GBP)</option>
-                                    <option value="JPY">Yen Jepang (JPY)</option>
-                                    <option value="AUD">Dolar Australia (AUD)</option>
-                                    <option value="MYR">Ringgit Malaysia (MYR)</option>
-                                    <option value="KWD">Dinar Kuwait (KWD)</option>
-                                    <option value="BHD">Dinar Bahrain (BHD)</option>
-                                    <option value="OMR">Rial Oman (OMR)</option>
-                                    <option value="JOD">Dinar Yordania (JOD)</option>
-                                    <option value="CAD">Dolar Kanada (CAD)</option>
-                                    <option value="CHF">Franc Swiss (CHF)</option>
-                                    <option value="CNY">Yuan Cina (CNY)</option>
-                                    <option value="INR">Rupee India (INR)</option>
-                                    <option value="SGD">Dolar Singapura (SGD)</option>
-                                    <option value="NZD">Dolar Selandia Baru (NZD)</option>
-                                    <option value="MXN">Peso Meksiko (MXN)</option>
-                                    <option value="BRL">Real Brasil (BRL)</option>
-                                    <option value="ZAR">Rand Afrika Selatan (ZAR)</option>
-                                    <option value="TRY">Lira Turki (TRY)</option>
-                                    <option value="PHP">Peso Filipina (PHP)</option>
-                                    <option value="KRW">Won Korea Selatan (KRW)</option>
-                                    <option value="SEK">Krona Swedia (SEK)</option>
-                                    <option value="NOK">Krona Norwegia (NOK)</option>
-                                    <option value="DKK">Krona Denmark (DKK)</option>
-                                    <option value="ILS">Shekel Israel (ILS)</option>
-                                    <option value="RUB">Rubel Rusia (RUB)</option>
-                                    <option value="SAR">Riyal Arab Saudi (SAR)</option>
-                                    <option value="AED">Dirham Uni Emirat Arab (AED)</option>
-                                    <option value="EGP">Pound Mesir (EGP)</option>
-                                    <option value="PKR">Rupee Pakistan (PKR)</option>
-                                </select>
-                            </div>
-                        </form>
-
-                        <div id="result" class="mt-4 text-lg font-semibold text-gray-800">Hasil: -</div>
-
-                        <hr class="my-4">
-
-                        <!-- Formulir konversi dari IDR ke mata uang asing -->
-                        <form id="reverse-currency-form">
-                            <div class="mb-4">
-                                <label for="idr-amount" class="block text-gray-700">Jumlah dalam Rupiah (IDR)</label>
-                                <input type="number" id="idr-amount" class="p-2 border rounded mt-1 w-full"
-                                    placeholder="Masukkan jumlah IDR" />
-                            </div>
-                            <div class="mb-4">
-                                <label for="target-currency" class="block text-gray-700">Pilih Mata Uang Tujuan</label>
-                                <select id="target-currency" class="p-2 border rounded mt-1 w-full">
-                                    <option value="USD">Dollar AS (USD)</option>
-                                    <option value="EUR">Euro (EUR)</option>
-                                    <option value="GBP">Poundsterling Inggris (GBP)</option>
-                                    <option value="JPY">Yen Jepang (JPY)</option>
-                                    <option value="AUD">Dolar Australia (AUD)</option>
-                                    <option value="MYR">Ringgit Malaysia (MYR)</option>
-                                    <option value="KWD">Dinar Kuwait (KWD)</option>
-                                    <option value="BHD">Dinar Bahrain (BHD)</option>
-                                    <option value="OMR">Rial Oman (OMR)</option>
-                                    <option value="JOD">Dinar Yordania (JOD)</option>
-                                    <option value="CAD">Dolar Kanada (CAD)</option>
-                                    <option value="CHF">Franc Swiss (CHF)</option>
-                                    <option value="CNY">Yuan Cina (CNY)</option>
-                                    <option value="INR">Rupee India (INR)</option>
-                                    <option value="SGD">Dolar Singapura (SGD)</option>
-                                    <option value="NZD">Dolar Selandia Baru (NZD)</option>
-                                    <option value="MXN">Peso Meksiko (MXN)</option>
-                                    <option value="BRL">Real Brasil (BRL)</option>
-                                    <option value="ZAR">Rand Afrika Selatan (ZAR)</option>
-                                    <option value="TRY">Lira Turki (TRY)</option>
-                                    <option value="PHP">Peso Filipina (PHP)</option>
-                                    <option value="KRW">Won Korea Selatan (KRW)</option>
-                                    <option value="SEK">Krona Swedia (SEK)</option>
-                                    <option value="NOK">Krona Norwegia (NOK)</option>
-                                    <option value="DKK">Krona Denmark (DKK)</option>
-                                    <option value="ILS">Shekel Israel (ILS)</option>
-                                    <option value="RUB">Rubel Rusia (RUB)</option>
-                                    <option value="SAR">Riyal Arab Saudi (SAR)</option>
-                                    <option value="AED">Dirham Uni Emirat Arab (AED)</option>
-                                    <option value="EGP">Pound Mesir (EGP)</option>
-                                    <option value="PKR">Rupee Pakistan (PKR)</option>
-                                </select>
-                            </div>
-                        </form>
-
-                        <div id="reverse-result" class="mt-4 text-lg font-semibold text-gray-800">Hasil: -</div>
-
-                        <p class="text-sm text-gray-500 mt-4">*Nilai tukar dapat berubah sewaktu-waktu sesuai dengan
-                            pasar dan kebijakan bank.</p>
-                        <p id="last-update" class="text-sm text-gray-500 mt-4 hidden">Terakhir diperbarui: <span
-                                id="update-time">-</span></p>
-                    </div>
-                </details>
-
-                <script>
-                    const exchangeRates = {
-                        USD: 15827,         // 1 USD = 15.900 IDR
-                        EUR: 16733,         // 1 Euro = 17.200 IDR
-                        GBP: 19217,         // 1 Poundsterling Inggris = 20.250 IDR
-                        JPY: 106,           // 1 Yen Jepang = 102,375 IDR
-                        AUD: 10287,         // 1 Dolar Australia = 10.285,9375 IDR
-                        MYR: 3354,          // 1 Ringgit Malaysia = 3.565,3125 IDR
-                        KWD: 51500,         // 1 Dinar Kuwait = 51.175,12 IDR
-                        BHD: 41900,         // 1 Dinar Bahrain = 41.656,65 IDR
-                        OMR: 41300,         // 1 Rial Oman = 40.995,12 IDR
-                        JOD: 22300,         // 1 Dinar Yordania = 22.088,76 IDR
-                        CAD: 11879,         // 1 Dolar Kanada = 11.879,00 IDR
-                        CHF: 17789,         // 1 Franc Swiss = 17.789,00 IDR
-                        CNY: 2200,          // 1 Yuan Cina = 2.200,00 IDR
-                        INR: 192,           // 1 Rupee India = 192,00 IDR
-                        SGD: 10750,         // 1 Dolar Singapura = 10.750,00 IDR
-                        NZD: 10750,         // 1 Dolar Selandia Baru = 10.750,00 IDR
-                        MXN: 800,           // 1 Peso Meksiko = 800,00 IDR
-                        BRL: 3300,          // 1 Real Brasil = 3.300,00 IDR
-                        ZAR: 835,           // 1 Rand Afrika Selatan = 835,00 IDR
-                        TRY: 950,           // 1 Lira Turki = 950,00 IDR
-                        PHP: 300,           // 1 Peso Filipina = 300,00 IDR
-                        KRW: 12,            // 1 Won Korea Selatan = 12,00 IDR
-                        SEK: 170,           // 1 Krona Swedia = 170,00 IDR
-                        NOK: 170,           // 1 Krona Norwegia = 170,00 IDR
-                        DKK: 130,           // 1 Krona Denmark = 130,00 IDR
-                        ILS: 5300,          // 1 Shekel Israel = 5.300,00 IDR
-                        RUB: 200,           // 1 Rubel Rusia = 200,00 IDR
-                        SAR: 4200,          // 1 Riyal Arab Saudi = 4.200,00 IDR
-                        AED: 4300,          // 1 Dirham Uni Emirat Arab = 4.300,00 IDR
-                        EGP: 500,           // 1 Pound Mesir = 500,00 IDR
-                        PKR: 60             // 1 Rupee Pakistan = 60,00 IDR
-                    };
-
-                    // Ambil elemen input dan tampilan hasil
-                    const foreignAmountInput = document.getElementById("foreign-amount");
-                    const foreignCurrencySelect = document.getElementById("foreign-currency");
-                    const resultDisplay = document.getElementById("result");
-
-                    const idrAmountInput = document.getElementById("idr-amount");
-                    const targetCurrencySelect = document.getElementById("target-currency");
-                    const reverseResultDisplay = document.getElementById("reverse-result");
-
-                    // Fungsi untuk memperbarui nilai tukar setiap interval waktu tertentu
-                    function updateExchangeRates() {
-                        // Contoh logika pembaruan nilai tukar
-                        // Di sini kamu bisa mengubah nilai tukar secara manual atau menggunakan algoritma lainnya
-                        exchangeRates.USD = Math.round(Math.random() * 10000 + 15000);  // Simulasi perubahan nilai tukar USD
-                        exchangeRates.EUR = Math.round(Math.random() * 10000 + 16000);  // Simulasi perubahan nilai tukar EUR
-
-                        // Update informasi waktu pembaruan
-                        const updateTime = new Date().toLocaleString();
-                        document.getElementById("update-time").textContent = updateTime;
-                        document.getElementById("last-update").classList.remove("hidden");
-
-                        // Update hasil konversi setelah perubahan nilai tukar
-                        convertToIDR();
-                        convertFromIDR();
-                    }
-
-                    // Fungsi konversi dari mata uang asing ke IDR
-                    function convertToIDR() {
-                        const foreignAmount = parseFloat(foreignAmountInput.value);
-                        const foreignCurrency = foreignCurrencySelect.value;
-                        if (foreignAmount && exchangeRates[foreignCurrency]) {
-                            const result = foreignAmount * exchangeRates[foreignCurrency];
-                            resultDisplay.textContent = `Hasil: Rp ${result.toLocaleString()}`;
-                        } else {
-                            resultDisplay.textContent = "Hasil: -";
-                        }
-                    }
-
-                    // Fungsi konversi dari IDR ke mata uang asing
-                    function convertFromIDR() {
-                        const idrAmount = parseFloat(idrAmountInput.value);
-                        const targetCurrency = targetCurrencySelect.value;
-                        if (idrAmount && exchangeRates[targetCurrency]) {
-                            const result = idrAmount / exchangeRates[targetCurrency];
-                            reverseResultDisplay.textContent = `Hasil: ${result.toLocaleString()} ${targetCurrency}`;
-                        } else {
-                            reverseResultDisplay.textContent = "Hasil: -";
-                        }
-                    }
-
-                    // Update hasil konversi otomatis saat input berubah
-                    foreignAmountInput.addEventListener("input", convertToIDR);
-                    foreignCurrencySelect.addEventListener("change", convertToIDR);
-                    idrAmountInput.addEventListener("input", convertFromIDR);
-                    targetCurrencySelect.addEventListener("change", convertFromIDR);
-
-                    // Memulai interval untuk pembaruan nilai tukar setiap 10 detik
-                    setInterval(updateExchangeRates, 10000);
-
-                </script>
-            </body>
-
-            </html>
-
-
             <details close>
                 <summary>Informasi Geografi Negara</summary>
                 <div class="bg-white rounded-lg shadow-md p-6 mb-6">
@@ -1639,6 +1419,17 @@
                 </div>
             </details>
 
+            <details close>
+                <summary>Code web ini??</summary>
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">GitHub</h2>
+                    <a href="https://github.com/VINN559/ihateyou"
+                        class="flex items-center text-blue-600 hover:text-blue-800">Codenya (HTML,CSS,JAVASCRIPT) di
+                        file index.html</a>
+                </div>
+
+            </details>
+
 
             <details close>
                 <summary>Google Form & Instagram</summary>
@@ -1676,9 +1467,6 @@
                     </ul>
                 </div>
             </details>
-
-
-
 
 
 
