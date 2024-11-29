@@ -208,7 +208,7 @@
 
     <!-- Running Text -->
     <div class="running-text bg-orange-500 text-white py-2">
-        <span id="welcomeText">"Selamat Datang Di Kelas 8.3!! One Team One Dream!"</span>
+        <span>"Selamat Datang Di Kelas 8.3!! One Team One Dream!"</span>
     </div>
 
     <section class="info-section">
@@ -222,13 +222,11 @@
         </div>
         <div class="info-card hover-effect">
             <h3>Agenda Kegiatan</h3>
-            <p>Ayo ikuti berbagai kegiatan seru di kelas 8.3, mulai dari lomba, outing class, hingga kegiatan sosial.
-            </p>
+            <p>Ayo ikuti berbagai kegiatan seru di kelas 8.3, mulai dari lomba, outing class, hingga kegiatan sosial.</p>
         </div>
         <div class="info-card hover-effect">
             <h3>Informasi web ini</h3>
-            <p>Web ini dibangun 80% oleh KECERDASAN BUATAN (AI), 20% sisanya dibangun menggunakan kecerdasan manusia.
-            </p>
+            <p>Web ini dibangun 80% oleh KECERDASAN BUATAN (AI), 20% sisanya dibangun menggunakan kecerdasan manusia.</p>
         </div>
         <div class="info-card hover-effect">
             <h3>Informasi PR</h3>
@@ -243,14 +241,6 @@
 
     <!-- Scripts -->
     <script>
-        // Check if user is logged in by checking the localStorage
-        const loggedIn = localStorage.getItem('loggedIn');
-        const username = localStorage.getItem('username');
-        if (loggedIn === 'true' && username) {
-            const welcomeText = document.getElementById('welcomeText');
-            welcomeText.textContent = `"Selamat Datang Di Kelas 8.3, ${username}! One Team One Dream!"`;
-        }
-
         // Show or hide Back to Top button based on scroll position
         window.onscroll = function () {
             let backToTopBtn = document.getElementById('backToTop');
@@ -270,13 +260,6 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
 
 <div class="container mx-auto px-4 py-8">
     <!-- Informasi Kelas -->
@@ -646,19 +629,20 @@
         </div>
     </details>
 
-    <!-- Kegiatan -->
-    <details close>
-        <summary>Informasi Tambahan</summary>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Informasi</h2>
-            <ul class="list-disc pl-6">
-                <li>Setiap Senin Dan Jumat Wajib Membawa Buku Cerita Dan Topi</li>
-                <li>Setiap Rabu Wajib Membawa Baju Ganti Olahraga dan Membawa Buku Lagu</li>
-                <li>Setiap Pakai Baju Pramuka Wajib Pakai Kacu</li>
-                <li>Kaos Kaki Harus sesuai Dengan Harinnya </li>
-            </ul>
-        </div>
-    </details>
+   <!-- Kegiatan -->
+   <details close>
+    <summary>Informasi Tambahan</summary>
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Informasi</h2>
+        <ul class="list-disc pl-6">
+            <li>Setiap Senin Dan Jumat Wajib Membawa Buku Cerita Dan Topi</li>
+            <li>Setiap Rabu Wajib Membawa Baju Ganti Olahraga dan Membawa Buku Lagu</li>
+            <li>Setiap Pakai Baju Pramuka Wajib Pakai Kacu</li>
+            <li>Kaos Kaki Harus sesuai Dengan Harinnya </li>
+        </ul>
+    </div>
+</details>
+
 
     <!DOCTYPE html>
     <html lang="en">
