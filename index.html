@@ -158,13 +158,13 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        /* Back to Top and Back to Below Button Styles */
+        /* Back to Top Button Styles */
         #backToTop {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #e74c3c;
-            /* Red background for Back to Top button */
+            background-color: #ff0000;
+            /* Green background for Back to Top button */
             color: white;
             padding: 12px 18px;
             border-radius: 50%;
@@ -177,35 +177,10 @@
         }
 
         #backToTop:hover {
-            background-color: #c0392b;
-            /* Darker red when hovered */
-            box-shadow: 0 16px 32px rgba(231, 76, 60, 0.4);
-            /* Thicker red shadow */
-        }
-
-        .btb {
-            background-color: white;
-            /* White background for Back to Below button */
-            color: #e74c3c;
-            /* Red text */
-            border: 2px solid #e74c3c;
-            /* Red border to match the theme */
-            padding: 12px 18px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            transition: opacity 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-            /* Thicker shadow */
-        }
-
-        .btb:hover {
-            background-color: #e74c3c;
-            /* Red background on hover */
-            color: white;
-            /* White text on hover */
-            box-shadow: 0 16px 32px rgba(231, 76, 60, 0.4);
-            /* Thicker red shadow */
+            background-color: #ff0000;
+            /* Brighter green on hover */
+            box-shadow: 0 16px 32px rgba(39, 174, 96, 0.4);
+            /* Thicker green shadow */
         }
     </style>
 </head>
@@ -231,9 +206,9 @@
         </div>
     </nav>
 
-    <!-- Konten Utama -->
+    <!-- Running Text -->
     <div class="running-text bg-orange-500 text-white py-2">
-        <span>"Selamat Datang Di Kelas 8.3!! One Team One Dream!"</span>
+        <span id="welcomeText">"Selamat Datang Di Kelas 8.3!! One Team One Dream!"</span>
     </div>
 
     <section class="info-section">
@@ -261,57 +236,42 @@
         </div>
     </section>
 
-    <!-- Back to Top or Back to Below Button -->
-    <button id="backToTop"
-        class="fixed bottom-4 right-4 bg-green-500 text-white p-2 rounded-full shadow-lg hover:bg-green-600">
-        ↑
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="rounded-full text-white font-bold">
+        <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Scripts -->
     <script>
-        // Notification fade
-        setTimeout(() => {
-            const notification = document.createElement('div');
-            notification.classList.add('notification');
-            notification.textContent = 'Selamat datang di halaman kelas 8.3!';
-            document.body.appendChild(notification);
+        // Check if user is logged in by checking the localStorage
+        const loggedIn = localStorage.getItem('loggedIn');
+        const username = localStorage.getItem('username');
+        if (loggedIn === 'true' && username) {
+            const welcomeText = document.getElementById('welcomeText');
+            welcomeText.textContent = `"Selamat Datang Di Kelas 8.3, ${username}! One Team One Dream!"`;
+        }
 
-            setTimeout(() => {
-                notification.style.opacity = 0;
-            }, 3000);
+        // Show or hide Back to Top button based on scroll position
+        window.onscroll = function () {
+            let backToTopBtn = document.getElementById('backToTop');
 
-            setTimeout(() => {
-                notification.remove();
-            }, 4000);
-        }, 1000);
-
-        // Back to Top or Back to Below Button functionality
-        const backToTop = document.getElementById('backToTop');
-
-        // Show the button when the user scrolls down 200px, otherwise hide it
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 200) {
-                backToTop.style.display = 'block';
-                backToTop.classList.remove("btb");
-                backToTop.innerHTML = "↑"; // "Back to Top"
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "block";
             } else {
-                backToTop.style.display = 'block';
-                backToTop.classList.add("btb");
-                backToTop.innerHTML = "↓"; // "Back to Below"
+                backToTopBtn.style.display = "none";
             }
-        });
+        };
 
-        // When the user clicks the button, scroll to the top or to the bottom
-        backToTop.addEventListener('click', () => {
-            if (window.scrollY > 200) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-            }
-        });
+        // Back to Top button functionality
+        document.getElementById('backToTop').onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
     </script>
 </body>
 
 </html>
+
+
 
 
 
@@ -359,7 +319,7 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Informatika</h3>
-                    <p>Fanny <span class="text-green-500">(A)</span></p>
+                    <p> <span class="text-black-500">(-)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Keamanan</h3>
@@ -389,7 +349,6 @@
         </div>
     </details>
 
-
     <!-- Jadwal Pelajaran -->
     <details close>
         <summary>Jadwal Pelajaran</summary>
@@ -401,7 +360,7 @@
                 <label for="search" class="block text-sm font-medium text-gray-700">Search</label>
                 <input type="text" id="search"
                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Search by subject or teacher" onkeyup="filterTable()">
+                    placeholder="Cari jadwal pelajaran" onkeyup="filterTable()">
             </div>
 
             <!-- Table for Schedule -->
@@ -553,6 +512,7 @@
     </style>
 
 
+
     <!-- Daftar Siswa Kelas 8.3 -->
     <details close>
         <summary>Daftar Siswa Kelas 8.3</summary>
@@ -601,68 +561,54 @@
     </details>
 
 
-
     <!-- Jadwal Piket -->
     <details close>
         <summary>Jadwal Piket</summary>
         <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="jadwal-piket">
             <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Jadwal Piket</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold mb-2">Senin</h3>
-                    <p>Kevin</p>
-                    <p>Bayu</p>
-                    <p>Hayfa</p>
-                    <p>Haikal</p>
-                    <p>Prabu</p>
-                    <p>Rizki</p>
-                    <p>Septia</p>
-                    <p>Widya</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Selasa</h3>
-                    <p>Alya</p>
-                    <p>Devara</p>
-                    <p>Jovanka</p>
-                    <p>Fauzan</p>
-                    <p>Rapi</p>
-                    <p>Robi</p>
-                    <p>Shalsabela</p>
-                    <p>Zhahira</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Rabu</h3>
-                    <p>Alycia</p>
-                    <p>Evita</p>
-                    <p>Owen</p>
-                    <p>Ibnu</p>
-                    <p>Resti</p>
-                    <p>Safa</p>
-                    <p>Hanna</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Kamis</h3>
-                    <p>Andien</p>
-                    <p>Fanny</p>
-                    <p>Syahril</p>
-                    <p>Fayumi</p>
-                    <p>Reyhan</p>
-                    <p>Sahira</p>
-                    <p>Linda</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Jumat</h3>
-                    <p>Aulia</p>
-                    <p>Febri</p>
-                    <p>Marsya</p>
-                    <p>Novi</p>
-                    <p>Sandi</p>
-                    <p>Salma</p>
-                    <p>Nurul</p>
-                </div>
-            </div>
+            <table class="table-auto w-full border-collapse">
+                <thead>
+                    <tr>
+                        <th class="border px-4 py-2">Hari</th>
+                        <th class="border px-4 py-2">Anggota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2 font-semibold">Senin</td>
+                        <td class="border px-4 py-2">
+                            Kevin, Bayu, Hayfa, Haikal, Prabu, Rizki, Septia, Widya
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2 font-semibold">Selasa</td>
+                        <td class="border px-4 py-2">
+                            Alya, Devara, Jovanka, Fauzan, Rapi, Robi, Shalsabela, Zhahira
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2 font-semibold">Rabu</td>
+                        <td class="border px-4 py-2">
+                            Alycia, Evita, Owen, Ibnu, Resti, Safa, Hanna
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2 font-semibold">Kamis</td>
+                        <td class="border px-4 py-2">
+                            Andien, Fanny, Syahril, Fayumi, Reyhan, Sahira, Linda
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2 font-semibold">Jumat</td>
+                        <td class="border px-4 py-2">
+                            Aulia, Febri, Marsya, Novi, Sandi, Salma, Nurul
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </details>
+
 
     <!-- Jadwal Seragam -->
     <details close>
