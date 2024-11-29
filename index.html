@@ -315,6 +315,9 @@
 
 
 
+
+
+
 <div class="container mx-auto px-4 py-8">
     <!-- Informasi Kelas -->
     <details close>
@@ -349,6 +352,14 @@
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Bendahara</h3>
                     <p>Siti Maulinda <span class="text-yellow-500">(B-)</span></p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Informatika</h3>
+                    <p>Muhammad Ibnu Rajib <span class="text-green-500">(A)</span></p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Wakil Informatika</h3>
+                    <p>Fanny <span class="text-green-500">(A)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Keamanan</h3>
@@ -702,79 +713,6 @@
             </ul>
         </div>
     </details>
-
-    <details close>
-        <summary>Informasi Digital</summary>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer" onclick="toggleMode()">Informasi Digital
-            </h2>
-            <div id="informasi-digital" class="info-content">
-                <p><strong>Pentingnya Memahami Teknologi Digital:</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Teknologi sebagai Penunjang Kehidupan:</strong> Mempermudah kehidupan dalam pendidikan,
-                        kesehatan, dan pekerjaan.</li>
-                    <li><strong>Peningkatan Keterampilan Digital:</strong> Keterampilan teknologi seperti pemrograman
-                        dan penggunaan perangkat lunak penting dalam dunia kerja modern.</li>
-                    <li><strong>Penggunaan Teknologi untuk Efisiensi:</strong> Meningkatkan efisiensi dalam pekerjaan
-                        dan sektor lainnya.</li>
-                </ul>
-
-                <p><strong>Pengenalan AI (Kecerdasan Buatan):</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Apa itu AI?</strong> Teknologi yang memungkinkan mesin melakukan tugas yang biasanya
-                        membutuhkan kecerdasan manusia.</li>
-                    <li><strong>Manfaat AI:</strong> Mengoptimalkan proses bisnis, seperti dalam analisis data dan
-                        automasi.</li>
-                    <li><strong>Contoh Aplikasi AI:</strong> Sistem rekomendasi seperti di Netflix atau YouTube.</li>
-                </ul>
-
-                <p><strong>Data dan Keamanan Digital:</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Pentingnya Keamanan Data:</strong> Data pribadi harus dijaga dari ancaman seperti
-                        peretasan dan pencurian identitas.</li>
-                    <li><strong>Enkripsi Data:</strong> Teknologi untuk melindungi data pribadi saat ditransfer melalui
-                        jaringan.</li>
-                </ul>
-
-                <p><strong>Blockchain:</strong></p>
-                <ul class="list-disc pl-6">
-                    <li><strong>Apa itu Blockchain?</strong> Teknologi yang digunakan untuk mencatat transaksi secara
-                        aman dan transparan.</li>
-                    <li><strong>Aplikasi Blockchain:</strong> Digunakan dalam cryptocurrency, logistik, dan sistem
-                        voting yang aman.</li>
-                </ul>
-
-            </div>
-        </div>
-    </details>
-
-
-    <script>
-        function toggleMode() {
-            var tambahan = document.getElementById('informasi-tambahan');
-            var digital = document.getElementById('informasi-digital');
-
-            // Toggle visibility between informasi tambahan and informasi digital
-            if (tambahan.classList.contains('hidden')) {
-                tambahan.classList.remove('hidden');
-                digital.classList.add('hidden');
-            } else {
-                tambahan.classList.add('hidden');
-                digital.classList.remove('hidden');
-            }
-        }
-    </script>
-
-    <style>
-        .hidden {
-            display: none;
-        }
-
-        .info-content {
-            padding-left: 20px;
-        }
-    </style>
-
 
     <!DOCTYPE html>
     <html lang="en">
@@ -1143,390 +1081,155 @@
 
             </html>
 
-            <details close>
-                <summary>Informasi Geografi Negara</summary>
-                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Informasi Geografi Negara</h2>
-
-                    <!-- Formulir memilih negara -->
-                    <div class="mb-4">
-                        <label for="country-select" class="block text-gray-700">Pilih Negara</label>
-                        <select id="country-select" class="p-2 border rounded mt-1 w-full">
-                            <option value="">Pilih negara...</option>
-                            <option value="Indonesia">Indonesia</option>
-                            <option value="USA">Amerika Serikat</option>
-                            <option value="Germany">Jerman</option>
-                            <option value="Japan">Jepang</option>
-                            <option value="Brazil">Brasil</option>
-                            <option value="India">India</option>
-                            <option value="Canada">Kanada</option>
-                            <option value="Australia">Australia</option>
-                            <option value="France">Perancis</option>
-                            <option value="Russia">Rusia</option>
-                            <option value="SouthAfrica">Afrika Selatan</option>
-                            <option value="China">Cina</option>
-                        </select>
-                    </div>
-
-                    <!-- Menampilkan informasi negara -->
-                    <div id="country-info" class="mt-4">
-                        <p id="country-name" class="text-lg font-semibold text-gray-800">Nama Negara: -</p>
-                        <p id="continent-name" class="text-lg text-gray-800">Benua: -</p>
-                        <p id="capital" class="text-lg text-gray-800">Ibu Kota: -</p>
-                        <p id="leader" class="text-lg text-gray-800">Pemimpin: -</p>
-                        <p id="area" class="text-lg text-gray-800">Luas Wilayah: -</p>
-                        <p id="population" class="text-lg text-gray-800">Populasi: -</p>
-                        <p id="gdp" class="text-lg text-gray-800">GDP: -</p>
-                        <p id="continent-location" class="text-lg text-gray-800">Letak Benua: -</p>
-                        <p id="independence" class="text-lg text-gray-800">Tahun Kemerdekaan: -</p>
-                        <p id="friendly-countries" class="text-lg text-gray-800">Negara Sahabat: -</p>
-                        <p id="enemy-countries" class="text-lg text-gray-800">Negara Musuh: -</p>
-                        <p id="organizations" class="text-lg text-gray-800">Organisasi Internasional: -</p>
-                        <div id="flag-container" class="mt-4">
-                            <p class="text-lg text-gray-800">Bendera:</p>
-                            <img id="country-flag" src="" alt="Bendera" class="mt-2"
-                                style="max-width: 200px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);">
-                        </div>
-                    </div>
-
-                    <p class="text-sm text-gray-500 mt-4">*Informasi dapat berubah berdasarkan sumber yang digunakan.
-                    </p>
-                </div>
-            </details>
-
-            <script>
-                // Data negara dengan informasi geografi (nama negara, benua, gambar bendera, ibu kota, pemimpin, luas wilayah, populasi, GDP, dan lainnya)
-                const countries = {
-                    "Indonesia": {
-                        name: "Indonesia",
-                        continent: "Asia",
-                        capital: "Jakarta",
-                        leader: "Presiden: Prabowo Subianto",
-                        area: "1,904,569 km²",
-                        population: "276 juta (perkiraan 2023)",
-                        gdp: "$1.2 Triliun USD (2023)",
-                        continentLocation: "Asia Tenggara",
-                        independenceYear: "17 Agustus 1945",
-                        friendlyCountries: "Malaysia, Australia, Jepang, Amerika Serikat",
-                        enemyCountries: "Tidak ada yang diakui secara resmi",
-                        organizations: "ASEAN, G20, OIC",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg",
-                    },
-                    "USA": {
-                        name: "Amerika Serikat",
-                        continent: "Amerika Utara",
-                        capital: "Washington, D.C.",
-                        leader: "Presiden: Donald Trump",
-                        area: "9,525,067 km²",
-                        population: "332 juta (perkiraan 2023)",
-                        gdp: "$26.7 Triliun USD (2023)",
-                        continentLocation: "Amerika Utara",
-                        independenceYear: "4 Juli 1776",
-                        friendlyCountries: "Kanada, Inggris, Australia, Jepang",
-                        enemyCountries: "Beberapa negara yang memiliki konflik politik, seperti Korea Utara, Iran",
-                        organizations: "NATO, PBB, G7, G20",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg",
-                    },
-                    "Germany": {
-                        name: "Jerman",
-                        continent: "Eropa",
-                        capital: "Berlin",
-                        leader: "Kanselir: Olaf Scholz",
-                        area: "357,022 km²",
-                        population: "83 juta (perkiraan 2023)",
-                        gdp: "$5.1 Triliun USD (2023)",
-                        continentLocation: "Eropa Tengah",
-                        independenceYear: "3 Oktober 1990 (Reunifikasi)",
-                        friendlyCountries: "Prancis, Italia, Polandia",
-                        enemyCountries: "Tidak ada yang diakui secara resmi",
-                        organizations: "Uni Eropa, NATO, G7, PBB",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg",
-                    },
-                    "Japan": {
-                        name: "Jepang",
-                        continent: "Asia",
-                        capital: "Tokyo",
-                        leader: "Perdana Menteri: Shigeru Ishiba",
-                        area: "377,975 km²",
-                        population: "125 juta (perkiraan 2023)",
-                        gdp: "$4.9 Triliun USD (2023)",
-                        continentLocation: "Asia Timur",
-                        independenceYear: "3 Mei 1947 (Konstitusi Jepang)",
-                        friendlyCountries: "Amerika Serikat, Australia, India",
-                        enemyCountries: "Beberapa negara memiliki ketegangan sejarah seperti Korea Utara dan Cina",
-                        organizations: "ASEAN+3, PBB, G7",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
-                    },
-                    "Brazil": {
-                        name: "Brasil",
-                        continent: "Amerika Selatan",
-                        capital: "Brasília",
-                        leader: "Presiden: Luiz Inácio Lula da Silva",
-                        area: "8,515,767 km²",
-                        population: "213 juta (perkiraan 2023)",
-                        gdp: "$2.0 Triliun USD (2023)",
-                        continentLocation: "Amerika Selatan",
-                        independenceYear: "7 September 1822",
-                        friendlyCountries: "Argentina, China, Portugal",
-                        enemyCountries: "Tidak ada yang diakui secara resmi",
-                        organizations: "BRICS, Mercosur, PBB",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg",
-                    },
-                    "India": {
-                        name: "India",
-                        continent: "Asia",
-                        capital: "New Delhi",
-                        leader: "Perdana Menteri: Narendra Modi",
-                        area: "3,287,263 km²",
-                        population: "1.43 miliar (perkiraan 2023)",
-                        gdp: "$3.7 Triliun USD (2023)",
-                        continentLocation: "Asia Selatan",
-                        independenceYear: "15 Agustus 1947",
-                        friendlyCountries: "Rusia, Jepang, Prancis, AS",
-                        enemyCountries: "Pakistan, China (terkait perbatasan)",
-                        organizations: "BRICS, PBB, G20, SAARC",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg",
-                    },
-                    "Canada": {
-                        name: "Kanada",
-                        continent: "Amerika Utara",
-                        capital: "Ottawa",
-                        leader: "Perdana Menteri: Justin Trudeau",
-                        area: "9,984,670 km²",
-                        population: "39 juta (perkiraan 2023)",
-                        gdp: "$2.2 Triliun USD (2023)",
-                        continentLocation: "Amerika Utara",
-                        independenceYear: "1 Juli 1867",
-                        friendlyCountries: "Amerika Serikat, Inggris, Perancis",
-                        enemyCountries: "Tidak ada yang diakui secara resmi",
-                        organizations: "NATO, PBB, G7, G20",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg",
-                    },
-                    "Australia": {
-                        name: "Australia",
-                        continent: "Oceania",
-                        capital: "Canberra",
-                        leader: "Perdana Menteri: Anthony Albanese",
-                        area: "2,941,300 km²",
-                        population: "26 juta (perkiraan 2023)",
-                        gdp: "$1.4 Triliun USD (2023)",
-                        continentLocation: "Oceania",
-                        independenceYear: "1 Januari 1901",
-                        friendlyCountries: "Amerika Serikat, Inggris, Selandia Baru",
-                        enemyCountries: "Tidak ada yang diakui secara resmi",
-                        organizations: "G20, PBB, OPEC",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg",
-                    },
-                    "France": {
-                        name: "Perancis",
-                        continent: "Eropa",
-                        capital: "Paris",
-                        leader: "Presiden: Emmanuel Macron",
-                        area: "643,801 km²",
-                        population: "67 juta (perkiraan 2023)",
-                        gdp: "$2.9 Triliun USD (2023)",
-                        continentLocation: "Eropa Barat",
-                        independenceYear: "14 Juli 1789",
-                        friendlyCountries: "Jerman, Italia, Kanada, AS",
-                        enemyCountries: "Tidak ada yang diakui secara resmi",
-                        organizations: "Uni Eropa, NATO, PBB, G7",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg",
-                    },
-                    "Russia": {
-                        name: "Rusia",
-                        continent: "Eropa/Asia",
-                        capital: "Moskow",
-                        leader: "Presiden: Vladimir Putin",
-                        area: "17,098,242 km²",
-                        population: "145 juta (perkiraan 2023)",
-                        gdp: "$1.8 Triliun USD (2023)",
-                        continentLocation: "Eurasia",
-                        independenceYear: "12 Juni 1990 (Deklarasi Kedaulatan)",
-                        friendlyCountries: "China, India, Iran",
-                        enemyCountries: "Ukraina, negara-negara Barat",
-                        organizations: "PBB, BRICS, CSTO",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg",
-                    },
-                    "SouthAfrica": {
-                        name: "Afrika Selatan",
-                        continent: "Afrika",
-                        capital: "Pretoria (eksekutif), Cape Town (legislatif), Bloemfontein (yudikatif)",
-                        leader: "Presiden: Cyril Ramaphosa",
-                        area: "1,221,037 km²",
-                        population: "60 juta (perkiraan 2023)",
-                        gdp: "$499 Miliar USD (2023)",
-                        continentLocation: "Afrika Selatan",
-                        independenceYear: "27 April 1994",
-                        friendlyCountries: "Nigeria, Zambia, Togo",
-                        enemyCountries: "Tidak ada yang diakui secara resmi",
-                        organizations: "PBB, AU, BRICS",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_South_Africa.svg",
-                    },
-                    "China": {
-                        name: "Cina",
-                        continent: "Asia",
-                        capital: "Beijing",
-                        leader: "Presiden: Xi Jinping",
-                        area: "9,596,961 km²",
-                        population: "1.4 miliar (perkiraan 2023)",
-                        gdp: "$17.7 Triliun USD (2023)",
-                        continentLocation: "Asia Timur",
-                        independenceYear: "1 Oktober 1949 (Pendiri Republik Rakyat Cina)",
-                        friendlyCountries: "Pakistan, Rusia, Afrika Selatan",
-                        enemyCountries: "Taiwan, India",
-                        organizations: "PBB, BRICS, SCO",
-                        flag: "https://upload.wikimedia.org/wikipedia/commons/5/53/Flag_of_China.svg",
-                    }
-                };
-
-                // Event listener untuk memilih negara
-                document.getElementById('country-select').addEventListener('change', function () {
-                    const country = this.value;
-                    const info = countries[country];
-
-                    if (info) {
-                        document.getElementById('country-name').textContent = "Nama Negara: " + info.name;
-                        document.getElementById('continent-name').textContent = "Benua: " + info.continent;
-                        document.getElementById('capital').textContent = "Ibu Kota: " + info.capital;
-                        document.getElementById('leader').textContent = "Pemimpin: " + info.leader;
-                        document.getElementById('area').textContent = "Luas Wilayah: " + info.area;
-                        document.getElementById('population').textContent = "Populasi: " + info.population;
-                        document.getElementById('gdp').textContent = "GDP: " + info.gdp;
-                        document.getElementById('continent-location').textContent = "Letak Benua: " + info.continentLocation;
-                        document.getElementById('independence').textContent = "Tahun Kemerdekaan: " + info.independenceYear;
-                        document.getElementById('friendly-countries').textContent = "Negara Sahabat: " + info.friendlyCountries;
-                        document.getElementById('enemy-countries').textContent = "Negara Musuh: " + info.enemyCountries;
-                        document.getElementById('organizations').textContent = "Organisasi Internasional: " + info.organizations;
-                        document.getElementById('country-flag').src = info.flag;
-                    }
-                });
-            </script>
-
-            <details close>
-                <summary>Game Buatan AI</summary>
-                <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="game">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Game Buatan AI (Simple Game)</h2>
-                    <p>Coba game Flappy Bird buatan AI dengan menekan tautan di bawah ini:</p>
-
-                    <ul>
-                        <li>
-                            <a href="https://vinn559.github.io/flappybird/" target="_blank"
-                                class="flex items-center text-blue-600 hover:text-blue-800">
-                                <i class="fas fa-gamepad mr-2" style="font-size: 24px;"></i> Game Flappy Bird (Claude)
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </details>
-
-            <details close>
-                <summary>Code web ini??</summary>
-                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">GitHub</h2>
-                    <a href="https://github.com/VINN559/ihateyou"
-                        class="flex items-center text-blue-600 hover:text-blue-800">Codenya (HTML,CSS,JAVASCRIPT) di
-                        file index.html</a>
-                </div>
-
-            </details>
-
-
-            <details close>
-                <summary>Google Form & Instagram</summary>
-                <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="google-form-instagram">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Google Form (Saran dan Masukan) &
-                        Akun Instagram</h2>
-                    <p>Berikan saran atau masukan melalui Google Form berikut, atau kunjungi akun Instagram kami:</p>
-
-                    <ul>
-                        <li>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-k1j7esfRzdiWk1vJNIPsrkpiAk6Nhk9UovJracmQcbVzwg/viewform"
-                                target="_blank" class="flex items-center text-blue-600 hover:text-blue-800">
-                                <img src="90.png" alt="Google" class="mr-2" width="24" height="24">
-                                Google Form (Saran dan Masukan)
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/8.3_charming?igsh=d2lxZDJ0MDVyMmly" target="_blank"
-                                class="flex items-center text-blue-600 hover:text-blue-800">
-                                <i class="fab fa-instagram mr-2" style="font-size: 24px;"></i> Instagram Kelas
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/smppgriciteureup?igsh=MXRwcWdmdXd2NTV5cQ=="
-                                target="_blank" class="flex items-center text-blue-600 hover:text-blue-800">
-                                <i class="fab fa-instagram mr-2" style="font-size: 24px;"></i> Instagram Sekolah
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/osis.smppgriciteureup?igsh=MTRzY2xsMDIycWVveg=="
-                                target="_blank" class="flex items-center text-blue-600 hover:text-blue-800">
-                                <i class="fab fa-instagram mr-2" style="font-size: 24px;"></i> Instagram OSIS Sekolah
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </details>
-
-
 
             <details close>
                 <summary>Dokumentasi Gambar</summary>
                 <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="documentation">
                     <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Dokumentasi Gambar</h2>
                     <p>Beberapa gambar dokumentasi.</p>
-                    <ul class="list-none pl-0 mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <li>
-                            <a href="1.png" target="_blank" class="flex flex-col items-center">
-                                <img src="1.png" alt="Gambar 1" class="w-full h-auto rounded-lg shadow-md mb-2">
-                                <span class="text-center text-black-600">Gambar 1</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="2.png" target="_blank" class="flex flex-col items-center">
-                                <img src="2.png" alt="Gambar 2" class="w-full h-auto rounded-lg shadow-md mb-2">
-                                <span class="text-center text-black-600">Gambar 2</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="3.png" target="_blank" class="flex flex-col items-center">
-                                <img src="3.png" alt="Gambar 3" class="w-full h-auto rounded-lg shadow-md mb-2">
-                                <span class="text-center text-black-600">Gambar 3</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="4.png" target="_blank" class="flex flex-col items-center">
-                                <img src="4.png" alt="Gambar 4" class="w-full h-auto rounded-lg shadow-md mb-2">
-                                <span class="text-center text-black-600">Gambar 4</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="5.png" target="_blank" class="flex flex-col items-center">
-                                <img src="5.png" alt="Gambar 5" class="w-full h-auto rounded-lg shadow-md mb-2">
-                                <span class="text-center text-black-600">Gambar 5</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="6.png" target="_blank" class="flex flex-col items-center">
-                                <img src="6.png" alt="Gambar 6" class="w-full h-auto rounded-lg shadow-md mb-2">
-                                <span class="text-center text-black-600">Gambar 6</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="7.png" target="_blank" class="flex flex-col items-center">
-                                <img src="7.png" alt="Gambar 7" class="w-full h-auto rounded-lg shadow-md mb-2">
-                                <span class="text-center text-black-600">Gambar 7</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="8.png" target="_blank" class="flex flex-col items-center">
-                                <img src="8.png" alt="Gambar 8" class="w-full h-auto rounded-lg shadow-md mb-2">
-                                <span class="text-center text-black-600">Gambar 8</span>
-                            </a>
-                        </li>
-                    </ul>
+
+                    <!-- Gallery Grid with images -->
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="1.png" alt="Gambar 1" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="2.png" alt="Gambar 2" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="3.png" alt="Gambar 3" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="4.png" alt="Gambar 4" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="5.png" alt="Gambar 5" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="6.png" alt="Gambar 6" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="7.png" alt="Gambar 7" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="8.png" alt="Gambar 8" class="gallery-image">
+                        </div>
+                    </div>
+
+                    <!-- Modal to show full-size image -->
+                    <div id="modal" class="modal">
+                        <span id="close-modal" class="close">&times;</span>
+                        <img id="modal-img" class="modal-img" src="" alt="Full Image">
+                    </div>
                 </div>
             </details>
+
+            <!-- CSS for styling -->
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+
+                .gallery {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                    /* Responsive grid */
+                    gap: 10px;
+                }
+
+                .gallery-item {
+                    position: relative;
+                    overflow: hidden;
+                    /* Hide the overflow when compressed */
+                    cursor: pointer;
+                    transition: transform 0.3s ease, filter 0.3s ease;
+                    /* Smooth transition for scaling */
+                }
+
+                .gallery-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    /* Maintain aspect ratio */
+                    transition: transform 0.3s ease, filter 0.3s ease;
+                }
+
+                .gallery-item:hover .gallery-image {
+                    transform: scale(1.1);
+                    /* Zoom in slightly when hovered */
+                    filter: brightness(0.8);
+                    /* Darken the image on hover */
+                }
+
+                /* Modal Styles */
+                .modal {
+                    display: none;
+                    /* Initially hidden */
+                    position: fixed;
+                    z-index: 1000;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.8);
+                    /* Background overlay */
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .modal-img {
+                    max-width: 90%;
+                    max-height: 90%;
+                    object-fit: contain;
+                    /* Ensure the full image fits */
+                }
+
+                .close {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    font-size: 30px;
+                    color: white;
+                    cursor: pointer;
+                }
+
+                /* Modal close on clicking outside of the image */
+                .modal.active {
+                    display: flex;
+                }
+            </style>
+
+            <!-- JavaScript for modal functionality -->
+            <script>
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                const modal = document.getElementById('modal');
+                const modalImg = document.getElementById('modal-img');
+                const closeModal = document.getElementById('close-modal');
+
+                // Open the image in modal when clicked
+                galleryItems.forEach(item => {
+                    item.addEventListener('click', function () {
+                        const imgSrc = item.querySelector('img').src; // Get the src of clicked image
+                        modalImg.src = imgSrc; // Set the modal image source
+                        modal.classList.add('active'); // Show the modal
+                    });
+                });
+
+                // Close the modal when the close button is clicked
+                closeModal.addEventListener('click', function () {
+                    modal.classList.remove('active'); // Hide the modal
+                });
+
+                // Close the modal when clicking outside the image
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal) {
+                        modal.classList.remove('active'); // Hide the modal if clicked outside
+                    }
+                });
+            </script>
+
 
 
 
@@ -1540,7 +1243,33 @@
                             © 2024 8.3 - Semua Hak Dilindungi
                         </a>
                     </p>
+
+                    <!-- Social Media Icons -->
+                    <div class="flex justify-center space-x-6 mt-4">
+                        <!-- YouTube Icon -->
+                        <a href="https://youtube.com/@smppgriciteureup6665?si=_52tGtrsvUAyaBsY" target="_blank"
+                            class="text-gray-500 hover:text-red-600 transition-colors duration-300">
+                            <i class="fab fa-youtube text-2xl"></i>
+                        </a>
+
+                        <!-- Instagram Icon -->
+                        <a href="https://www.instagram.com/smppgriciteureup?igsh=MXRwcWdmdXd2NTV5cQ==" target="_blank"
+                            class="text-gray-500 hover:text-pink-600 transition-colors duration-300">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+
+                        <!-- Google Maps Icon (Using Map Marker) -->
+                        <a href="https://g.co/kgs/KS9YTyu" target="_blank"
+                            class="text-gray-500 hover:text-blue-600 transition-colors duration-300">
+                            <i class="fas fa-map-marker-alt text-2xl"></i>
+                        </a>
+                    </div>
                 </div>
-                </fotter>
+            </footer>
+
+            <!-- FontAwesome CDN -->
+            <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
 
         </html>
