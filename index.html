@@ -17,24 +17,27 @@
     <style>
         /* Default Light Mode Styles */
         body {
-            background: linear-gradient(to bottom, #ff0000, #ffffff);
+            background: linear-gradient(to bottom, #ff7a5c, #ffd1dc);
+            /* Soft gradient background */
             font-family: 'Poppins', sans-serif;
-            color: #000;
+            color: #333;
+            /* Darker text for better readability */
             transition: background 0.3s ease, color 0.3s ease;
         }
 
         details {
-            background: #ffffff;
+            background: #fff;
             padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         summary {
             cursor: pointer;
             font-weight: bold;
-            color: #000;
+            color: #000000;
+            /* Deep coral for summary */
             margin-bottom: 0.5rem;
         }
 
@@ -42,8 +45,9 @@
             white-space: nowrap;
             overflow: hidden;
             box-sizing: border-box;
-            background-color: #FF6F61;
-            color: white;
+            background-color: #ff5733;
+            /* Deep coral for running text */
+            color: #fff;
             padding: 0.5rem;
             font-weight: bold;
         }
@@ -68,14 +72,15 @@
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1.5rem;
             padding: 2rem;
-            background-color: #FFFAF0;
-            border-radius: 0.75rem;
+            background-color: #fafafa;
+            /* Soft background color */
+            border-radius: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .info-card {
-            background-color: #ffffff;
-            border-radius: 0.75rem;
+            background-color: #fff;
+            border-radius: 1rem;
             padding: 1.25rem;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -89,20 +94,23 @@
         }
 
         .info-card h3 {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            color: #FF6F61;
+            color: #ff5733;
+            /* Deep coral for headings */
         }
 
         .info-card p {
             font-size: 1.05rem;
-            color: #333333;
+            color: #555;
+            /* Softer dark color for text */
             line-height: 1.6;
         }
 
         .hover-effect:hover {
-            background-color: #FFEBEE;
-            color: #FF6F61;
+            background-color: #ffe6e0;
+            /* Lighter coral on hover */
+            color: #ff5733;
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -120,13 +128,13 @@
             padding: 1rem;
             text-align: center;
             font-weight: bold;
-            color: #FF6F61;
+            color: #ff5733;
             border-bottom: 1px solid #ddd;
         }
 
         .mobile-menu-link:hover {
-            background-color: #FFEBEE;
-            color: #FF6F61;
+            background-color: #ffe6e0;
+            color: #ff5733;
         }
 
         #menu-toggle {
@@ -144,7 +152,8 @@
             top: 10px;
             left: 50%;
             transform: translateX(-50%) translateY(-50px);
-            background-color: #ff6f61;
+            background-color: #ff5733;
+            /* Deep coral */
             color: #ecf0f1;
             text-align: center;
             padding: 1.2rem 2rem;
@@ -163,8 +172,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #ff0000;
-            /* Green background for Back to Top button */
+            background-color: #ff5733;
+            /* Deep coral */
             color: white;
             padding: 12px 18px;
             border-radius: 50%;
@@ -173,16 +182,15 @@
             display: none;
             transition: opacity 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-            /* Thicker shadow */
         }
 
         #backToTop:hover {
-            background-color: #ff0000;
-            /* Brighter green on hover */
-            box-shadow: 0 16px 32px rgba(39, 174, 96, 0.4);
-            /* Thicker green shadow */
+            background-color: #ff4500;
+            /* Brighter coral on hover */
+            box-shadow: 0 16px 32px rgba(255, 69, 0, 0.4);
         }
     </style>
+
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -222,11 +230,13 @@
         </div>
         <div class="info-card hover-effect">
             <h3>Agenda Kegiatan</h3>
-            <p>Ayo ikuti berbagai kegiatan seru di kelas 8.3, mulai dari lomba, outing class, hingga kegiatan sosial.</p>
+            <p>Ayo ikuti berbagai kegiatan seru di kelas 8.3, mulai dari lomba, outing class, hingga kegiatan sosial.
+            </p>
         </div>
         <div class="info-card hover-effect">
             <h3>Informasi web ini</h3>
-            <p>Web ini dibangun 80% oleh KECERDASAN BUATAN (AI), 20% sisanya dibangun menggunakan kecerdasan manusia.</p>
+            <p>Web ini dibangun 80% oleh KECERDASAN BUATAN (AI), 20% sisanya dibangun menggunakan kecerdasan manusia.
+            </p>
         </div>
         <div class="info-card hover-effect">
             <h3>Informasi PR</h3>
@@ -266,6 +276,7 @@
     <details close>
         <summary class="text-2xl font-bold mb-4 text-black-600 cursor-pointer">Informasi Kelas</summary>
         <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="informasi-kelas">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">"Cella Sapientiae"</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <h3 class="font-semibold mb-2">Wali Kelas</h3>
@@ -273,10 +284,9 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Ketua Kelas</h3>
-                    <p><a href="https://vinn559.github.io/portofolio/" class="text-blue-500 hover:underline">Albertus
-                            Kevin Daniswara</a> <span class="text-green-500">(A+)</span></p>
+                    <p>Albertus Kevin Daniswara <span class="text-green-500">(A+)</span></p>
                 </div>
-                <div>
+                <div>                   
                     <h3 class="font-semibold mb-2">Wakil Ketua Kelas</h3>
                     <p>Aulia Isra Supandi <span class="text-green-500">(A+)</span></p>
                 </div>
@@ -286,7 +296,7 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Sekretaris</h3>
-                    <p>Reyhan Rahadian Maulana Saputra <span class="text-red-500">(C)</span></p>
+                    <p>Septia Fitriani <span class="text-green-500">(A)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Bendahara</h3>
@@ -294,23 +304,23 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Bendahara</h3>
-                    <p>Siti Maulinda <span class="text-yellow-500">(B-)</span></p>
+                    <p>Siti Maulinda <span class="text-green-500">(A)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Informatika</h3>
-                    <p>Muhammad Ibnu Rajib <span class="text-green-500">(A)</span></p>
+                    <p>Muhammad Ibnu Rajib <span class="text-green-500">(A+)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Informatika</h3>
-                    <p> <span class="text-black-500">(-)</span></p>
+                    <p>Shalsabela Suherman <span class="text-green-500">(A)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Keamanan</h3>
-                    <p>Bayu Saktiawan <span class="text-red-500">(C-)</span></p>
+                    <p>M. Syahril Syahputra <span class="text-green-500">(A)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Keamanan</h3>
-                    <p>Siti Hanna <span class="text-yellow-500">(B-)</span></p>
+                    <p>Siti Hanna <span class="text-green-500">(A)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Kebersihan</h3>
@@ -318,15 +328,15 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Kebersihan</h3>
-                    <p>Septia Fitriani <span class="text-red-500">(C)</span></p>
+                    <p>Alya <span class="text-green-500">(A+)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Rohis</h3>
-                    <p>Febrian Aryanto <span class="text-yellow-500">(B)</span></p>
+                    <p>Febrian Aryanto <span class="text-green-500">(A)</span></p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-2">Wakil Rohis</h3>
-                    <p>Andien Mauliddina Rizki <span class="text-yellow-500">(B)</span></p>
+                    <p>Andien Mauliddina Rizki <span class="text-green-500">(A)</span></p>
                 </div>
             </div>
         </div>
@@ -629,19 +639,19 @@
         </div>
     </details>
 
-   <!-- Kegiatan -->
-   <details close>
-    <summary>Informasi Tambahan</summary>
-    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Informasi</h2>
-        <ul class="list-disc pl-6">
-            <li>Setiap Senin Dan Jumat Wajib Membawa Buku Cerita Dan Topi</li>
-            <li>Setiap Rabu Wajib Membawa Baju Ganti Olahraga dan Membawa Buku Lagu</li>
-            <li>Setiap Pakai Baju Pramuka Wajib Pakai Kacu</li>
-            <li>Kaos Kaki Harus sesuai Dengan Harinnya </li>
-        </ul>
-    </div>
-</details>
+    <!-- Kegiatan -->
+    <details close>
+        <summary>Informasi Tambahan</summary>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Informasi</h2>
+            <ul class="list-disc pl-6">
+                <li>Setiap Senin Dan Jumat Wajib Membawa Buku Cerita Dan Topi</li>
+                <li>Setiap Rabu Wajib Membawa Baju Ganti Olahraga dan Membawa Buku Lagu</li>
+                <li>Setiap Pakai Baju Pramuka Wajib Pakai Kacu</li>
+                <li>Kaos Kaki Harus sesuai Dengan Harinnya </li>
+            </ul>
+        </div>
+    </details>
 
 
     <!DOCTYPE html>
