@@ -15,11 +15,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
+        /* Enhanced Color Palette */
+        :root {
+            --primary-color: #2c3e50;      /* Deep Navy Blue */
+            --secondary-color: #3498db;    /* Soft Blue */
+            --accent-color: #e74c3c;       /* Vibrant Red */
+            --background-light: #f4f6f7;   /* Light Gray-Blue */
+            --text-primary: #2c3e50;       /* Dark Blue-Gray */
+            --text-secondary: #34495e;     /* Slightly Lighter Blue-Gray */
+        }
+
         /* Default Light Mode Styles */
         body {
-            background: linear-gradient(to bottom, #ff7a5c, #ffd1dc);
+            background: linear-gradient(to bottom, var(--primary-color), var(--background-light)); 
             font-family: 'Poppins', sans-serif;
-            color: #333;
+            color: var(--text-primary);
             transition: background 0.3s ease, color 0.3s ease;
         }
 
@@ -34,7 +44,7 @@
         summary {
             cursor: pointer;
             font-weight: bold;
-            color: #000000;
+            color: var(black);
             margin-bottom: 0.5rem;
         }
 
@@ -42,7 +52,7 @@
             white-space: nowrap;
             overflow: hidden;
             box-sizing: border-box;
-            background-color: #ff5733;
+            background-color: var(--accent-color);
             color: #fff;
             padding: 0.5rem;
             font-weight: bold;
@@ -68,7 +78,7 @@
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1.5rem;
             padding: 2rem;
-            background-color: #fafafa;
+            background-color: var(--background-light);
             border-radius: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -79,6 +89,7 @@
             padding: 1.25rem;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
+            border: 1px solid rgba(44, 62, 80, 0.1);
         }
 
         .info-card:hover {
@@ -89,18 +100,18 @@
         .info-card h3 {
             font-size: 1.4rem;
             font-weight: 600;
-            color: #ff5733;
+            color: var(--primary-color);
         }
 
         .info-card p {
             font-size: 1.05rem;
-            color: #555;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
         .hover-effect:hover {
-            background-color: #ffe6e0;
-            color: #ff5733;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -118,13 +129,13 @@
             padding: 1rem;
             text-align: center;
             font-weight: bold;
-            color: #ff5733;
+            color: var(--primary-color);
             border-bottom: 1px solid #ddd;
         }
 
         .mobile-menu-link:hover {
-            background-color: #ffe6e0;
-            color: #ff5733;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
         }
 
         #menu-toggle {
@@ -137,76 +148,100 @@
             margin-left: 10px;
         }
 
-        /* Back to Top Button Styles */
+        /* Back to Top Button CSS */
         #backToTop {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #ff5733;
-            color: white;
-            padding: 12px 18px;
+            background-color: #ffffff;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            display: none;
-            transition: opacity 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        #backToTop::before {
+            content: '↑';
+            font-size: 24px;
+            font-weight: bold;
         }
 
         #backToTop:hover {
-            background-color: #ff4500;
-            box-shadow: 0 16px 32px rgba(255, 69, 0, 0.4);
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(0) scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
-    /* Dynamic Island */
-#dynamicIsland {
-    position: fixed;
-    top: 10px; /* Adjust as needed for vertical position */
-    left: 50%;
-    transform: translateX(-50%) translateY(-20px); /* Start off-screen vertically */
-    z-index: 20;
-    background-color: #000;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 0.5rem 1rem; /* Reduced padding for a more compact size */
-    border-radius: 25px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 200px; /* Reduced width for a more compact island */
-    opacity: 0; /* Initially hidden */
-    visibility: hidden; /* Initially hidden */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
-}
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
-/* When Dynamic Island is shown */
-#dynamicIsland.show {
-    opacity: 1;
-    visibility: visible; /* Make it visible */
-    transform: translateX(-50%) translateY(0); /* Move it into place */
-}
+        /* Dynamic Island */
+        #dynamicIsland {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            z-index: 20;
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: space-evenly;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
 
-.dynamic-icon {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    color: white;
-}
+        /* When Dynamic Island is shown */
+        #dynamicIsland.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
 
-.dynamic-icon:hover {
-    transform: scale(1.2);
-}
+        .dynamic-icon {
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: var(--secondary-color);
+        }
 
-.dynamic-icon i {
-    font-size: 1.5rem; /* Reduced icon size for better fit */
-}
+        .dynamic-icon:hover {
+            transform: scale(1.2);
+            color: var(--accent-color);
+        }
 
+        .dynamic-icon i {
+            font-size: 1.5rem;
+        }
 
+        /* Navbar */
+        nav {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color)) !important;
+        }
     </style>
-
 </head>
 
 <body class="flex flex-col min-h-screen">
     <!-- Navbar -->
-    <nav class="bg-gradient-to-r from-pink-600 to-orange-500 shadow-lg relative">
+    <nav class="shadow-lg relative">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center py-4">
             <div class="flex items-center">
                 <span class="font-semibold text-white text-2xl">Kelas 8.3</span>
@@ -226,7 +261,7 @@
     </nav>
 
     <!-- Running Text -->
-    <div class="running-text bg-orange-500 text-white py-2">
+    <div class="running-text">
         <span>"Selamat Datang Di Kelas 8.3!! One Team One Dream!"</span>
     </div>
 
@@ -237,14 +272,10 @@
         </div>
         <div class="info-card hover-effect">
             <h3>Tujuan Kelas 8.3</h3>
-            <p>Mencapai hasil terbaik dalam akademik dan non-akademik serta menjalin hubungan yang harmonis.</p>
+            <p>Mencapai hasil terbaik dalam segala hal yang kami lakukan.</p>
         </div>
         <div class="info-card hover-effect">
-            <h3>Agenda Kegiatan</h3>
-            <p>Ayo ikuti berbagai kegiatan seru di kelas 8.3, mulai dari lomba, outing class, hingga kegiatan sosial.</p>
-        </div>
-        <div class="info-card hover-effect">
-            <h3>Informasi web ini</h3>
+            <h3>Informasi Web</h3>
             <p>Web ini dibangun 80% oleh KECERDASAN BUATAN (AI), 20% sisanya oleh Riza dan teman-teman.</p>
         </div>
         <div class="info-card hover-effect">
@@ -253,35 +284,50 @@
         </div>
     </section>
 
-   <!-- Dynamic Island -->
-<div id="dynamicIsland" class="flex justify-around">
-    <!-- Email Icon -->
-    <a href="kelas8.3pgri@gmail.com" class="dynamic-icon" target="_blank">
-        <i class="fas fa-envelope"></i>
-    </a>
-    <!-- Instagram Icon -->
-    <a href="https://www.instagram.com/8.3_charming?igsh=d2lxZDJ0MDVyMmly" class="dynamic-icon" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-</div>
+    <!-- Dynamic Island -->
+    <div id="dynamicIsland" class="flex justify-around">
+        <a href="mailto:kelas8.3pgri@gmail.com" class="dynamic-icon" target="_blank">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.instagram.com/8.3_charming?igsh=d2lxZDJ0MDVyMmly" class="dynamic-icon" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop"></button>
 
     <script>
-        // Toggle Dynamic Island visibility with smooth transition
+        // Toggle Dynamic Island visibility
         document.getElementById('menu-toggle').addEventListener('click', function () {
             let dynamicIsland = document.getElementById('dynamicIsland');
             if (dynamicIsland.classList.contains('show')) {
-                dynamicIsland.classList.remove('show'); // Hide Dynamic Island with smooth transition
+                dynamicIsland.classList.remove('show');
             } else {
-                dynamicIsland.classList.add('show'); // Show Dynamic Island with smooth transition
+                dynamicIsland.classList.add('show');
             }
+        });
+
+        // Back to Top button functionality
+        window.onscroll = function () {
+            let backToTopButton = document.getElementById("backToTop");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        }
+
+        document.getElementById('backToTop').addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
 
 </html>
-
-
 <div class="container mx-auto px-4 py-8">
     <!-- Informasi Kelas -->
     <details close>
