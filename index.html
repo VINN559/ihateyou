@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelas 8.3</title>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="34.png" type="image/x-icon">
-
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <title>Loading Screen</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* Enhanced Color Palette */
         :root {
             --primary-color: #2c3e50;      /* Deep Navy Blue */
             --secondary-color: #3498db;    /* Soft Blue */
@@ -25,1279 +15,205 @@
             --text-secondary: #34495e;     /* Slightly Lighter Blue-Gray */
         }
 
-        /* Default Light Mode Styles */
-        body {
-            background: linear-gradient(to bottom, var(--primary-color), var(--background-light)); 
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-primary);
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        details {
-            background: #fff;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        summary {
-            cursor: pointer;
-            font-weight: bold;
-            color: var(black);
-            margin-bottom: 0.5rem;
-        }
-
-        .running-text {
-            white-space: nowrap;
-            overflow: hidden;
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            background-color: var(--accent-color);
-            color: #fff;
-            padding: 0.5rem;
-            font-weight: bold;
         }
 
-        .running-text span {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
         }
 
-        @keyframes marquee {
-            0% {
-                transform: translateX(100%);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .info-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem;
-            background-color: var(--background-light);
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .info-card {
-            background-color: #fff;
-            border-radius: 1rem;
-            padding: 1.25rem;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-            border: 1px solid rgba(44, 62, 80, 0.1);
-        }
-
-        .info-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
-        }
-
-        .info-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .info-card p {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .hover-effect:hover {
-            background-color: rgba(52, 152, 219, 0.1);
-            color: var(--primary-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        #mobile-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: #ffffff;
-            z-index: 10;
-            display: none;
-        }
-
-        .mobile-menu-link {
-            padding: 1rem;
-            text-align: center;
-            font-weight: bold;
-            color: var(--primary-color);
-            border-bottom: 1px solid #ddd;
-        }
-
-        .mobile-menu-link:hover {
-            background-color: rgba(52, 152, 219, 0.1);
-            color: var(--primary-color);
-        }
-
-        #menu-toggle {
-            z-index: 20;
-        }
-
-        .navbar-logo img {
-            max-width: 60px;
-            height: auto;
-            margin-left: 10px;
-        }
-
-        /* Back to Top Button CSS */
-        #backToTop {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ffffff;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .loading-container {
             display: flex;
-            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            align-items: center;
+            animation: backgroundAnimation 10s ease infinite;
+            perspective: 1000px;
         }
 
-        #backToTop::before {
-            content: '↑';
-            font-size: 24px;
-            font-weight: bold;
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); }
+            25% { background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); }
+            50% { background: linear-gradient(45deg, var(--accent-color), var(--primary-color)); }
+            75% { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); }
+            100% { background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); }
         }
 
-        #backToTop:hover {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            transform: translateY(0) scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        #backToTop.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        /* Dynamic Island */
-        #dynamicIsland {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-20px);
-            z-index: 20;
-            background-color: var(--primary-color);
+        .content {
             display: flex;
-            justify-content: space-evenly;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            height: 80%;
             text-align: center;
-            width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            animation: contentFadeIn 1s ease-in-out;
+            flex-direction: column;
         }
 
-        /* When Dynamic Island is shown */
-        #dynamicIsland.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
+        @keyframes contentFadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
-        .dynamic-icon {
-            cursor: pointer;
-            transition: transform 0.3s ease, color 0.3s ease;
-            color: var(--secondary-color);
+        .left-side, .right-side {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .dynamic-icon:hover {
-            transform: scale(1.2);
-            color: var(--accent-color);
+        .logo {
+            width: 250px;
+            height: auto;
+            filter: drop-shadow(0 15px 10px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        .dynamic-icon i {
+        .logo:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 25px 20px rgba(0, 0, 0, 0.5));
+        }
+
+        .loading-text {
+            color: var(--background-light);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--background-light);
+            letter-spacing: 3px;
+            animation: textSlideIn 0.5s ease-out;
+        }
+
+        @keyframes textSlideIn {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .loading-text p {
             font-size: 1.5rem;
+            opacity: 0.9;
+            color: var(--background-light);
         }
 
-        /* Navbar */
-        nav {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color)) !important;
+        .loader {
+            border: 6px solid var(--background-light);
+            border-top: 6px solid var(--accent-color);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+            margin-top: 20px;
+            animation-duration: 1.5s;
+            margin-bottom: 20px;
         }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            color: var(--background-light);
+            opacity: 0.5;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .left-side, .right-side {
+                width: 100%;
+                height: 50%;
+            }
+
+            .logo {
+                width: 200px;
+            }
+
+            .loading-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .loading-text p {
+                font-size: 1.2rem;
+            }
+
+            .loader {
+                width: 50px;
+                height: 50px;
+            }
+
+            .footer-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background-color: #ddd;
+            margin-top: 30px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: var(--accent-color);
+            animation: progressAnimation 3s linear forwards;
+        }
+
+        @keyframes progressAnimation {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
     </style>
 </head>
-
-<body class="flex flex-col min-h-screen">
-    <!-- Navbar -->
-    <nav class="shadow-lg relative">
-        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center py-4">
-            <div class="flex items-center">
-                <span class="font-semibold text-white text-2xl">Kelas 8.3</span>
-                <div class="navbar-logo flex items-center">
-                    <img src="89.png" alt="Logo Kelas 8.3 1">
-                    <img src="34.png" alt="Logo Kelas 8.3 2">
-                    <img src="opg.png" alt="Logo Kelas 8.3 3">
+<body>
+    <div class="loading-container">
+        <div class="content">
+            <div class="left-side">
+                <img src="loading.png" alt="Logo" class="logo">
+            </div>
+            <div class="right-side">
+                <div class="loading-text">
+                    <h1>Loading</h1>
+                    <div class="loader"></div>
+                    <p>Mohon tunggu sebentar...</p>
+                    <p class="footer-text">Development By Digital Team 8.3</p>
+                    <div class="progress-container">
+                        <div class="progress-bar"></div>
+                    </div>
                 </div>
             </div>
-            <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
         </div>
-    </nav>
-
-    <!-- Running Text -->
-    <div class="running-text">
-        <span>"Selamat Datang Di Kelas 8.3!! One Team One Dream!"</span>
     </div>
 
-    <section class="info-section">
-        <div class="info-card hover-effect">
-            <h3>Visi Kelas 8.3</h3>
-            <p>Kami berkomitmen untuk bersama-sama belajar dan berprestasi dengan semangat kebersamaan yang tinggi.</p>
-        </div>
-        <div class="info-card hover-effect">
-            <h3>Tujuan Kelas 8.3</h3>
-            <p>Mencapai hasil terbaik dalam segala hal yang kami lakukan.</p>
-        </div>
-        <div class="info-card hover-effect">
-            <h3>Informasi Web</h3>
-            <p>Web ini dibangun 60% oleh KECERDASAN BUATAN (AI)</p>
-        </div>
-        <div class="info-card hover-effect">
-            <h3>Fun Fact</h3>
-            <p>"Sistem akan mudah ditipu jika pengguna terlalu pintar."</p>
-        </div>
-        <div class="info-card hover-effect">
-            <h3>Motivasi sederhana</h3>
-            <p>"Dunia membutuhkan ide-ide kreatifmu."</p>
-        </div>
-        <div class="info-card hover-effect">
-            <h3>Informasi Pr/Info</h3>
-            <p>-Nothing-</p>
-        </div>
-    </section>
-    
-  <!-- Dynamic Island -->
-  <div id="dynamicIsland" class="flex justify-around">
-    <a href="mailto:kelas8.3pgri@gmail.com" class="dynamic-icon" target="_blank">
-        <i class="fas fa-envelope"></i>
-    </a>
-    <a href="https://www.instagram.com/8.3_charming?igsh=d2lxZDJ0MDVyMmly" class="dynamic-icon" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://g.co/kgs/KS9YTyu" class="dynamic-icon" target="_blank">
-        <i class="fab fa-google"></i>
-    </a>
-    <a href="https://youtube.com/@smppgriciteureup6665?si=_52tGtrsvUAyaBsY" class="dynamic-icon" target="_blank">
-        <i class="fab fa-youtube"></i>
-    </a>
-</div>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop"></button>
-
     <script>
-        // Toggle Dynamic Island visibility
-        document.getElementById('menu-toggle').addEventListener('click', function () {
-            let dynamicIsland = document.getElementById('dynamicIsland');
-            if (dynamicIsland.classList.contains('show')) {
-                dynamicIsland.classList.remove('show');
-            } else {
-                dynamicIsland.classList.add('show');
-            }
-        });
-
-        // Back to Top button functionality
-        window.onscroll = function () {
-            let backToTopButton = document.getElementById("backToTop");
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
+        // Pengalihan setelah halaman dimuat dan 3 detik
+        window.onload = function() {
+            setTimeout(function() {
+                window.location.href = 'tes.html'; // Arahkan ke index.html
+            }, 3000); // 3000 ms = 3 detik
         }
-
-        document.getElementById('backToTop').addEventListener('click', function () {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
     </script>
 </body>
-
 </html>
-
-
-<div class="container mx-auto px-4 py-8">
-    <!-- Informasi Kelas -->
-    <details close>
-        <summary class="text-2xl font-bold mb-4 text-black-600 cursor-pointer">Informasi Kelas</summary>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="informasi-kelas">
-            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">"Cella Sapientiae"</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold mb-2">Wali Kelas</h3>
-                    <p>Ahmad Mussopa S.Pd.I</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Ketua Kelas</h3>
-                    <p>Albertus Kevin Daniswara <span class="text-green-500">(A+)</span></p>
-                </div>
-                <div>                   
-                    <h3 class="font-semibold mb-2">Wakil Ketua Kelas</h3>
-                    <p>Aulia Isra Supandi <span class="text-green-500">(A+)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Sekretaris</h3>
-                    <p>Sahira Aulya <span class="text-green-500">(A+)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Wakil Sekretaris</h3>
-                    <p>Septia Fitriani <span class="text-green-500">(A)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Bendahara</h3>
-                    <p>Muamar Khaikal Al-Kahfi <span class="text-green-500">(A+)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Wakil Bendahara</h3>
-                    <p>Siti Maulinda <span class="text-green-500">(A)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Informatika</h3>
-                    <p>Muhammad Ibnu Rajib <span class="text-green-500">(A+)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Wakil Informatika</h3>
-                    <p>Shalsabela Suherman <span class="text-green-500">(A)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Keamanan</h3>
-                    <p>M. Syahril Syahputra <span class="text-green-500">(A)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Wakil Keamanan</h3>
-                    <p>Siti Hanna <span class="text-green-500">(A)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Kebersihan</h3>
-                    <p>Muhamad Fauzan Faddilah <span class="text-green-500">(A+)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Wakil Kebersihan</h3>
-                    <p>Alya <span class="text-green-500">(A+)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Rohis</h3>
-                    <p>Febrian Aryanto <span class="text-green-500">(A)</span></p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Wakil Rohis</h3>
-                    <p>Andien Mauliddina Rizki <span class="text-green-500">(A)</span></p>
-                </div>
-            </div>
-        </div>
-    </details>
-
-    <!-- Jadwal Pelajaran -->
-    <details close>
-        <summary>Jadwal Pelajaran</summary>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="jadwal-pelajaran">
-            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Jadwal Pelajaran</h2>
-
-            <!-- Search Bar -->
-            <div class="mb-4">
-                <label for="search" class="block text-sm font-medium text-gray-700">Search</label>
-                <input type="text" id="search"
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Cari jadwal pelajaran" onkeyup="filterTable()">
-            </div>
-
-            <!-- Table for Schedule -->
-            <div class="overflow-x-auto">
-                <table class="min-w-full border-collapse border border-gray-300">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="py-2 px-4 border border-gray-300 text-left">Hari</th>
-                            <th class="py-2 px-4 border border-gray-300 text-left">Mata Pelajaran</th>
-                            <th class="py-2 px-4 border border-gray-300 text-left">Guru</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="py-2 px-4 border border-gray-300">Senin</td>
-                            <td class="py-2 px-4 border border-gray-300">Ilmu Pengetahuan Sosial</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Nurjihan S.Pd</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Matematika</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Nurwanti Ayu M S.Pd</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Bahasa Sunda</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Siska S.Pd.I</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Bahasa Inggris</td>
-                            <td class="py-2 px-4 border border-gray-300">Miss Naely U M S.Pd.I</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border border-gray-300">Selasa</td>
-                            <td class="py-2 px-4 border border-gray-300">Pendidikan Kewarganegaraan</td>
-                            <td class="py-2 px-4 border border-gray-300">Pak Mussopa S.Pd.I</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Ilmu Pengetahuan Alam</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Elisza S.Pd</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Pendidikan Agama Islam</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Anita Rahayu S.Pd.I</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border border-gray-300">Rabu</td>
-                            <td class="py-2 px-4 border border-gray-300">Bahasa Indonesia</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Yolanda Lebertian S.Pd</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Seni Budaya</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Suryani Oktaviani</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Pendidikan Jasmani</td>
-                            <td class="py-2 px-4 border border-gray-300">Pak Dede Bunyamin S.Pd</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border border-gray-300">Kamis</td>
-                            <td class="py-2 px-4 border border-gray-300">Ilmu Pengetahuan Alam</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Elisza S.Pd</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Bahasa Inggris</td>
-                            <td class="py-2 px-4 border border-gray-300">Miss Naely U S S.Pd.I</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Matematika</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Nurwanti Ayu M S.Pd</td>
-                        </tr>
-                        <tr>
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Informatika</td>
-                            <td class="py-2 px-4 border border-gray-300">Pak Rizky Magfiroh S.I.Kom</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border border-gray-300">Jumat</td>
-                            <td class="py-2 px-4 border border-gray-300">Informatika</td>
-                            <td class="py-2 px-4 border border-gray-300">Pak Rizky Magfiroh S.I.Kom</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Ilmu Pengetahuan Sosial</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Nurjihan S.Pd</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border border-gray-300">-</td>
-                            <td class="py-2 px-4 border border-gray-300">Bahasa Indonesia</td>
-                            <td class="py-2 px-4 border border-gray-300">Ibu Yolanda Lebertian S.Pd</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </details>
-
-    <script>
-        // Function to filter table based on search input
-        function filterTable() {
-            const searchInput = document.getElementById('search').value.toLowerCase();
-            const tableRows = document.querySelectorAll('#jadwal-pelajaran tbody tr');
-
-            tableRows.forEach(row => {
-                const columns = row.querySelectorAll('td');
-                let match = false;
-
-                columns.forEach(col => {
-                    if (col.textContent.toLowerCase().includes(searchInput)) {
-                        match = true;
-                    }
-                });
-
-                if (match) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
-    </script>
-
-    <style>
-        /* Responsive design for the table */
-        @media screen and (max-width: 768px) {
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-
-            table th,
-            table td {
-                padding: 8px;
-                font-size: 14px;
-            }
-
-            .overflow-x-auto {
-                overflow-x: auto;
-            }
-        }
-    </style>
-
-
-
-    <!-- Daftar Siswa Kelas 8.3 -->
-    <details close>
-        <summary>Daftar Siswa Kelas 8.3</summary>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Daftar Siswa Kelas 8.3</h2>
-            <ul class="list-disc pl-6">
-                <li>1. Albertus Kevin Daniswara</li>
-                <li>2. Alya</li>
-                <li>3. Alycia Tan</li>
-                <li>4. Andien Maulidina Rizki</li>
-                <li>5. Aulia Irsa Supandi</li>
-                <li>6. Bayu Saktiawan</li>
-                <li>7. Devara Alvarizki</li>
-                <li>8. Evita Desta Riyani</li>
-                <li>9. Fanny</li>
-                <li>10. Febrian Aryanto</li>
-                <li>11. Hayfa Inka Siti Luthfiyah</li>
-                <li>12. Jovanka Olivia</li>
-                <li>13. Lie Owen</li>
-                <li>14. M. Syahril Syahputra</li>
-                <li>15. Marsya Nazila</li>
-                <li>16. Muamar Haikal Al Kahfi</li>
-                <li>17. Muhammad Fauzan Fadilah</li>
-                <li>18. Muhammad Ibnu Rajib</li>
-                <li>19. Muhammad Fayumi</li>
-                <li>20. Nofi Putri Alifiah</li>
-                <li>21. Prabu Trimo Ngalah</li>
-                <li>22. Rapi</li>
-                <li>23. Restianti Anjarwati</li>
-                <li>24. Reyhan Rahadian Maulana Saputra</li>
-                <li>25. Rizki Haris Riyadi</li>
-                <li>26. Muhammad Sandi</li>
-                <li>27. Robi Ardiansyah</li>
-                <li>28. Safa Julia Putri Ar-Rohmah</li>
-                <li>29. Sahira Aulya</li>
-                <li>30. Salma Nur Kholisah</li>
-                <li>31. Septia Fitriani</li>
-                <li>32. Shalsabela Suherman</li>
-                <li>33. Siti Hana Putri</li>
-                <li>34. Siti Maulinda</li>
-                <li>35. Siti Nurul Zakhiah Maulidah</li>
-                <li>36. Widya Raissa Annazura</li>
-                <li>37. Zhahira Syailla</li>
-            </ul>
-        </div>
-    </details>
-
-
-    <!-- Jadwal Piket -->
-    <details close>
-        <summary>Jadwal Piket</summary>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="jadwal-piket">
-            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Jadwal Piket</h2>
-            <table class="table-auto w-full border-collapse">
-                <thead>
-                    <tr>
-                        <th class="border px-4 py-2">Hari</th>
-                        <th class="border px-4 py-2">Anggota</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="border px-4 py-2 font-semibold">Senin</td>
-                        <td class="border px-4 py-2">
-                            Kevin, Bayu, Hayfa, Haikal, Prabu, Rizki, Septia, Widya
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border px-4 py-2 font-semibold">Selasa</td>
-                        <td class="border px-4 py-2">
-                            Alya, Devara, Jovanka, Fauzan, Rapi, Robi, Shalsabela, Zhahira
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border px-4 py-2 font-semibold">Rabu</td>
-                        <td class="border px-4 py-2">
-                            Alycia, Evita, Owen, Ibnu, Resti, Safa, Hanna
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border px-4 py-2 font-semibold">Kamis</td>
-                        <td class="border px-4 py-2">
-                            Andien, Fanny, Syahril, Fayumi, Reyhan, Sahira, Linda
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border px-4 py-2 font-semibold">Jumat</td>
-                        <td class="border px-4 py-2">
-                            Aulia, Febri, Marsya, Novi, Sandi, Salma, Nurul
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </details>
-
-
-    <!-- Jadwal Seragam -->
-    <details close>
-        <summary>Jadwal Seragam</summary>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="seragam">
-            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Seragam</h2>
-            <ul class="list-disc pl-5">
-                <li>Senin: Baju Putih Biru</li>
-                <li>Selasa: Baju Batik</li>
-                <li>Rabu: Baju Putih Biru Dan Rompi</li>
-                <li>Kamis: Baju Pramuka Dengan Kacu</li>
-                <li>Jumat: Baju Muslim</li>
-            </ul>
-        </div>
-    </details>
-
-
-    <!-- Jadwal Ekstrakurikuler -->
-    <details close>
-        <summary>Jadwal Ekstrakurikuler</summary>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="eskul">
-            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Ekstrakurikuler</h2>
-            <ul class="list-disc pl-5">
-                <li>Senin: Tahfidz - 10:00 WIB</li>
-                <li>Senin: Futsal - 15:30 WIB</li>
-                <li>Selasa: Tari - 14:00 WIB</li>
-                <li>Selasa: Marawis Dan Basket - 15:30</li>
-                <li>Rabu: Karate - 14:30</li>
-                <li>Kamis: Pramuka - Pulang Sekolah</li>
-                <li>Kamis: Paduan Suara Dan Volly - 14:30</li>
-                <li>Jumat: Tahfidz - 13:30</li>
-                <li>Jumat: Silat Dan Badminton - 14:00</li>
-                <li>Sabtu: Palang Merah Remaja - 10:00</li>
-                <li>Sabtu: Paskibra - 13:00</li>
-            </ul>
-        </div>
-    </details>
-
-    <!-- Kegiatan -->
-    <details close>
-        <summary>Informasi Tambahan</summary>
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Informasi</h2>
-            <ul class="list-disc pl-6">
-                <li>Setiap Senin Dan Jumat Wajib Membawa Buku Cerita Dan Topi</li>
-                <li>Setiap Rabu Wajib Membawa Baju Ganti Olahraga dan Membawa Buku Lagu</li>
-                <li>Setiap Pakai Baju Pramuka Wajib Pakai Kacu</li>
-                <li>Kaos Kaki Harus sesuai Dengan Harinnya </li>
-                <li>Setiap Senin Wajib Tahfidz</li>
-            </ul>
-        </div>
-    </details>
-
-   <!-- Team Digital -->
-<details close>
-    <summary>Team Digital 8.3</summary>
-    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Informatika Team</h2>
-        <ul class="list-disc pl-6">
-            <li>Albertus Kevin Daniswara</li>
-            <li>Muamar Khaikal Al-Kahfi</li>
-            <li>Muhammad Ibnu Rajib</li>
-            <li>Shalsabela Suherman</li>
-            <li>Fanny</li>
-            <li>Alycia Tan</li>
-        </ul>
-    </div>
-</details>
-
-
-
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Waktu dan Hitung Mundur</title>
-        <style>
-            .bg-white {
-                background-color: white;
-            }
-
-            .rounded-lg {
-                border-radius: 8px;
-            }
-
-            .shadow-md {
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            .p-6 {
-                padding: 1.5rem;
-            }
-
-            .mb-6 {
-                margin-bottom: 1.5rem;
-            }
-
-            .text-2xl {
-                font-size: 1.5rem;
-            }
-
-            .font-bold {
-                font-weight: bold;
-            }
-
-            .text-blue-600 {
-                color: #1d4ed8;
-            }
-
-            .cursor-pointer {
-                cursor: pointer;
-            }
-
-            .border {
-                border: 1px solid #ccc;
-            }
-
-            .calc-button {
-                background-color: #4a90e2;
-                color: white;
-                padding: 10px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                margin: 5px 0;
-            }
-
-            .clear-button {
-                background-color: #e94e77;
-            }
-
-            .calc-button:hover {
-                opacity: 0.9;
-            }
-
-            .countdown {
-                font-size: 1.5rem;
-                color: #ff5733;
-                font-weight: bold;
-                text-align: center;
-            }
-        </style>
-    </head>
-
-    <body>
-        <!DOCTYPE html>
-        <html lang="en">
-
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Waktu dan Hitung Mundur</title>
-            <style>
-                .bg-white {
-                    background-color: white;
-                }
-
-                .rounded-lg {
-                    border-radius: 8px;
-                }
-
-                .shadow-md {
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                }
-
-                .p-6 {
-                    padding: 1.5rem;
-                }
-
-                .mb-6 {
-                    margin-bottom: 1.5rem;
-                }
-
-                .text-2xl {
-                    font-size: 1.5rem;
-                }
-
-                .font-bold {
-                    font-weight: bold;
-                }
-
-                .text-blue-600 {
-                    color: #1d4ed8;
-                }
-
-                .cursor-pointer {
-                    cursor: pointer;
-                }
-
-                .border {
-                    border: 1px solid #ccc;
-                }
-
-                .calc-button {
-                    background-color: #4a90e2;
-                    color: white;
-                    padding: 10px;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    margin: 5px 0;
-                }
-
-                .clear-button {
-                    background-color: #e94e77;
-                }
-
-                .calc-button:hover {
-                    opacity: 0.9;
-                }
-
-                .countdown {
-                    font-size: 1.25rem;
-                    color: #ff5733;
-                    font-weight: bold;
-                }
-            </style>
-        </head>
-
-        <body>
-            <!DOCTYPE html>
-            <html lang="en">
-
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Waktu dan Hitung Mundur</title>
-                <style>
-                    .bg-white {
-                        background-color: white;
-                    }
-
-                    .rounded-lg {
-                        border-radius: 8px;
-                    }
-
-                    .shadow-md {
-                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                    }
-
-                    .p-6 {
-                        padding: 1.5rem;
-                    }
-
-                    .mb-6 {
-                        margin-bottom: 1.5rem;
-                    }
-
-                    .text-2xl {
-                        font-size: 1.5rem;
-                    }
-
-                    .font-bold {
-                        font-weight: bold;
-                    }
-
-                    .text-blue-600 {
-                        color: #1d4ed8;
-                    }
-
-                    .cursor-pointer {
-                        cursor: pointer;
-                    }
-
-                    .border {
-                        border: 1px solid #ccc;
-                    }
-
-                    .calc-button {
-                        background-color: #4a90e2;
-                        color: white;
-                        padding: 10px;
-                        border: none;
-                        border-radius: 5px;
-                        cursor: pointer;
-                        margin: 5px 0;
-                    }
-
-                    .clear-button {
-                        background-color: #e94e77;
-                    }
-
-                    .calc-button:hover {
-                        opacity: 0.9;
-                    }
-
-                    .countdown {
-                        font-size: 1.25rem;
-                        color: #ff5733;
-                        font-weight: bold;
-                    }
-                </style>
-            </head>
-
-            <body>
-                <details>
-                    <summary>Waktu</summary>
-                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-                        <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Waktu</h2>
-                        <ul class="list-disc pl-6">
-                            <li id="waktuReal">Waktu Sekarang (Bogor): </li>
-                            <li id="waktuNorwegia">Waktu Norwegia: </li>
-                            <li id="waktuSwiss">Waktu Swiss: </li>
-                            <li id="waktuSwedia">Waktu Swedia: </li>
-                            <li id="waktuKanada">Waktu Kanada: </li>
-                            <li id="waktuFinlandia">Waktu Finlandia: </li>
-                            <li id="waktuDenmark">Waktu Denmark: </li>
-                            <li id="waktuAustralia">Waktu Australia: </li>
-                            <li id="waktuBelanda">Waktu Belanda: </li>
-                            <li id="waktuJerman">Waktu Jerman: </li>
-                            <li id="waktuIslandia">Waktu Islandia: </li>
-                            <li id="waktuSingapura">Waktu Singapura: </li>
-                            <li id="waktuMalaysia">Waktu Malaysia: </li>
-                            <li id="waktuThailand">Waktu Thailand: </li>
-                            <li id="waktuFilipina">Waktu Filipina: </li>
-                            <li id="waktuVietnam">Waktu Vietnam: </li>
-                            <li id="waktuBrunei">Waktu Brunei: </li>
-                            <li id="waktuKamboja">Waktu Kamboja: </li>
-                            <li id="waktuLaos">Waktu Laos: </li>
-                            <li id="waktuMyanmar">Waktu Myanmar: </li>
-                            <li id="waktuIndonesia">Waktu Indonesia: </li>
-                            <li id="waktuJepang">Waktu Jepang: </li>
-                            <li id="waktuRusia">Waktu Rusia: </li>
-                            <li id="waktuKoreaSelatan">Waktu Korea Selatan: </li>
-                            <li id="waktuKoreaUtara">Waktu Korea Utara: </li>
-                            <li id="waktuChina">Waktu China: </li>
-                            <li id="waktuArabSaudi">Waktu Arab Saudi: </li>
-                            <li id="waktuUAE">Waktu Uni Emirat Arab: </li>
-                            <li id="waktuQatar">Waktu Qatar: </li>
-                            <li id="waktuKuwait">Waktu Kuwait: </li>
-                            <li id="waktuOman">Waktu Oman: </li>
-                            <li id="countdown" class="countdown">Hitung Mundur: </li>
-                        </ul>
-                    </div>
-                </details>
-
-                <script>
-                    // Update current time for each country
-                    function updateTime() {
-                        const now = new Date();
-                        const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-
-                        // Jakarta Time
-                        document.getElementById('waktuReal').innerText = `Waktu Sekarang (Bogor): ${now.toLocaleTimeString('id-ID', { ...options, timeZone: 'Asia/Jakarta' })}`;
-
-                        // Norway Time
-                        document.getElementById('waktuNorwegia').innerText = `Waktu Norwegia: ${now.toLocaleTimeString('en-GB', { ...options, timeZone: 'Europe/Oslo' })}`;
-
-                        // Switzerland Time
-                        document.getElementById('waktuSwiss').innerText = `Waktu Swiss: ${now.toLocaleTimeString('en-GB', { ...options, timeZone: 'Europe/Zurich' })}`;
-
-                        // Sweden Time
-                        document.getElementById('waktuSwedia').innerText = `Waktu Swedia: ${now.toLocaleTimeString('sv-SE', { ...options, timeZone: 'Europe/Stockholm' })}`;
-
-                        // Canada Time (Toronto)
-                        document.getElementById('waktuKanada').innerText = `Waktu Kanada: ${now.toLocaleTimeString('en-CA', { ...options, timeZone: 'America/Toronto' })}`;
-
-                        // Finland Time
-                        document.getElementById('waktuFinlandia').innerText = `Waktu Finlandia: ${now.toLocaleTimeString('fi-FI', { ...options, timeZone: 'Europe/Helsinki' })}`;
-
-                        // Denmark Time
-                        document.getElementById('waktuDenmark').innerText = `Waktu Denmark: ${now.toLocaleTimeString('da-DK', { ...options, timeZone: 'Europe/Copenhagen' })}`;
-
-                        // Australia Time (Sydney)
-                        document.getElementById('waktuAustralia').innerText = `Waktu Australia: ${now.toLocaleTimeString('en-AU', { ...options, timeZone: 'Australia/Sydney' })}`;
-
-                        // Netherlands Time
-                        document.getElementById('waktuBelanda').innerText = `Waktu Belanda: ${now.toLocaleTimeString('nl-NL', { ...options, timeZone: 'Europe/Amsterdam' })}`;
-
-                        // Germany Time
-                        document.getElementById('waktuJerman').innerText = `Waktu Jerman: ${now.toLocaleTimeString('de-DE', { ...options, timeZone: 'Europe/Berlin' })}`;
-
-                        // Iceland Time
-                        document.getElementById('waktuIslandia').innerText = `Waktu Islandia: ${now.toLocaleTimeString('is-IS', { ...options, timeZone: 'Atlantic/Reykjavik' })}`;
-
-                        // ASEAN countries
-                        document.getElementById('waktuSingapura').innerText = `Waktu Singapura: ${now.toLocaleTimeString('en-SG', { ...options, timeZone: 'Asia/Singapore' })}`;
-                        document.getElementById('waktuMalaysia').innerText = `Waktu Malaysia: ${now.toLocaleTimeString('ms-MY', { ...options, timeZone: 'Asia/Kuala_Lumpur' })}`;
-                        document.getElementById('waktuThailand').innerText = `Waktu Thailand: ${now.toLocaleTimeString('th-TH', { ...options, timeZone: 'Asia/Bangkok' })}`;
-                        document.getElementById('waktuFilipina').innerText = `Waktu Filipina: ${now.toLocaleTimeString('en-PH', { ...options, timeZone: 'Asia/Manila' })}`;
-                        document.getElementById('waktuVietnam').innerText = `Waktu Vietnam: ${now.toLocaleTimeString('vi-VN', { ...options, timeZone: 'Asia/Ho_Chi_Minh' })}`;
-                        document.getElementById('waktuBrunei').innerText = `Waktu Brunei: ${now.toLocaleTimeString('ms-BN', { ...options, timeZone: 'Asia/Brunei' })}`;
-                        document.getElementById('waktuKamboja').innerText = `Waktu Kamboja: ${now.toLocaleTimeString('km-KH', { ...options, timeZone: 'Asia/Phnom_Penh' })}`;
-                        document.getElementById('waktuLaos').innerText = `Waktu Laos: ${now.toLocaleTimeString('lo-LA', { ...options, timeZone: 'Asia/Vientiane' })}`;
-                        document.getElementById('waktuMyanmar').innerText = `Waktu Myanmar: ${now.toLocaleTimeString('my-MM', { ...options, timeZone: 'Asia/Yangon' })}`;
-                        document.getElementById('waktuIndonesia').innerText = `Waktu Indonesia: ${now.toLocaleTimeString('id-ID', { ...options, timeZone: 'Asia/Jakarta' })}`;
-
-                        // Adding new countries
-                        document.getElementById('waktuJepang').innerText = `Waktu Jepang: ${now.toLocaleTimeString('ja-JP', { ...options, timeZone: 'Asia/Tokyo' })}`;
-                        document.getElementById('waktuRusia').innerText = `Waktu Rusia: ${now.toLocaleTimeString('ru-RU', { ...options, timeZone: 'Europe/Moscow' })}`;
-                        document.getElementById('waktuKoreaSelatan').innerText = `Waktu Korea Selatan: ${now.toLocaleTimeString('ko-KR', { ...options, timeZone: 'Asia/Seoul' })}`;
-                        document.getElementById('waktuKoreaUtara').innerText = `Waktu Korea Utara: ${now.toLocaleTimeString('ko-KP', { ...options, timeZone: 'Asia/Pyongyang' })}`;
-                        document.getElementById('waktuChina').innerText = `Waktu China: ${now.toLocaleTimeString('zh-CN', { ...options, timeZone: 'Asia/Shanghai' })}`;
-
-                        // Middle Eastern Countries
-                        document.getElementById('waktuArabSaudi').innerText = `Waktu Arab Saudi: ${now.toLocaleTimeString('ar-SA', { ...options, timeZone: 'Asia/Riyadh' })}`;
-                        document.getElementById('waktuUAE').innerText = `Waktu Uni Emirat Arab: ${now.toLocaleTimeString('ar-AE', { ...options, timeZone: 'Asia/Dubai' })}`;
-                        document.getElementById('waktuQatar').innerText = `Waktu Qatar: ${now.toLocaleTimeString('ar-QA', { ...options, timeZone: 'Asia/Qatar' })}`;
-                        document.getElementById('waktuKuwait').innerText = `Waktu Kuwait: ${now.toLocaleTimeString('ar-KW', { ...options, timeZone: 'Asia/Kuwait' })}`;
-                        document.getElementById('waktuOman').innerText = `Waktu Oman: ${now.toLocaleTimeString('ar-OM', { ...options, timeZone: 'Asia/Muscat' })}`;
-                    }
-
-                    // Start the countdown timer for December 16, 2024
-                    function startCountdown() {
-                        const endTime = new Date('2024-12-16T00:00:00').getTime();
-
-                        const countdownInterval = setInterval(() => {
-                            const now = new Date().getTime();
-                            const distance = endTime - now;
-
-                            // Time calculations for days, hours, minutes, and seconds
-                            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                            // Display the result without the colon after 'Hitung Mundur'
-                            document.getElementById('countdown').innerText = `Hitung Mundur ${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
-
-                            // If the countdown is over, display a message without the colon
-                            if (distance < 0) {
-                                clearInterval(countdownInterval);
-                                document.getElementById('countdown').innerText = "Waktu telah habis";
-                            }
-                        }, 1000);
-                    }
-
-                    // Initialize the clock and countdown on page load
-                    setInterval(updateTime, 1000);
-                    startCountdown();
-
-                </script>
-            </body>
-
-            </html>
-
-
-            <details close>
-                <summary>Dokumentasi Gambar</summary>
-                <div class="bg-white rounded-lg shadow-md p-6 mb-6" id="documentation">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-600 cursor-pointer">Dokumentasi Gambar</h2>
-                    <p>Beberapa gambar dokumentasi.</p>
-
-                    <!-- Gallery Grid with images -->
-                    <div class="gallery">
-                        <div class="gallery-item">
-                            <img src="1.png" alt="Gambar 1" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="2.png" alt="Gambar 2" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="3.png" alt="Gambar 3" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="4.png" alt="Gambar 4" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="5.png" alt="Gambar 5" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="6.png" alt="Gambar 6" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="7.png" alt="Gambar 7" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="8.png" alt="Gambar 8" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="100.jpg" alt="Gambar 8" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="110.jpg" alt="Gambar 8" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="130.jpg" alt="Gambar 8" class="gallery-image">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="140.jpg" alt="Gambar 8" class="gallery-image">
-                        </div>
-                    </div>
-
-                    <!-- Modal to show full-size image -->
-                    <div id="modal" class="modal">
-                        <span id="close-modal" class="close">&times;</span>
-                        <img id="modal-img" class="modal-img" src="" alt="Full Image">
-                    </div>
-                </div>
-            </details>
-
-            <!-- CSS for styling -->
-            <style>
-                * {
-                    margin: 0;
-                    padding: 0;
-                    box-sizing: border-box;
-                }
-
-                .gallery {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-                    /* Responsive grid */
-                    gap: 10px;
-                }
-
-                .gallery-item {
-                    position: relative;
-                    overflow: hidden;
-                    /* Hide the overflow when compressed */
-                    cursor: pointer;
-                    transition: transform 0.3s ease, filter 0.3s ease;
-                    /* Smooth transition for scaling */
-                }
-
-                .gallery-image {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    /* Maintain aspect ratio */
-                    transition: transform 0.3s ease, filter 0.3s ease;
-                }
-
-                .gallery-item:hover .gallery-image {
-                    transform: scale(1.1);
-                    /* Zoom in slightly when hovered */
-                    filter: brightness(0.8);
-                    /* Darken the image on hover */
-                }
-
-                /* Modal Styles */
-                .modal {
-                    display: none;
-                    /* Initially hidden */
-                    position: fixed;
-                    z-index: 1000;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba(0, 0, 0, 0.8);
-                    /* Background overlay */
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .modal-img {
-                    max-width: 90%;
-                    max-height: 90%;
-                    object-fit: contain;
-                    /* Ensure the full image fits */
-                }
-
-                .close {
-                    position: absolute;
-                    top: 20px;
-                    right: 20px;
-                    font-size: 30px;
-                    color: white;
-                    cursor: pointer;
-                }
-
-                /* Modal close on clicking outside of the image */
-                .modal.active {
-                    display: flex;
-                }
-            </style>
-
-            <!-- JavaScript for modal functionality -->
-            <script>
-                const galleryItems = document.querySelectorAll('.gallery-item');
-                const modal = document.getElementById('modal');
-                const modalImg = document.getElementById('modal-img');
-                const closeModal = document.getElementById('close-modal');
-
-                // Open the image in modal when clicked
-                galleryItems.forEach(item => {
-                    item.addEventListener('click', function () {
-                        const imgSrc = item.querySelector('img').src; // Get the src of clicked image
-                        modalImg.src = imgSrc; // Set the modal image source
-                        modal.classList.add('active'); // Show the modal
-                    });
-                });
-
-                // Close the modal when the close button is clicked
-                closeModal.addEventListener('click', function () {
-                    modal.classList.remove('active'); // Hide the modal
-                });
-
-                // Close the modal when clicking outside the image
-                modal.addEventListener('click', function (e) {
-                    if (e.target === modal) {
-                        modal.classList.remove('active'); // Hide the modal if clicked outside
-                    }
-                });
-            </script>
-
-
-
-
-           <!-- Footer Section -->
-<footer class="text-center py-4 mt-6">
-    <div class="container mx-auto">
-        <!-- Copyright Text -->
-        <p class="text-base font-medium hover:text-darkblue-300 transition-colors duration-300">
-            <a href="https://peraturan.bpk.go.id/Details/38690" class="text-black-400 hover:underline" target="_blank">
-                © 2024 8.3 - Semua Hak Dilindungi
-            </a>
-        </p>
-
-        <!-- Additional Support Text -->
-        <p class="text-sm text-gray-500 mt-4">
-            Support with Windows 11,ChatGPT,Claude and Axioo laptop
-        </p>
-    </div>
-</footer>
-
-<!-- FontAwesome CDN -->
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-
-
-
-        </html>
