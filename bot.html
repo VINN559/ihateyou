@@ -40,7 +40,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            max-height: 90vh;
+            height: 80vh;
         }
 
         .chat-header {
@@ -56,6 +56,7 @@
         .chat-header h2 {
             margin: 0;
             font-weight: 600;
+            font-size: 1.2rem;
         }
 
         .status-indicator {
@@ -74,34 +75,39 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            box-sizing: border-box;
         }
 
         .message {
-            max-width: 80%;
-            padding: 12px 15px;
-            border-radius: 15px;
-            clear: both;
+            padding: 12px 18px;
+            border-radius: 18px;
+            max-width: 75%;
             word-wrap: break-word;
             position: relative;
             font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 10px;
         }
 
         .message.user {
-            background: linear-gradient(to right, #4a90e2, #4a90e2);
+            background: linear-gradient(to right, #4a90e2, #3498db);
             color: white;
             align-self: flex-end;
+            border-radius: 18px 18px 0 18px;
             margin-left: auto;
             text-align: right;
-            border-bottom-right-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .message.bot {
-            background: linear-gradient(to left, #f1f2f6, #f1f2f6);
+            background: #f1f2f6;
             color: var(--text-secondary);
             align-self: flex-start;
+            border-radius: 18px 18px 18px 0;
             margin-right: auto;
             text-align: left;
-            border-bottom-left-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .chat-input {
@@ -118,6 +124,7 @@
             border-radius: 25px;
             outline: none;
             font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
         }
 
         .chat-input button {
@@ -131,6 +138,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            font-size: 0.9rem;
         }
 
         .chat-input button:hover {
@@ -149,16 +157,81 @@
             align-items: center;
             justify-content: center;
             gap: 5px;
+            font-size: 0.9rem;
         }
 
         .back-button:hover {
             background-color: #e74c3c;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .chat-header h2 {
+                font-size: 1rem;
+            }
+
+            .message {
+                font-size: 0.85rem;
+            }
+
+            .chat-input input {
+                font-size: 0.85rem;
+            }
+
+            .chat-input button {
+                font-size: 0.85rem;
+            }
+
+            .back-button {
+                font-size: 0.85rem;
+            }
+
             .chat-container {
                 width: 95%;
                 max-height: 95vh;
+            }
+
+            .chat-box {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .status-indicator {
+                margin-bottom: 5px;
+            }
+
+            .chat-header h2 {
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+
+            .chat-input input {
+                padding: 10px;
+                font-size: 0.85rem;
+            }
+
+            .chat-input button {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+
+            .back-button {
+                font-size: 0.85rem;
+                padding: 10px 18px;
+            }
+
+            .chat-box {
+                padding: 8px;
+            }
+
+            .message {
+                max-width: 90%;
+                font-size: 0.8rem;
             }
         }
 
@@ -214,35 +287,56 @@
                 opacity: 0;
             }
         }
+
+      /* Style for the Athena image */
+.athena-img {
+    width: 50px;  /* Increased size */
+    height: 50px; /* Increased size */
+    border-radius: 50%;
+    margin-right: -7px; /* Reduced gap between image and text */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio */
+}
+
+/* Ensure header content (image and text) are aligned */
+.chat-header {
+    background: linear-gradient(to right, var(--secondary-color), #4a90e2);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;  /* This vertically aligns the image and text */
+    justify-content: space-between;
+}
+
+
     </style>
 </head>
 <body>
     <div class="chat-container">
         <div class="chat-header">
             <div style="display: flex; align-items: center;">
-                <div class="status-indicator"></div>
+                <img src="logo ai.png" alt="Athena" class="athena-img">
                 <h2>Athena</h2>
             </div>
             <div id="current-time"></div>
         </div>
-        
+
         <div class="chat-box" id="chat-box">
             <div class="message bot">
-                Hai teman-teman Kelas 8.3! Aku adalah Athena, asisten digital kelasmu. 🤖 Kamu bisa tanya tentang jadwal pelajaran (sisanya menyusul)!
+                Hai teman-teman Kelas 8.3! Aku adalah Athena, asisten digital kelasmu. 
+                Kamu bisa menanyakan tentang jadwal pelajaran atau hal lainnya!
             </div>
         </div>
-        
+
         <div class="chat-input">
-            <input type="text" id="user-input" placeholder="Tulis pesanmu di sini..." onkeyup="handleEnterKey(event)" />
+            <input type="text" id="user-input" placeholder="Tanyakan sesuatu..." onkeydown="handleEnterKey(event)">
             <button onclick="sendMessage()">Kirim</button>
         </div>
 
-        <button class="back-button" onclick="goBack()">Kembali ke home</button>
-        
+        <button class="back-button" onclick="goBack()">Kembali</button>
+
         <div class="typing-indicator" id="typing-indicator">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
     </div>
 
@@ -255,7 +349,6 @@
                 "kamis": "📅 Jadwal Kamis:\n- Ilmu Pengetahuan Alam\n- Bahasa Inggris\n- Matematika\n- Informatika",
                 "jumat": "📅 Jadwal Jumat:\n- Informatika\n- Ilmu Pengetahuan Sosial\n- Bahasa Indonesia"
             },
-           
         };
 
         function sendMessage() {
@@ -313,19 +406,17 @@
         }
 
         function goBack() {
-            window.location.href = "tes.html"; // Ganti dengan URL halaman home Anda
+            window.location.href = "tes.html";
         }
 
-      // Show current time in header in Indonesian format (24-hour format without AM/PM)
-setInterval(() => {
-    let currentTime = new Date();
-    document.getElementById("current-time").textContent = currentTime.toLocaleTimeString('id-ID', {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-    });
-}, 1000);
-
+        setInterval(() => {
+            let currentTime = new Date();
+            document.getElementById("current-time").textContent = currentTime.toLocaleTimeString('id-ID', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+            });
+        }, 1000);
     </script>
 </body>
 </html>
