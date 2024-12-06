@@ -71,7 +71,7 @@
             backdrop-filter: blur(10px);
             padding: 2rem;
             text-align: center;
-            animation: contentFadeIn 1.2s ease-in-out;
+            animation: contentFadeIn 1.5s ease-in-out;
             flex-direction: row;
             gap: 2rem;
         }
@@ -106,7 +106,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            animation: textSlideUp 0.9s ease-out;
+            animation: textSlideUp 1s ease-out;
         }
 
         @keyframes textSlideUp {
@@ -119,7 +119,9 @@
             margin-bottom: 20px;
             background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: transparent;
             letter-spacing: 5px;
             font-weight: 600;
         }
