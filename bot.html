@@ -7,288 +7,288 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --background-light: #f4f6f7;
-            --text-primary: #2c3e50;
-            --text-secondary: #34495e;
-        }
+    --primary-color: #8e44ad; /* Purple */
+    --secondary-color: #9b59b6; /* Lighter Purple */
+    --accent-color: #e74c3c; /* Red accent */
+    --background-light: #f4f6f7; /* Light background */
+    --text-primary: #2c3e50;
+    --text-secondary: #34495e;
+}
 
-        * {
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
+* {
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
 
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            background: linear-gradient(135deg, var(--background-light) 0%, #e9ecef 100%);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--background-light) 0%, #e9ecef 100%);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
 
-        .chat-container {
-            width: 100%;
-            max-width: 500px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 80vh;
-        }
+.chat-container {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
 
-        .chat-header {
-            background: linear-gradient(to right, var(--secondary-color), #4a90e2);
-            color: white;
-            padding: 15px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.chat-header {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); /* Purple gradient */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        .chat-header h2 {
-            margin: 0;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
+.chat-header h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
 
-        .status-indicator {
-            width: 10px;
-            height: 10px;
-            background-color: #2ecc71;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    margin-right: 10px;
+}
 
-        .chat-box {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 15px;
-            background-color: var(--background-light);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            border-bottom: 1px solid #e0e0e0;
-            box-sizing: border-box;
-        }
+.chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: var(--background-light);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    box-sizing: border-box;
+}
 
-        .message {
-            padding: 12px 18px;
-            border-radius: 18px;
-            max-width: 75%;
-            word-wrap: break-word;
-            position: relative;
-            font-size: 0.9em;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
+.message {
+    padding: 12px 18px;
+    border-radius: 18px;
+    max-width: 75%;
+    word-wrap: break-word;
+    position: relative;
+    font-size: 0.9em;
+    display: inline-block;
+    margin-bottom: 10px;
+}
 
-        .message.user {
-            background: linear-gradient(to right, #4a90e2, #3498db);
-            color: white;
-            align-self: flex-end;
-            border-radius: 18px 18px 0 18px;
-            margin-left: auto;
-            text-align: right;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.message.user {
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color)); /* Gradient for user messages */
+    color: white;
+    align-self: flex-end;
+    border-radius: 18px 18px 0 18px;
+    margin-left: auto;
+    text-align: right;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .message.bot {
-            background: #f1f2f6;
-            color: var(--text-secondary);
-            align-self: flex-start;
-            border-radius: 18px 18px 18px 0;
-            margin-right: auto;
-            text-align: left;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.message.bot {
+    background: #f1f2f6;
+    color: var(--text-secondary);
+    align-self: flex-start;
+    border-radius: 18px 18px 18px 0;
+    margin-right: auto;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .chat-input {
-            display: flex;
-            padding: 15px;
-            background-color: white;
-            border-top: 1px solid #e0e0e0;
-        }
+.chat-input {
+    display: flex;
+    padding: 15px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+}
 
-        .chat-input input {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid var(--secondary-color);
-            border-radius: 25px;
-            outline: none;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-        }
+.chat-input input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 25px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
 
-        .chat-input button {
-            margin-left: 10px;
-            padding: 12px 20px;
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.9rem;
-        }
+.chat-input button {
+    margin-left: 10px;
+    padding: 12px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
 
-        .chat-input button:hover {
-            background-color: var(--primary-color);
-        }
+.chat-input button:hover {
+    background-color: var(--primary-color);
+}
 
-        .back-button {
-            margin-top: 10px;
-            padding: 12px 20px;
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            font-size: 0.9rem;
-        }
+.back-button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
 
-        .back-button:hover {
-            background-color: #e74c3c;
-        }
+.back-button:hover {
+    background-color: #e74c3c;
+}
 
-        @media (max-width: 768px) {
-            .chat-header h2 {
-                font-size: 1rem;
-            }
+@media (max-width: 768px) {
+    .chat-header h2 {
+        font-size: 1rem;
+    }
 
-            .message {
-                font-size: 0.85rem;
-            }
+    .message {
+        font-size: 0.85rem;
+    }
 
-            .chat-input input {
-                font-size: 0.85rem;
-            }
+    .chat-input input {
+        font-size: 0.85rem;
+    }
 
-            .chat-input button {
-                font-size: 0.85rem;
-            }
+    .chat-input button {
+        font-size: 0.85rem;
+    }
 
-            .back-button {
-                font-size: 0.85rem;
-            }
+    .back-button {
+        font-size: 0.85rem;
+    }
 
-            .chat-container {
-                width: 95%;
-                max-height: 95vh;
-            }
+    .chat-container {
+        width: 95%;
+        max-height: 95vh;
+    }
 
-            .chat-box {
-                padding: 10px;
-            }
-        }
+    .chat-box {
+        padding: 10px;
+    }
+}
 
-        @media (max-width: 480px) {
-            .chat-header {
-                flex-direction: column;
-                text-align: center;
-            }
+@media (max-width: 480px) {
+    .chat-header {
+        flex-direction: column;
+        text-align: center;
+    }
 
-            .status-indicator {
-                margin-bottom: 5px;
-            }
+    .status-indicator {
+        margin-bottom: 5px;
+    }
 
-            .chat-header h2 {
-                font-size: 1rem;
-                margin-bottom: 5px;
-            }
+    .chat-header h2 {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
 
-            .chat-input input {
-                padding: 10px;
-                font-size: 0.85rem;
-            }
+    .chat-input input {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
 
-            .chat-input button {
-                padding: 10px 18px;
-                font-size: 0.85rem;
-            }
+    .chat-input button {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
 
-            .back-button {
-                font-size: 0.85rem;
-                padding: 10px 18px;
-            }
+    .back-button {
+        font-size: 0.85rem;
+        padding: 10px 18px;
+    }
 
-            .chat-box {
-                padding: 8px;
-            }
+    .chat-box {
+        padding: 8px;
+    }
 
-            .message {
-                max-width: 90%;
-                font-size: 0.8rem;
-            }
-        }
+    .message {
+        max-width: 90%;
+        font-size: 0.8rem;
+    }
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        .message {
-            animation: fadeIn 0.3s ease;
-        }
+.message {
+    animation: fadeIn 0.3s ease;
+}
 
-        /* Typing indicator (3 dots animation) */
-        .typing-indicator {
-            display: none;
-            font-size: 1.2em;
-            color: var(--secondary-color);
-            font-weight: bold;
-            margin-top: 10px;
-            text-align: center;
-        }
+/* Typing indicator (3 dots animation) */
+.typing-indicator {
+    display: none;
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
 
-        .typing-indicator span {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            margin: 0 4px;
-            background-color: var(--secondary-color);
-            border-radius: 50%;
-            animation: typing 1.5s infinite ease-in-out;
-        }
+.typing-indicator span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    animation: typing 1.5s infinite ease-in-out;
+}
 
-        .typing-indicator span:nth-child(1) {
-            animation-delay: 0s;
-        }
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
 
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.3s;
-        }
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.3s;
+}
 
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.6s;
-        }
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.6s;
+}
 
-        @keyframes typing {
-            0% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
+@keyframes typing {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 
-      /* Style for the Athena image */
+/* Style for the Athena image */
 .athena-img {
     width: 50px;  /* Increased size */
     height: 50px; /* Increased size */
@@ -299,7 +299,7 @@
 
 /* Ensure header content (image and text) are aligned */
 .chat-header {
-    background: linear-gradient(to right, var(--secondary-color), #4a90e2);
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); /* Purple gradient */
     color: white;
     padding: 15px;
     text-align: center;
@@ -307,9 +307,9 @@
     align-items: center;  /* This vertically aligns the image and text */
     justify-content: space-between;
 }
-
-
+    
     </style>
+    
 </head>
 <body>
     <div class="chat-container">
@@ -323,8 +323,9 @@
 
         <div class="chat-box" id="chat-box">
             <div class="message bot">
-                Hai teman-teman Kelas 8.3! Aku adalah Athena, asisten digital kelasmu. 
-                Kamu bisa menanyakan tentang jadwal pelajaran atau hal lainnya!
+                Hai teman-teman Kelas 8.3! 👋 Aku Athena, asisten digital kelas kalian! 🤖✨
+                Kalian bisa tanya apa saja tentang jadwal pelajaran 📅, tugas-tugas 📚, atau hal lainnya yang berkaitan dengan kelas kita! 🎓 Jangan ragu untuk bertanya ya, aku siap membantu kapan saja! 😊
+                Yuk, semangat belajar bersama! 💪📖
             </div>
         </div>
 
@@ -341,15 +342,133 @@
     </div>
 
     <script>
-        const responses = {
-            jadwal: {
-                "senin": "📅 Jadwal Senin:\n- Ilmu Pengetahuan Sosial\n- Matematika\n- Bahasa Sunda\n- Bahasa Inggris",
-                "selasa": "📅 Jadwal Selasa:\n- Pendidikan Kewarganegaraan\n- Ilmu Pengetahuan Alam\n- Pendidikan Agama Islam",
-                "rabu": "📅 Jadwal Rabu:\n- Bahasa Indonesia\n- Seni Budaya\n- Olahraga",
-                "kamis": "📅 Jadwal Kamis:\n- Ilmu Pengetahuan Alam\n- Bahasa Inggris\n- Matematika\n- Informatika",
-                "jumat": "📅 Jadwal Jumat:\n- Informatika\n- Ilmu Pengetahuan Sosial\n- Bahasa Indonesia"
-            },
-        };
+      const responses = {
+    halo: {
+        "halo": "👋 Hai! Selamat datang, semoga harimu luar biasa! 😄",
+        "selamat pagi": "🌅 Selamat pagi! Semoga hari ini penuh semangat dan kebahagiaan! ☀️",
+        "selamat siang": "🌞 Selamat siang! Semoga semua berjalan lancar hari ini! 😎",
+        "selamat sore": "🌇 Selamat sore! Semoga sore ini menyenangkan! 🌻",
+        "selamat malam": "🌙 Selamat malam! Semoga tidurmu nyenyak dan bermimpi indah! 💤",
+        "hai semuanya": "👋 Hai semuanya! Semoga hari kalian menyenankan! ✨",
+        "halo teman-teman": "👋 Halo teman-teman! Semangat selalu ya! 💪",
+        "apa kabar": "🙋‍♂️ Apa kabar? Semoga baik-baik saja! 😊",
+        "howdy": "🤠 Howdy! Semoga harimu penuh keceriaan! 🥳",
+        "good morning": "🌞 Selamat pagi! Semoga hari ini penuh kebahagiaan! 💛",
+        "good afternoon": "🌇 Selamat siang! Semoga harimu penuh semangat! 💪",
+        "good evening": "🌙 Selamat malam! Semoga hari ini berkesan! 😌",
+        "greetings": "🌟 Salam! Semoga hari ini menyenankan! 🎉",
+        "yo": "👋 Yo! Siap untuk hari yang seru? 😎",
+        "hi there": "👋 Hai! Apa kabar? Semoga baik-baik saja! 😃",
+        "what's up": "🤔 Ada apa nih? Semangat terus ya! 🌟",
+        "hey": "👋 Hey! Senang bisa ngobrol denganmu! 😄",
+        "yo yo": "👊 Yo yo! Ayo kita buat hari ini luar biasa! 😈",
+        "yo everyone": "👋 Yo semuanya! Ayo, mari kita buat hari ini tak terlupakan! 💥"
+    },
+    pelajaran: {
+        "senin": "📅 Jadwal Senin:\n- Ilmu Pengetahuan Sosial\n- Matematika\n- Bahasa Sunda\n- Bahasa Inggris\nWah, banyak pelajaran menarik di hari Senin! 😎",
+        "selasa": "📅 Jadwal Selasa:\n- Pendidikan Kewarganegaraan\n- Ilmu Pengetahuan Alam\n- Pendidikan Agama Islam\nMinggu ini, Selasa penuh dengan pelajaran seru! 🧠",
+        "rabu": "📅 Jadwal Rabu:\n- Bahasa Indonesia\n- Seni Budaya\n- Olahraga\nRabu saatnya beraktivitas, ada olahraga juga lho! 💪🎨",
+        "kamis": "📅 Jadwal Kamis:\n- Ilmu Pengetahuan Alam\n- Bahasa Inggris\n- Matematika\n- Informatika\nKamis, penuh ilmu dan teknologi! 📚💻",
+        "jumat": "📅 Jadwal Jumat:\n- Informatika\n- Ilmu Pengetahuan Sosial\n- Bahasa Indonesia\nSelamat belajar di Jumat yang penuh semangat! ✨"
+    },
+    seragam: {
+        "senin": "👕 Senin: Baju putih biru\nGaya simpel, tapi tetap kece! 😎",
+        "selasa": "👕 Selasa: Baju batik\nPakai batik, tampilan tradisional yang elegan! 🧑‍🎨",
+        "rabu": "👕 Rabu: Baju putih biru dan rompi\nSiap tampil keren dengan rompi! 💼",
+        "kamis": "👕 Kamis: Baju pramuka dengan kacu (wajib pakai kacu😄)\nJangan lupa, kacu harus dipakai ya, biar komplit penampilannya! 👟",
+        "jumat": "👕 Jumat: Baju muslim\nHari Jumat, tampil syar’i dengan baju muslim. ✨"
+    },
+    eskul: {
+        "senin": "⚽ Senin: Tahfidz dan futsal\nGak cuma belajar, Senin juga ada futsal! 🏃‍♂️",
+        "selasa": "💃 Selasa: Tari, marawis, dan basket\nSelasa penuh gerakan, tari dan basket! 🏀",
+        "rabu": "🥋 Rabu: Karate\nWaktunya jadi jagoan karate! 🥋",
+        "kamis": "🎶 Kamis: Pramuka, paduan suara, dan voli\nKamis seru dengan pramuka dan voli, siap jadi pemenang! 🏅",
+        "jumat": "🥋 Jumat: Silat dan badminton\nJumat penuh aksi dengan silat dan badminton! 🏸",
+        "sabtu": "🚑 Sabtu: PMR dan paskibra\nSabtu untuk kegiatan PMR dan paskibra, persiapkan diri jadi pahlawan! 🦸‍♀️"
+    },
+    informasi: {
+        "1": "📚 Info: Setiap Senin dan Jumat wajib membawa buku cerita dan topi 🧢. Jangan sampai lupa ya!",
+        "2": "👕 Info: Setiap Rabu wajib membawa baju ganti olahraga dan buku lagu 🎶. Siap-siap gerak!",
+        "3": "👟 Info: Setiap pakai baju pramuka wajib pakai kacu. Jangan sampai lupa, kacu harus dipakai ya!",
+        "4": "🧦 Info: Kaos kaki harus sesuai dengan harinya. Sesuaikan dengan seragam, biar makin keren! 👌",
+        "5": "📖 Info: Setiap Senin wajib Tahfidz. Ingat, Senin itu waktunya Tahfidz! 🙏"
+    },
+    absen: {
+        "01": "Albertus Kevin Daniswara",
+        "02": "Alya",
+        "03": "Alycia Tan",
+        "04": "Andien Maulidina Rizki",
+        "05": "Aulia Irsa Supandi",
+        "06": "Bayu Saktiawan",
+        "07": "Devara Alvarizki",
+        "08": "Evita Desta Riyani",
+        "09": "Fanny",
+        "10": "Febrian Aryanto",
+        "11": "Hayfa Inka Siti Luthfiyah",
+        "12": "Jovanka Olivia",
+        "13": "Lie Owen",
+        "14": "M. Syahril Syahputra",
+        "15": "Marsya Nazila",
+        "16": "Muamar Haikal Al Kahfi",
+        "17": "Muhammad Fauzan Fadilah",
+        "18": "Muhammad Ibnu Rajib",
+        "19": "Muhammad Fayumi",
+        "20": "Nofi Putri Alifiah",
+        "21": "Prabu Trimo Ngalah",
+        "22": "Rapi",
+        "23": "Restianti Anjarwati",
+        "24": "Reyhan Rahadian Maulana Saputra",
+        "25": "Rizki Haris Riyadi",
+        "26": "Muhammad Sandi",
+        "27": "Robi Ardiansyah",
+        "28": "Safa Julia Putri Ar-Rohmah",
+        "29": "Sahira Aulya",
+        "30": "Salma Nur Kholisah",
+        "31": "Septia Fitriani",
+        "32": "Shalsabela Suherman",
+        "33": "Siti Hana Putri",
+        "34": "Siti Maulinda",
+        "35": "Siti Nurul Zakhiah Maulidah",
+        "36": "Widya Raissa Annazura",
+        "37": "Zhahira Syailla"
+    },
+    agama: {
+        "katolik": "Katolik: 'Inilah tubuh-Ku yang diserahkan bagimu; lakukanlah ini untuk mengenang Aku.' - Lukas 22:19",
+        "islam": "Islam: 'Sesungguhnya Allah tidak mengubah keadaan suatu kaum sampai mereka mengubah keadaan yang ada pada diri mereka sendiri.' - QS. Ar-Ra'du 13:11",
+        "protestan": "Protestan: 'Kasihilah Tuhan, Allahmu, dengan segenap hatimu, dan dengan segenap jiwamu, dan dengan segenap akal budi.' - Matius 22:37",
+        "hindu": "Hindu: 'Di dunia ini, ada dua jalan: jalan kebijaksanaan dan jalan perbuatan.' - Bhagavad Gita 4:32",
+        "buddha": "Buddha: 'Selama manusia tidak menyakiti makhluk hidup, mereka akan hidup dengan damai.' - Dhammapada 129",
+        "konghucu": "Konghucu: 'Hormat kepada orang tua adalah kebajikan utama dalam kehidupan manusia.' - Analekta 1:2"
+    },
+    piket: {
+        "senin": "📋 Piket Senin: Kevin, Bayu, Hayfa, Haikal, Prabu, Rizki, Septia, Widya\nSiap menjaga kelas hari Senin! 💪",
+        "selasa": "📋 Piket Selasa: Alya, Devara, Jovanka, Fauzan, Rapi, Robi, Shalsabela, Zhahira\nPiket Selasa, pastikan kelas tetap bersih ya! ✨",
+        "rabu": "📋 Piket Rabu: Alycia, Evita, Owen, Ibnu, Resti, Safa, Hana\nAyo Rabu, kita bersihkan kelas bareng! 🧹",
+        "kamis": "📋 Piket Kamis: Andien, Fanny, Syahril, Fayumi, Reyhan, Sahira, Linda\nKamis penuh semangat, bersihkan kelas yuk! 🧽",
+        "jumat": "📋 Piket Jumat: Aulia, Febri, Marsya, Novi, Sandi, Salma, Nurul\nJumat bersih, kelas jadi makin nyaman! 🌟"
+    },
+    struktur: {
+    "wali kelas": "Pak Mussopa S.Pd.I 👨‍🏫 - Bertanggung jawab untuk membimbing, mengawasi, dan memberi arahan kepada kelas, memastikan pembelajaran berjalan dengan baik, serta menjadi penghubung antara siswa dan pihak sekolah.",
+    "01": "Albertus Kevin Daniswara (Ketua Kelas) 👑 - Memimpin seluruh kegiatan kelas, memastikan komunikasi yang baik antara guru dan siswa, serta bertanggung jawab atas jalannya organisasi kelas secara keseluruhan.",
+    "02": "Aulia Irsa Supandi (Wakil Ketua Kelas) 🏅 - Membantu ketua kelas dalam menjalankan tugasnya, menggantikan ketua kelas jika tidak hadir, serta membantu koordinasi kegiatan kelas.",
+    "03": "Sahira Aulya (Sekretaris) ✍️ - Mencatat semua hasil rapat dan kegiatan kelas, menyusun agenda dan dokumen-dokumen penting, serta bertanggung jawab atas administrasi kelas.",
+    "04": "Septia Fitriani (Wakil Sekretaris) 📝 - Membantu sekretaris dalam mendokumentasikan kegiatan dan rapat kelas, serta memastikan semua administrasi berjalan dengan lancar.",
+    "05": "Muamar Khaikal Al-Kahfi (Bendahara) 💰 - Mengelola dan mencatat keuangan kelas, termasuk pendapatan dan pengeluaran, serta menyusun laporan keuangan yang transparan dan akurat.",
+    "06": "Siti Maulinda (Wakil Bendahara) 💵 - Membantu bendahara dalam mengelola keuangan kelas dan memastikan bahwa setiap transaksi tercatat dengan rapi dan benar.",
+    "07": "Muhammad Ibnu Rajib (Informatika) 💻 - Bertanggung jawab untuk mengelola dan memelihara perangkat teknologi yang digunakan di kelas, seperti komputer dan proyektor, serta mendukung kegiatan yang berkaitan dengan teknologi.",
+    "08": "Shalsabela Suherman (Wakil Informatika) 🖥️ - Membantu dalam pengelolaan teknologi kelas, termasuk mendukung penggunaan perangkat komputer dan aplikasi yang dibutuhkan untuk kegiatan pembelajaran.",
+    "09": "M. Syahril Syahputra (Keamanan) 🛡️ - Bertanggung jawab untuk menjaga keamanan dan ketertiban kelas, serta memastikan bahwa semua siswa berada dalam lingkungan yang aman selama kegiatan kelas.",
+    "10": "Siti Hana (Wakil Keamanan) 🔒 - Membantu menjaga keamanan dan ketertiban kelas, serta bertanggung jawab atas pengawasan kelas saat kegiatan berlangsung, terutama saat ada acara atau kegiatan luar kelas.",
+    "11": "Muhammad Fauzan Faddilah (Kebersihan) 🧹 - Memastikan kebersihan kelas terjaga dengan baik, mengorganisir jadwal pembersihan kelas, serta mengingatkan teman-teman untuk selalu menjaga kebersihan lingkungan kelas.",
+    "12": "Alya (Wakil Kebersihan) 🧼 - Membantu dalam menjaga kebersihan kelas, termasuk memastikan fasilitas kelas tetap bersih dan nyaman digunakan setiap hari.",
+    "13": "Febrian Aryanto (Rohis) 🤲 - Mengorganisir kegiatan rohani kelas, seperti pengajian atau kegiatan keagamaan, serta memastikan kegiatan tersebut berjalan dengan lancar dan memberi manfaat bagi seluruh anggota kelas.",
+    "14": "Andien Maulidina Rizki (Wakil Rohis) 🙏 - Membantu dalam merencanakan dan mengorganisir kegiatan rohani kelas, serta mendukung penyelenggaraan kegiatan yang berhubungan dengan spiritualitas."
+},
+
+   
+};
+
+
 
         function sendMessage() {
             let userInput = document.getElementById("user-input").value;
@@ -381,7 +500,7 @@
                     }
                 }
             }
-            return "Maaf, saya tidak mengerti. Bisa coba lagi?";
+            return "Maaf, saya tidak mengerti. Mungkin Kevin belum memprogram saya untuk menjawab pertanyaan seperti itu. 🤖 Saya hanya diprogram untuk menjadi asisten kelas, bukan super AI. 🙇 Mungkin beberapa bulan lagi, saya akan menjadi AI canggih yang hampir menyamai AI lainnya. 🤩";
         }
 
         function displayBotResponse(responseText) {
