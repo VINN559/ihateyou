@@ -275,74 +275,73 @@
         <!-- Tombol Kembali -->
         <a href="tes.html" class="back-btn">Kembali ke Halaman Utama</a>
 
-        <!-- Daily Reflection -->
-        <div class="daily-reflection">
-            <div class="reflection-title">Renungan Harian</div>
-            <p id="reflection-text">"Keharmonisan antar umat beragama merupakan cerminan dari kedamaian sejati. Mari kita belajar bersama dari setiap agama."</p>
-        </div>
+      <!-- Daily Reflection -->
+<div class="daily-reflection">
+    <div class="reflection-title">Renungan Harian</div>
+    <p id="reflection-text">"Kehidupan yang penuh kasih dan kedamaian dimulai dengan menghargai perbedaan dan hidup dalam harmoni."</p>
+</div>
 
-        <!-- Verse Cards -->
-        <div class="verses-grid">
-            <!-- Card Katolik -->
-            <div class="verse-card" data-religion="katolik">
-                <h3>Katolik</h3>
-                <div class="verse-content">"Kasihlah Tuhan Allahmu dengan segenap hatimu."</div>
-                <div class="verse-reference">Matius 22:37</div>
-            </div>
-
-            <!-- Card Islam -->
-            <div class="verse-card" data-religion="islam">
-                <h3>Islam</h3>
-                <div class="verse-content">"Sesungguhnya, beriman kepada Allah adalah jalan keselamatan."</div>
-                <div class="verse-reference">Al-Qur'an 2:285</div>
-            </div>
-
-            <!-- Card Kristen -->
-            <div class="verse-card" data-religion="kristen">
-                <h3>Kristen</h3>
-                <div class="verse-content">"Kasihilah sesamamu manusia seperti dirimu sendiri."</div>
-                <div class="verse-reference">Matius 22:39</div>
-            </div>
-
-            <!-- Card Hindu -->
-            <div class="verse-card" data-religion="hindu">
-                <h3>Hindu</h3>
-                <div class="verse-content">"Dalam segala tindakan, selalu mengingat Tuhan."</div>
-                <div class="verse-reference">Bhagavad Gita 9:22</div>
-            </div>
-
-            <!-- Card Buddha -->
-            <div class="verse-card" data-religion="buddha">
-                <h3>Buddha</h3>
-                <div class="verse-content">"Segala sesuatu yang kita lakukan, kita lakukan dengan niat baik."</div>
-                <div class="verse-reference">Dhammapada 1:1</div>
-            </div>
-
-            <!-- Card Konghucu -->
-            <div class="verse-card" data-religion="konghucu">
-                <h3>Konghucu</h3>
-                <div class="verse-content">"Orang yang bijaksana hidup dalam harmoni dengan lingkungan."</div>
-                <div class="verse-reference">Analek Konghucu 12:5</div>
-            </div>
-        </div>
+<!-- Verse Cards -->
+<div class="verses-grid">
+    <!-- Card Katolik -->
+    <div class="verse-card" data-religion="katolik">
+        <h3>Katolik</h3>
+        <div class="verse-content">"Apa yang kamu kehendaki supaya orang perbuat kepadamu, perbuatlah juga demikian kepada mereka."</div>
+        <div class="verse-reference">Matius 7:12</div>
     </div>
 
-    <script>
-        // Filter Button Functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const verseCards = document.querySelectorAll('.verse-card');
-        const reflectionText = document.getElementById('reflection-text');
+    <!-- Card Islam -->
+    <div class="verse-card" data-religion="islam">
+        <h3>Islam</h3>
+        <div class="verse-content">"Dan hendaklah kamu saling tolong-menolong dalam kebaikan dan takwa, dan jangan saling tolong-menolong dalam dosa dan permusuhan."</div>
+        <div class="verse-reference">Al-Qur'an 5:2</div>
+    </div>
 
-        // Renungan Harian per Agama
-        const reflections = {
-            katolik: '"Kasih Tuhan adalah yang utama, mari hidup dalam kasih-Nya."',
-            islam: '"Iman kepada Allah adalah kunci hidup yang penuh berkat."',
-            kristen: '"Kasih sesama adalah cerminan dari kasih Allah."',
-            hindu: '"Diri kita adalah refleksi dari Tuhan yang Maha Esa."',
-            buddha: '"Hidup penuh kedamaian dimulai dari pikiran yang baik."',
-            konghucu: '"Harmoni dalam hidup dimulai dengan rasa hormat terhadap sesama."',
-            all: '"Keharmonisan antar umat beragama merupakan cerminan dari kedamaian sejati. Mari kita belajar bersama dari setiap agama."'
-        };
+    <!-- Card Kristen -->
+    <div class="verse-card" data-religion="kristen">
+        <h3>Kristen</h3>
+        <div class="verse-content">"Perhatikanlah orang lain lebih utama daripada dirimu sendiri."</div>
+        <div class="verse-reference">Filipi 2:4</div>
+    </div>
+
+    <!-- Card Hindu -->
+    <div class="verse-card" data-religion="hindu">
+        <h3>Hindu</h3>
+        <div class="verse-content">"Hidup yang baik adalah hidup yang dipenuhi dengan kasih, tanpa keinginan pribadi yang berlebihan."</div>
+        <div class="verse-reference">Bhagavad Gita 16:3</div>
+    </div>
+
+    <!-- Card Buddha -->
+    <div class="verse-card" data-religion="buddha">
+        <h3>Buddha</h3>
+        <div class="verse-content">"Jangan membenci siapa pun. Jadikanlah cinta kasih sebagai penuntun hidupmu."</div>
+        <div class="verse-reference">Dhammapada 223</div>
+    </div>
+
+    <!-- Card Konghucu -->
+    <div class="verse-card" data-religion="konghucu">
+        <h3>Konghucu</h3>
+        <div class="verse-content">"Jika kita ingin menikmati kedamaian, maka kita harus menciptakan kedamaian dengan tindakan kita."</div>
+        <div class="verse-reference">Analek Konghucu 1:3</div>
+    </div>
+</div>
+
+<script>
+    // Filter Button Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const verseCards = document.querySelectorAll('.verse-card');
+    const reflectionText = document.getElementById('reflection-text');
+
+    // Renungan Harian per Agama
+    const reflections = {
+        katolik: '"Kasih yang sejati berasal dari Tuhan dan membawa kedamaian bagi sesama."',
+        islam: '"Hidup yang penuh dengan takwa dan kasih sayang membawa kedamaian dalam hidup."',
+        kristen: '"Kasih sesama adalah bentuk nyata dari kasih Allah yang tak terbatas."',
+        hindu: '"Kasih dan ketulusan hati adalah jalan menuju kedamaian sejati."',
+        buddha: '"Buddha mengajarkan bahwa kedamaian dimulai dengan pikiran yang bersih dan niat yang baik."',
+        konghucu: '"Dalam hidup, hormat terhadap sesama adalah pondasi untuk mencapai kedamaian dan kebijaksanaan."',
+        all: '"Kehidupan yang penuh kasih dan kedamaian dimulai dengan menghargai perbedaan dan hidup dalam harmoni."'
+    };
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
