@@ -337,14 +337,14 @@
         <div class="chat-header">
             <div style="display: flex; align-items: center;">
                 <img src="vision.png" alt="Athena" class="athena-img">
-                <h2>Athena Nova 2.3</h2>
+                <h2>Athena Nova 2.3.1</h2>
             </div>
             <div id="current-time"></div>
         </div>
 
         <div class="chat-box" id="chat-box">
             <div class="message bot">
-                Hai teman-teman Kelas 8.3! 👋 Aku Athena Nova 2.0 versi terbaru dari Athena sebelumnya, asisten digital kelas kalian! 🤖✨
+                Hai teman-teman Kelas 8.3! 👋 Aku Athena Nova 2.3.1 versi terbaru dari Athena sebelumnya, asisten digital kelas kalian! 🤖✨
                 Kalian bisa tanya apa saja tentang jadwal pelajaran 📅, tugas-tugas 📚, atau hal lainnya yang berkaitan dengan kelas kita! 🎓 Jangan ragu untuk bertanya ya, aku siap membantu kapan saja! 😊
                 Yuk, semangat belajar bersama! 💪📖
         </div>
@@ -471,8 +471,47 @@
         "agama": "Ada 6 Opsi ✝️☪️🕉️ - Pilihan terkait kegiatan atau pembelajaran agama",
         "absen": "Ada 37 Opsi 📝 - Pilihan untuk kehadiran atau absensi",
         "informasi": "Ada 5 Opsi ℹ️ - Pilihan terkait informasi atau pengumuman",
-        "eskul": "Ada 5 Opsi ⚽🎨 - Pilihan terkait kegiatan ekstrakurikuler"
+        "eskul": "Ada 5 Opsi ⚽🎨 - Pilihan terkait kegiatan ekstrakurikuler",
+        "siapa presiden indonesia saat ini?": "H. Prabowo Subianto 🇮🇩 - Presiden Indonesia saat ini adalah H. Prabowo Subianto.",
+    "siapa presiden indonesia yang pertama?": "Ir. Soekarno 🇮🇩 - Ir. Soekarno adalah Presiden Indonesia yang pertama.",
+    "apa ibukota indonesia?": "Jakarta 🏙️ - Ibukota Indonesia adalah Jakarta.",
+    "apa bahasa resmi indonesia?": "Bahasa Indonesia 🗣️ - Bahasa resmi Indonesia adalah Bahasa Indonesia.",
+    "apa mata uang yang digunakan di indonesia?": "Rupiah 💰 - Mata uang yang digunakan di Indonesia adalah Rupiah (IDR).",
+    "berapa jumlah provinsi di indonesia?": "38 provinsi 🏞️ - Indonesia terdiri dari 38 provinsi.",
+    "apa nama pulau terbesar di indonesia?": "Papua 🌍 - Pulau terbesar di Indonesia adalah Papua.",
+    "siapa pendiri google?": "Larry Page dan Sergey Brin 🔍 - Google didirikan oleh Larry Page dan Sergey Brin.",
+    "siapa penulis novel 'laskar pelangi'?": "Andrea Hirata 📚 - Penulis novel 'Laskar Pelangi' adalah Andrea Hirata.",
+    "apa tujuan dari deklarasi kemerdekaan indonesia?": "Untuk menyatakan kemerdekaan Indonesia dari penjajahan 🕊️ - Tujuan deklarasi kemerdekaan Indonesia adalah untuk merdeka dari penjajahan.",
+    "apa simbol negara indonesia?": "Garuda Pancasila 🇮🇩 - Simbol negara Indonesia adalah Garuda Pancasila.",
+    "siapa yang menemukan lampu pijar?": "Thomas Edison 💡 - Penemu lampu pijar adalah Thomas Edison.",
+    "siapa penulis novel 'harry potter'?": "J.K. Rowling 📖 - Penulis novel 'Harry Potter' adalah J.K. Rowling.",
+    "apa ibu kota negara jepang?": "Tokyo 🗾 - Ibukota Jepang adalah Tokyo.",
+    "apa nama planet terdekat dengan matahari?": "Merkurius 🌞 - Planet terdekat dengan Matahari adalah Merkurius.",
+    "apa nama sungai terpanjang di dunia?": "Sungai Nil 🌊 - Sungai terpanjang di dunia adalah Sungai Nil.",
+    "siapa tokoh yang dikenal sebagai 'bapak proklamator' indonesia?": "Ir. Soekarno 🇮🇩 - Ir. Soekarno dikenal sebagai 'Bapak Proklamator' Indonesia.",
+    "apa nama hewan nasional indonesia?": "Garuda 🦅 - Hewan nasional Indonesia adalah Garuda.",
+    "siapa pencipta lagu kebangsaan indonesia 'indonesia raya'?": "W.R. Supratman 🎶 - Pencipta lagu kebangsaan Indonesia 'Indonesia Raya' adalah W.R. Supratman.",
+    "apa nama pulau terpadat penduduknya di indonesia?": "Jawa 🏝️ - Pulau terpadat penduduknya di Indonesia adalah Jawa.",
+    "siapa yang menemukan telepon?": "Alexander Graham Bell 📞 - Penemu telepon adalah Alexander Graham Bell.",
+    "siapa yang menemukan teori relativitas?": "Albert Einstein 🌌 - Penemu teori relativitas adalah Albert Einstein.",
+    "siapa yang menciptakan komputer pertama?": "Charles Babbage 💻 - Penemu komputer pertama adalah Charles Babbage.",
+    "siapa yang menemukan teori evolusi?": "Charles Darwin 🌱 - Penemu teori evolusi adalah Charles Darwin.",
+    "siapa yang menemukan vaksin pertama?": "Edward Jenner 💉 - Penemu vaksin pertama adalah Edward Jenner."
     }
+
+    // Fungsi untuk menghasilkan respons dari bot
+function generateResponse(input) {
+    // Ubah input menjadi huruf kecil agar pencocokan tidak terpengaruh kapitalisasi
+    input = input.toLowerCase().trim();
+
+    // Cek jika ada respons yang cocok berdasarkan input
+    for (let key in responses) {
+        if (input.includes(key)) {
+            return responses[key];
+        }
+    }
+}
+
     function calculateMathExpression(input) {
     // Enhanced input normalization and preprocessing
     input = input.toLowerCase().trim()

@@ -275,10 +275,10 @@
         <!-- Tombol Kembali -->
         <a href="tes.html" class="back-btn">Kembali ke Halaman Utama</a>
 
-      <!-- Daily Reflection -->
+     <!-- Daily Reflection -->
 <div class="daily-reflection">
     <div class="reflection-title">Renungan Harian</div>
-    <p id="reflection-text">"Kehidupan yang penuh kasih dan kedamaian dimulai dengan menghargai perbedaan dan hidup dalam harmoni."</p>
+    <p id="reflection-text">"Kedamaian sejati datang dari hati yang penuh kasih dan rasa saling menghargai."</p>
 </div>
 
 <!-- Verse Cards -->
@@ -286,43 +286,43 @@
     <!-- Card Katolik -->
     <div class="verse-card" data-religion="katolik">
         <h3>Katolik</h3>
-        <div class="verse-content">"Apa yang kamu kehendaki supaya orang perbuat kepadamu, perbuatlah juga demikian kepada mereka."</div>
-        <div class="verse-reference">Matius 7:12</div>
+        <div class="verse-content">"Kasihilah Tuhan, Allahmu, dengan segenap hati, jiwamu, dan akal budi mu."</div>
+        <div class="verse-reference">Matius 22:37</div>
     </div>
 
     <!-- Card Islam -->
     <div class="verse-card" data-religion="islam">
         <h3>Islam</h3>
-        <div class="verse-content">"Dan hendaklah kamu saling tolong-menolong dalam kebaikan dan takwa, dan jangan saling tolong-menolong dalam dosa dan permusuhan."</div>
-        <div class="verse-reference">Al-Qur'an 5:2</div>
+        <div class="verse-content">"Sesungguhnya Allah hanya menginginkan untuk menghilangkan kotoran dari kalian, wahai Ahlul Bait, dan mensucikan kalian sebersih-bersihnya."</div>
+        <div class="verse-reference">Al-Ahzab 33:33</div>
     </div>
 
     <!-- Card Kristen -->
     <div class="verse-card" data-religion="kristen">
         <h3>Kristen</h3>
-        <div class="verse-content">"Perhatikanlah orang lain lebih utama daripada dirimu sendiri."</div>
-        <div class="verse-reference">Filipi 2:4</div>
+        <div class="verse-content">"Kasih adalah sabar, kasih adalah murah hati; ia tidak cemburu, tidak memegahkan diri, tidak sombong."</div>
+        <div class="verse-reference">1 Korintus 13:4</div>
     </div>
 
     <!-- Card Hindu -->
     <div class="verse-card" data-religion="hindu">
         <h3>Hindu</h3>
-        <div class="verse-content">"Hidup yang baik adalah hidup yang dipenuhi dengan kasih, tanpa keinginan pribadi yang berlebihan."</div>
-        <div class="verse-reference">Bhagavad Gita 16:3</div>
+        <div class="verse-content">"Hanya yang bebas dari keinginan dan penuh kasih yang dapat mencapai kebahagiaan sejati."</div>
+        <div class="verse-reference">Bhagavad Gita 4:19</div>
     </div>
 
     <!-- Card Buddha -->
     <div class="verse-card" data-religion="buddha">
         <h3>Buddha</h3>
-        <div class="verse-content">"Jangan membenci siapa pun. Jadikanlah cinta kasih sebagai penuntun hidupmu."</div>
+        <div class="verse-content">"Jangan mencari kebahagiaan di luar dirimu, tetapi temukanlah kedamaian dalam hati yang tenang."</div>
         <div class="verse-reference">Dhammapada 223</div>
     </div>
 
     <!-- Card Konghucu -->
     <div class="verse-card" data-religion="konghucu">
         <h3>Konghucu</h3>
-        <div class="verse-content">"Jika kita ingin menikmati kedamaian, maka kita harus menciptakan kedamaian dengan tindakan kita."</div>
-        <div class="verse-reference">Analek Konghucu 1:3</div>
+        <div class="verse-content">"Hidup dengan rasa hormat kepada orang lain adalah kunci menuju kedamaian dan kebahagiaan."</div>
+        <div class="verse-reference">Analek Konghucu 12:2</div>
     </div>
 </div>
 
@@ -342,6 +342,26 @@
         konghucu: '"Dalam hidup, hormat terhadap sesama adalah pondasi untuk mencapai kedamaian dan kebijaksanaan."',
         all: '"Kehidupan yang penuh kasih dan kedamaian dimulai dengan menghargai perbedaan dan hidup dalam harmoni."'
     };
+
+    // Function to filter the verses
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const religion = button.dataset.religion;
+            verseCards.forEach(card => {
+                const cardReligion = card.dataset.religion;
+                if (religion === 'all' || religion === cardReligion) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update the daily reflection text based on selected religion
+            reflectionText.textContent = reflections[religion];
+        });
+    });
+
+
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
