@@ -337,7 +337,7 @@
         <div class="chat-header">
             <div style="display: flex; align-items: center;">
                 <img src="vision.png" alt="Athena" class="athena-img">
-                <h2>Athena Nova 2.0</h2>
+                <h2>Athena Nova 2.3</h2>
             </div>
             <div id="current-time"></div>
         </div>
@@ -364,221 +364,342 @@
     </div>
 
     <script>
-    // The responses object, where each key corresponds to a user input phrase.
-const responses = {
-    "halo": "👋 Hai! Selamat datang, semoga harimu luar biasa! 😄",
-    "selamat pagi": "🌅 Selamat pagi! Semoga hari ini penuh semangat dan kebahagiaan! ☀️",
-    "selamat siang": "🌞 Selamat siang! Semoga semua berjalan lancar hari ini! 😎",
-    "selamat sore": "🌇 Selamat sore! Semoga sore ini menyenangkan! 🌻",
-    "selamat malam": "🌙 Selamat malam! Semoga tidurmu nyenyak dan bermimpi indah! 💤",
-    "hai semuanya": "👋 Hai semuanya! Semoga hari kalian menyenankan! ✨",
-        "halo teman-teman": "👋 Halo teman-teman! Semangat selalu ya! 💪",
-        "apa kabar": "🙋‍♂️ Apa kabar? Semoga baik-baik saja! 😊",
-        "howdy": "🤠 Howdy! Semoga harimu penuh keceriaan! 🥳",
-        "good morning": "🌞 Selamat pagi! Semoga hari ini penuh kebahagiaan! 💛",
-        "good afternoon": "🌇 Selamat siang! Semoga harimu penuh semangat! 💪",
-        "good evening": "🌙 Selamat malam! Semoga hari ini berkesan! 😌",
-        "greetings": "🌟 Salam! Semoga hari ini menyenankan! 🎉",
-        "yo": "👋 Yo! Siap untuk hari yang seru? 😎",
-        "hi there": "👋 Hai! Apa kabar? Semoga baik-baik saja! 😃",
-        "what's up": "🤔 Ada apa nih? Semangat terus ya! 🌟",
-        "hey": "👋 Hey! Senang bisa ngobrol denganmu! 😄",
-        "yo yo": "👊 Yo yo! Ayo kita buat hari ini luar biasa! 😈",
-        "yo everyone": "👋 Yo semuanya! Ayo, mari kita buat hari ini tak terlupakan! 💥",
-        "jadwal pelajaran hari senin": "📅 Jadwal Senin:\n- Ilmu Pengetahuan Sosial\n- Matematika\n- Bahasa Sunda\n- Bahasa Inggris\nWah, banyak pelajaran menarik di hari Senin! 😎",
-        "jadwal pelajaran hariselasa": "📅 Jadwal Selasa:\n- Pendidikan Kewarganegaraan\n- Ilmu Pengetahuan Alam\n- Pendidikan Agama Islam\nMinggu ini, Selasa penuh dengan pelajaran seru! 🧠",
-        "jadwal pelajaran hari rabu": "📅 Jadwal Rabu:\n- Bahasa Indonesia\n- Seni Budaya\n- Olahraga\nRabu saatnya beraktivitas, ada olahraga juga lho! 💪🎨",
-        "jadwal pelajaran hari kamis": "📅 Jadwal Kamis:\n- Ilmu Pengetahuan Alam\n- Bahasa Inggris\n- Matematika\n- Informatika\nKamis, penuh ilmu dan teknologi! 📚💻",
-        "jadwal pelajaran hari jumat": "📅 Jadwal Jumat:\n- Informatika\n- Ilmu Pengetahuan Sosial\n- Bahasa Indonesia\nSelamat belajar di Jumat yang penuh semangat! ✨",
-        "seragam senin": "👕 Senin: Baju putih biru\nGaya simpel, tapi tetap kece! 😎",
-        "seragam selasa": "👕 Selasa: Baju batik\nPakai batik, tampilan tradisional yang elegan! 🧑‍🎨",
-        "seragam rabu": "👕 Rabu: Baju putih biru dan rompi\nSiap tampil keren dengan rompi! 💼",
-        "seragam kamis": "👕 Kamis: Baju pramuka dengan kacu (wajib pakai kacu😄)\nJangan lupa, kacu harus dipakai ya, biar komplit penampilannya! 👟",
-        "seragam jumat": "👕 Jumat: Baju muslim\nHari Jumat, tampil syar’i dengan baju muslim. ✨",
-        "eskul senin": "⚽ Senin: Tahfidz dan futsal\nGak cuma belajar, Senin juga ada futsal! 🏃‍♂️",
-        "eskul selasa": "💃 Selasa: Tari, marawis, dan basket\nSelasa penuh gerakan, tari dan basket! 🏀",
-        "eskul rabu": "🥋 Rabu: Karate\nWaktunya jadi jagoan karate! 🥋",
-        "eskul kamis": "🎶 Kamis: Pramuka, paduan suara, dan voli\nKamis seru dengan pramuka dan voli, siap jadi pemenang! 🏅",
-        "eskul jumat": "🥋 Jumat: Silat dan badminton\nJumat penuh aksi dengan silat dan badminton! 🏸",
-        "eskul sabtu": "🚑 Sabtu: PMR dan paskibra\nSabtu untuk kegiatan PMR dan paskibra, persiapkan diri jadi pahlawan! 🦸‍♀️",
-        "info 1": "📚 Info: Setiap Senin dan Jumat wajib membawa buku cerita dan topi 🧢. Jangan sampai lupa ya!",
-        "info 2": "👕 Info: Setiap Rabu wajib membawa baju ganti olahraga dan buku lagu 🎶. Siap-siap gerak!",
-        "info 3": "👟 Info: Setiap pakai baju pramuka wajib pakai kacu. Jangan sampai lupa, kacu harus dipakai ya!",
-        "info 4": "🧦 Info: Kaos kaki harus sesuai dengan harinya. Sesuaikan dengan seragam, biar makin keren! 👌",
-        "info 5": "📖 Info: Setiap Senin wajib Tahfidz. Ingat, Senin itu waktunya Tahfidz! 🙏",
-        "absen 01": "Albertus Kevin Daniswara",
-        "absen 02": "Alya",
-        "absen 03": "Alycia Tan",
-        "absen 04": "Andien Maulidina Rizki",
-        "absen 05": "Aulia Irsa Supandi",
-        "absen 06": "Bayu Saktiawan",
-        "absen 07": "Devara Alvarizki",
-        "absen 08": "Evita Desta Riyani",
-        "absen 09": "Fanny",
-        "absen 10": "Febrian Aryanto",
-        "absen 11": "Hayfa Inka Siti Luthfiyah",
-        "absen 12": "Jovanka Olivia",
-        "absen 13": "Lie Owen",
-        "absen 14": "M. Syahril Syahputra",
-        "absen 15": "Marsya Nazila",
-        "absen 16": "Muamar Haikal Al Kahfi",
-        "absen 17": "Muhammad Fauzan Fadilah",
-        "absen 18": "Muhammad Ibnu Rajib",
-        "absen 19": "Muhammad Fayumi",
-        "absen 20": "Nofi Putri Alifiah",
-        "absen 21": "Prabu Trimo Ngalah",
-        "absen 22": "Rapi",
-        "absen 23": "Restianti Anjarwati",
-        "absen 24": "Reyhan Rahadian Maulana Saputra",
-        "absen 25": "Rizki Haris Riyadi",
-        "absen 26": "Muhammad Sandi",
-        "absen 27": "Robi Ardiansyah",
-        "absen 28": "Safa Julia Putri Ar-Rohmah",
-        "absen 29": "Sahira Aulya",
-        "absen 30": "Salma Nur Kholisah",
-        "absen 31": "Septia Fitriani",
-        "absen 32": "Shalsabela Suherman",
-        "absen 33": "Siti Hana Putri",
-        "absen 34": "Siti Maulinda",
-        "absen 35": "Siti Nurul Zakhiah Maulidah",
-        "absen 36": "Widya Raissa Annazura",
-        "absen 37": "Zhahira Syailla",
-        "ayat harian katolik": "Katolik: 'Kasihilah sesamamu manusia seperti dirimu sendiri.' - Matius 22:39",
-  "ayat harian islam": "Islam: 'Dan barang siapa yang bertakwa kepada Allah, niscaya Dia akan memberikan jalan keluar untuknya.' - QS. At-Talaq 65:2",
-  "ayat harian protestan": "Protestan: 'Janganlah kamu khawatir akan hidupmu, apa yang akan kamu makan atau minum, dan jangan pula akan tubuhmu, apa yang akan kamu pakai.' - Matius 6:25",
-  "ayat harian hindu": "Hindu: 'Hanya mereka yang tidak terbiasa dengan ketidakberuntungan yang takut pada waktu-waktu sulit. Orang bijaksana tidak takut pada perubahan.' - Bhagavad Gita 2:14",
-  "ayat harian buddha": "Buddha: 'Hanya dengan pengendalian diri seseorang dapat mencapai kedamaian sejati.' - Dhammapada 223",
-  "ayat harian konghucu": "Konghucu: 'Hormat kepada orang tua adalah kebajikan utama dalam kehidupan manusia.' - Analekta 1:3",
-        "piket senin": "📋 Piket Senin: Kevin, Bayu, Hayfa, Haikal, Prabu, Rizki, Septia, Widya\nSiap menjaga kelas hari Senin! 💪",
-        "piket selasa": "📋 Piket Selasa: Alya, Devara, Jovanka, Fauzan, Rapi, Robi, Shalsabela, Zhahira\nPiket Selasa, pastikan kelas tetap bersih ya! ✨",
-        "piket rabu": "📋 Piket Rabu: Alycia, Evita, Owen, Ibnu, Resti, Safa, Hana\nAyo Rabu, kita bersihkan kelas bareng! 🧹",
-        "piket kamis": "📋 Piket Kamis: Andien, Fanny, Syahril, Fayumi, Reyhan, Sahira, Linda\nKamis penuh semangat, bersihkan kelas yuk! 🧽",
-        "piket jumat": "📋 Piket Jumat: Aulia, Febri, Marsya, Novi, Sandi, Salma, Nurul\nJumat bersih, kelas jadi makin nyaman! 🌟",
-    "struktur kelas 8.3": "Pak Mussopa S.Pd.I 👨‍🏫 - Wali Kelas, bertanggung jawab untuk membimbing, mengawasi, dan memberi arahan kepada kelas, serta menjadi penghubung antara siswa dan pihak sekolah./Albertus Kevin Daniswara 👑, Ketua Kelas, memimpin seluruh kegiatan kelas, memastikan komunikasi yang baik antara guru dan siswa, serta mengelola organisasi kelas.Aulia Irsa Supandi 🏅,/ Wakil Ketua Kelas, membantu ketua kelas dalam menjalankan tugasnya dan menggantikan ketua jika tidak hadir./Sahira Aulya ✍️ sebagai Sekretaris mencatat hasil rapat dan kegiatan kelas, menyusun agenda, dan bertanggung jawab atas administrasi kelas,/sedangkan Septia Fitriani 📝, Wakil Sekretaris, mendokumentasikan kegiatan dan rapat kelas./ Muamar Khaikal Al-Kahfi 💰, Bendahara, mengelola keuangan kelas, termasuk pendapatan dan pengeluaran,/ sementara Siti Maulinda 💵, Wakil Bendahara, membantu dalam pengelolaan keuangan dan memastikan transaksi tercatat dengan benar./ Muhammad Ibnu Rajib 💻 sebagai Informatika bertanggung jawab atas perangkat teknologi kelas, termasuk komputer dan proyektor,/sementara Shalsabela Suherman 🖥️, Wakil Informatika, mendukung penggunaan teknologi untuk kegiatan pembelajaran./M. Syahril Syahputra 🛡️, Keamanan, menjaga ketertiban dan keamanan kelas, serta memastikan lingkungan yang aman,/sementara Siti Hana 🔒, Wakil Keamanan, membantu dalam pengawasan kelas./Muhammad Fauzan Faddilah 🧹 sebagai Kebersihan memastikan kelas terjaga kebersihannya dan mengorganisir jadwal pembersihan,/dengan bantuan Alya 🧼, Wakil Kebersihan, yang mendukung kebersihan kelas./ Febrian Aryanto 🤲 sebagai Rohis mengorganisir kegiatan rohani kelas,/sementara Andien Maulidina Rizki 🙏, Wakil Rohis, membantu merencanakan kegiatan spiritual.",
-    "kalender 1": "9-13 Desember 2024 📚 Pelaksanaan Sumatif Akhir Ganjil (SAS) - Ujian Semester Ganjil",
-    "kalender 2": "16-19 Desember 2024 ✈️ Libur Pasca Sumatif Akhir Semester Ganjil (SAS) & Outing Class Ke Yogyakarta",
-    "kalender 3": "20-23 Desember 2024 🎉 Pelaksanaan Classmeeting - Kegiatan Kelas dan Hiburan",
-    "kalender 4": "24 Desember 2024 - 4 Januari 2025 🎄 Libur Semester Ganjil - Liburan Semester Ganjil",
-    "kalender 5": "6 Januari 2025 🏫 Hari Pertama Masuk Sekolah Semester Genap - Awal Semester Genap",
-    "kalender 6": "11 Januari 2025 📊 Pembagian Rapot Sumatif Akhir Semester Ganjil (SAS) - Pembagian Hasil Ujian",
-    "greating": "Ada 15 Opsi 🤝 - Pilihan untuk salam atau sapaan",
-    "pelajaran": "Ada 5 Opsi 📚 - Pilihan terkait materi atau subjek pelajaran",
-    "seragam": "Ada 5 Opsi 👚 - Pilihan terkait seragam atau pakaian sekolah",
-    "piket": "Ada 5 Opsi 🧹 - Pilihan tugas piket atau kebersihan",
-    "struktur": "Ada 14 Opsi 🏗️ - Pilihan terkait struktur organisasi atau hierarki",
-    "kalender": "Ada 6 Opsi 📅 - Pilihan terkait jadwal atau kalender kegiatan",
-    "agama": "Ada 6 Opsi ✝️☪️🕉️ - Pilihan terkait kegiatan atau pembelajaran agama",
-    "absen": "Ada 37 Opsi 📝 - Pilihan untuk kehadiran atau absensi",
-    "informasi": "Ada 5 Opsi ℹ️ - Pilihan terkait informasi atau pengumuman",
-    "eskul": "Ada 5 Opsi ⚽🎨 - Pilihan terkait kegiatan ekstrakurikuler"
-}
-// Function to generate a response based on the user's input
-function generateResponse(input) {
-    // Convert the input to lowercase for case-insensitive matching
-    input = input.toLowerCase();
+        // The responses object, where each key corresponds to a user input phrase.
+    const responses = {
+        "halo": "👋 Hai! Selamat datang, semoga harimu luar biasa! 😄",
+        "selamat pagi": "🌅 Selamat pagi! Semoga hari ini penuh semangat dan kebahagiaan! ☀️",
+        "selamat siang": "🌞 Selamat siang! Semoga semua berjalan lancar hari ini! 😎",
+        "selamat sore": "🌇 Selamat sore! Semoga sore ini menyenangkan! 🌻",
+        "selamat malam": "🌙 Selamat malam! Semoga tidurmu nyenyak dan bermimpi indah! 💤",
+        "hai semuanya": "👋 Hai semuanya! Semoga hari kalian menyenankan! ✨",
+        "terima kasih": "🤗 Terima kasih juga,sudah menggunakan Athena Nova! Semoga kalian selalu bahagia! 😊",
+            "halo teman-teman": "👋 Halo teman-teman! Semangat selalu ya! 💪",
+            "apa kabar": "🙋‍♂️ Apa kabar? Semoga baik-baik saja! 😊",
+            "howdy": "🤠 Howdy! Semoga harimu penuh keceriaan! 🥳",
+            "good morning": "🌞 Selamat pagi! Semoga hari ini penuh kebahagiaan! 💛",
+            "good afternoon": "🌇 Selamat siang! Semoga harimu penuh semangat! 💪",
+            "good evening": "🌙 Selamat malam! Semoga hari ini berkesan! 😌",
+            "greetings": "🌟 Salam! Semoga hari ini menyenankan! 🎉",
+            "yo": "👋 Yo! Siap untuk hari yang seru? 😎",
+            "hi there": "👋 Hai! Apa kabar? Semoga baik-baik saja! 😃",
+            "what's up": "🤔 Ada apa nih? Semangat terus ya! 🌟",
+            "hey": "👋 Hey! Senang bisa ngobrol denganmu! 😄",
+            "yo yo": "👊 Yo yo! Ayo kita buat hari ini luar biasa! 😈",
+            "yo everyone": "👋 Yo semuanya! Ayo, mari kita buat hari ini tak terlupakan! 💥",
+            "jadwal pelajaran hari senin": "📅 Jadwal Senin:\n- Ilmu Pengetahuan Sosial\n- Matematika\n- Bahasa Sunda\n- Bahasa Inggris\nWah, banyak pelajaran menarik di hari Senin! 😎",
+            "jadwal pelajaran hariselasa": "📅 Jadwal Selasa:\n- Pendidikan Kewarganegaraan\n- Ilmu Pengetahuan Alam\n- Pendidikan Agama Islam\nMinggu ini, Selasa penuh dengan pelajaran seru! 🧠",
+            "jadwal pelajaran hari rabu": "📅 Jadwal Rabu:\n- Bahasa Indonesia\n- Seni Budaya\n- Olahraga\nRabu saatnya beraktivitas, ada olahraga juga lho! 💪🎨",
+            "jadwal pelajaran hari kamis": "📅 Jadwal Kamis:\n- Ilmu Pengetahuan Alam\n- Bahasa Inggris\n- Matematika\n- Informatika\nKamis, penuh ilmu dan teknologi! 📚💻",
+            "jadwal pelajaran hari jumat": "📅 Jadwal Jumat:\n- Informatika\n- Ilmu Pengetahuan Sosial\n- Bahasa Indonesia\nSelamat belajar di Jumat yang penuh semangat! ✨",
+            "seragam senin": "👕 Senin: Baju putih biru\nGaya simpel, tapi tetap kece! 😎",
+            "seragam selasa": "👕 Selasa: Baju batik\nPakai batik, tampilan tradisional yang elegan! 🧑‍🎨",
+            "seragam rabu": "👕 Rabu: Baju putih biru dan rompi\nSiap tampil keren dengan rompi! 💼",
+            "seragam kamis": "👕 Kamis: Baju pramuka dengan kacu (wajib pakai kacu😄)\nJangan lupa, kacu harus dipakai ya, biar komplit penampilannya! 👟",
+            "seragam jumat": "👕 Jumat: Baju muslim\nHari Jumat, tampil syar’i dengan baju muslim. ✨",
+            "eskul senin": "⚽ Senin: Tahfidz dan futsal\nGak cuma belajar, Senin juga ada futsal! 🏃‍♂️",
+            "eskul selasa": "💃 Selasa: Tari, marawis, dan basket\nSelasa penuh gerakan, tari dan basket! 🏀",
+            "eskul rabu": "🥋 Rabu: Karate\nWaktunya jadi jagoan karate! 🥋",
+            "eskul kamis": "🎶 Kamis: Pramuka, paduan suara, dan voli\nKamis seru dengan pramuka dan voli, siap jadi pemenang! 🏅",
+            "eskul jumat": "🥋 Jumat: Silat dan badminton\nJumat penuh aksi dengan silat dan badminton! 🏸",
+            "eskul sabtu": "🚑 Sabtu: PMR dan paskibra\nSabtu untuk kegiatan PMR dan paskibra, persiapkan diri jadi pahlawan! 🦸‍♀️",
+            "info 1": "📚 Info: Setiap Senin dan Jumat wajib membawa buku cerita dan topi 🧢. Jangan sampai lupa ya!",
+            "info 2": "👕 Info: Setiap Rabu wajib membawa baju ganti olahraga dan buku lagu 🎶. Siap-siap gerak!",
+            "info 3": "👟 Info: Setiap pakai baju pramuka wajib pakai kacu. Jangan sampai lupa, kacu harus dipakai ya!",
+            "info 4": "🧦 Info: Kaos kaki harus sesuai dengan harinya. Sesuaikan dengan seragam, biar makin keren! 👌",
+            "info 5": "📖 Info: Setiap Senin wajib Tahfidz. Ingat, Senin itu waktunya Tahfidz! 🙏",
+            "absen 01": "Albertus Kevin Daniswara",
+            "absen 02": "Alya",
+            "absen 03": "Alycia Tan",
+            "absen 04": "Andien Maulidina Rizki",
+            "absen 05": "Aulia Irsa Supandi",
+            "absen 06": "Bayu Saktiawan",
+            "absen 07": "Devara Alvarizki",
+            "absen 08": "Evita Desta Riyani",
+            "absen 09": "Fanny",
+            "absen 10": "Febrian Aryanto",
+            "absen 11": "Hayfa Inka Siti Luthfiyah",
+            "absen 12": "Jovanka Olivia",
+            "absen 13": "Lie Owen",
+            "absen 14": "M. Syahril Syahputra",
+            "absen 15": "Marsya Nazila",
+            "absen 16": "Muamar Haikal Al Kahfi",
+            "absen 17": "Muhammad Fauzan Fadilah",
+            "absen 18": "Muhammad Ibnu Rajib",
+            "absen 19": "Muhammad Fayumi",
+            "absen 20": "Nofi Putri Alifiah",
+            "absen 21": "Prabu Trimo Ngalah",
+            "absen 22": "Rapi",
+            "absen 23": "Restianti Anjarwati",
+            "absen 24": "Reyhan Rahadian Maulana Saputra",
+            "absen 25": "Rizki Haris Riyadi",
+            "absen 26": "Muhammad Sandi",
+            "absen 27": "Robi Ardiansyah",
+            "absen 28": "Safa Julia Putri Ar-Rohmah",
+            "absen 29": "Sahira Aulya",
+            "absen 30": "Salma Nur Kholisah",
+            "absen 31": "Septia Fitriani",
+            "absen 32": "Shalsabela Suherman",
+            "absen 33": "Siti Hana Putri",
+            "absen 34": "Siti Maulinda",
+            "absen 35": "Siti Nurul Zakhiah Maulidah",
+            "absen 36": "Widya Raissa Annazura",
+            "absen 37": "Zhahira Syailla",
+            "ayat harian katolik": "Katolik: 'Kasihilah sesamamu manusia seperti dirimu sendiri.' - Matius 22:39",
+      "ayat harian islam": "Islam: 'Dan barang siapa yang bertakwa kepada Allah, niscaya Dia akan memberikan jalan keluar untuknya.' - QS. At-Talaq 65:2",
+      "ayat harian protestan": "Protestan: 'Janganlah kamu khawatir akan hidupmu, apa yang akan kamu makan atau minum, dan jangan pula akan tubuhmu, apa yang akan kamu pakai.' - Matius 6:25",
+      "ayat harian hindu": "Hindu: 'Hanya mereka yang tidak terbiasa dengan ketidakberuntungan yang takut pada waktu-waktu sulit. Orang bijaksana tidak takut pada perubahan.' - Bhagavad Gita 2:14",
+      "ayat harian buddha": "Buddha: 'Hanya dengan pengendalian diri seseorang dapat mencapai kedamaian sejati.' - Dhammapada 223",
+      "ayat harian konghucu": "Konghucu: 'Hormat kepada orang tua adalah kebajikan utama dalam kehidupan manusia.' - Analekta 1:3",
+            "piket senin": "📋 Piket Senin: Kevin, Bayu, Hayfa, Haikal, Prabu, Rizki, Septia, Widya\nSiap menjaga kelas hari Senin! 💪",
+            "piket selasa": "📋 Piket Selasa: Alya, Devara, Jovanka, Fauzan, Rapi, Robi, Shalsabela, Zhahira\nPiket Selasa, pastikan kelas tetap bersih ya! ✨",
+            "piket rabu": "📋 Piket Rabu: Alycia, Evita, Owen, Ibnu, Resti, Safa, Hana\nAyo Rabu, kita bersihkan kelas bareng! 🧹",
+            "piket kamis": "📋 Piket Kamis: Andien, Fanny, Syahril, Fayumi, Reyhan, Sahira, Linda\nKamis penuh semangat, bersihkan kelas yuk! 🧽",
+            "piket jumat": "📋 Piket Jumat: Aulia, Febri, Marsya, Novi, Sandi, Salma, Nurul\nJumat bersih, kelas jadi makin nyaman! 🌟",
+        "struktur kelas 8.3": "Pak Mussopa S.Pd.I 👨‍🏫 - Wali Kelas, bertanggung jawab untuk membimbing, mengawasi, dan memberi arahan kepada kelas, serta menjadi penghubung antara siswa dan pihak sekolah./Albertus Kevin Daniswara 👑, Ketua Kelas, memimpin seluruh kegiatan kelas, memastikan komunikasi yang baik antara guru dan siswa, serta mengelola organisasi kelas.Aulia Irsa Supandi 🏅,/ Wakil Ketua Kelas, membantu ketua kelas dalam menjalankan tugasnya dan menggantikan ketua jika tidak hadir./Sahira Aulya ✍️ sebagai Sekretaris mencatat hasil rapat dan kegiatan kelas, menyusun agenda, dan bertanggung jawab atas administrasi kelas,/sedangkan Septia Fitriani 📝, Wakil Sekretaris, mendokumentasikan kegiatan dan rapat kelas./ Muamar Khaikal Al-Kahfi 💰, Bendahara, mengelola keuangan kelas, termasuk pendapatan dan pengeluaran,/ sementara Siti Maulinda 💵, Wakil Bendahara, membantu dalam pengelolaan keuangan dan memastikan transaksi tercatat dengan benar./ Muhammad Ibnu Rajib 💻 sebagai Informatika bertanggung jawab atas perangkat teknologi kelas, termasuk komputer dan proyektor,/sementara Shalsabela Suherman 🖥️, Wakil Informatika, mendukung penggunaan teknologi untuk kegiatan pembelajaran./M. Syahril Syahputra 🛡️, Keamanan, menjaga ketertiban dan keamanan kelas, serta memastikan lingkungan yang aman,/sementara Siti Hana 🔒, Wakil Keamanan, membantu dalam pengawasan kelas./Muhammad Fauzan Faddilah 🧹 sebagai Kebersihan memastikan kelas terjaga kebersihannya dan mengorganisir jadwal pembersihan,/dengan bantuan Alya 🧼, Wakil Kebersihan, yang mendukung kebersihan kelas./ Febrian Aryanto 🤲 sebagai Rohis mengorganisir kegiatan rohani kelas,/sementara Andien Maulidina Rizki 🙏, Wakil Rohis, membantu merencanakan kegiatan spiritual.",
+        "kalender 1": "9-13 Desember 2024 📚 Pelaksanaan Sumatif Akhir Ganjil (SAS) - Ujian Semester Ganjil",
+        "kalender 2": "16-19 Desember 2024 ✈️ Libur Pasca Sumatif Akhir Semester Ganjil (SAS) & Outing Class Ke Yogyakarta",
+        "kalender 3": "20-23 Desember 2024 🎉 Pelaksanaan Classmeeting - Kegiatan Kelas dan Hiburan",
+        "kalender 4": "24 Desember 2024 - 4 Januari 2025 🎄 Libur Semester Ganjil - Liburan Semester Ganjil",
+        "kalender 5": "6 Januari 2025 🏫 Hari Pertama Masuk Sekolah Semester Genap - Awal Semester Genap",
+        "kalender 6": "11 Januari 2025 📊 Pembagian Rapot Sumatif Akhir Semester Ganjil (SAS) - Pembagian Hasil Ujian",
+        "greating": "Ada 15 Opsi 🤝 - Pilihan untuk salam atau sapaan",
+        "pelajaran": "Ada 5 Opsi 📚 - Pilihan terkait materi atau subjek pelajaran",
+        "seragam": "Ada 5 Opsi 👚 - Pilihan terkait seragam atau pakaian sekolah",
+        "piket": "Ada 5 Opsi 🧹 - Pilihan tugas piket atau kebersihan",
+        "struktur": "Ada 14 Opsi 🏗️ - Pilihan terkait struktur organisasi atau hierarki",
+        "kalender": "Ada 6 Opsi 📅 - Pilihan terkait jadwal atau kalender kegiatan",
+        "agama": "Ada 6 Opsi ✝️☪️🕉️ - Pilihan terkait kegiatan atau pembelajaran agama",
+        "absen": "Ada 37 Opsi 📝 - Pilihan untuk kehadiran atau absensi",
+        "informasi": "Ada 5 Opsi ℹ️ - Pilihan terkait informasi atau pengumuman",
+        "eskul": "Ada 5 Opsi ⚽🎨 - Pilihan terkait kegiatan ekstrakurikuler"
+    }
+    function calculateMathExpression(input) {
+    // Enhanced input normalization and preprocessing
+    input = input.toLowerCase().trim()
+        .replace(/\s+/g, ' ')  // Normalize multiple spaces
+        .replace(/,/g, '.')    // Replace comma with period for decimal support
+        .replace(/\./g, (match, offset, string) => {
+            // Ensure only valid decimal points are used
+            return (string[offset-1] && /\d/.test(string[offset-1])) ? match : '';
+        });
 
-    // Check for a matching response
+    // More robust number extraction with advanced parsing
+    function extractNumbers(inputStr) {
+        // Improved regex to handle:
+        // - Integers
+        // - Decimal numbers
+        // - Negative numbers
+        // - Numbers with thousand separators
+        const numberMatches = inputStr.match(/[-]?\d{1,3}(?:\.\d{3})*(?:,\d+)?/g);
+
+        return numberMatches ? numberMatches.map(num => {
+            // Remove thousand separators and convert comma decimals
+            const cleanedNum = num.replace(/\./g, '').replace(',', '.');
+            return parseFloat(cleanedNum);
+        }) : [];
+    }
+
+    // Advanced number formatting with localization
+    function formatNumber(num, options = {}) {
+        const {
+            style = 'decimal',
+            minimumFractionDigits = 0,
+            maximumFractionDigits = 2
+        } = options;
+
+        // Use Indonesian locale with advanced formatting
+        const formatter = new Intl.NumberFormat('id-ID', {
+            style,
+            minimumFractionDigits,
+            maximumFractionDigits
+        });
+
+        // Special handling for very large or very small numbers
+        if (Math.abs(num) > 1e15 || (Math.abs(num) < 1e-5 && num !== 0)) {
+            return formatter.format(num.toExponential(2));
+        }
+
+        return formatter.format(num).replace(/,/g, '.');
+    }
+
+    // Comprehensive operation mapping with advanced error handling
+    const operations = {
+        'ditambah': {
+            operate: (a, b) => a + b,
+            symbol: '+'
+        },
+        'dikurang': {
+            operate: (a, b) => a - b,
+            symbol: '-'
+        },
+        'kali': {
+            operate: (a, b) => a * b,
+            symbol: '×'
+        },
+        'dibagi': {
+            operate: (a, b) => {
+                if (b === 0) throw new Error('DivisionByZero');
+                return a / b;
+            },
+            symbol: '÷'
+        }
+    };
+
+    // Function to handle precedence of operators
+    function evaluateExpression(input) {
+        // Handle precedence of operators (e.g., "kali" and "dibagi" first, then "ditambah" and "dikurang")
+        let result;
+        let regex = /(\d+(?:[.,]\d+)?)\s*(ditambah|dikurang|kali|dibagi)\s*(\d+(?:[.,]\d+)?)/i;
+
+        while (regex.test(input)) {
+            input = input.replace(regex, (match, num1, operator, num2) => {
+                const n1 = parseFloat(num1.replace(',', '.'));
+                const n2 = parseFloat(num2.replace(',', '.'));
+
+                const operation = operations[operator];
+                result = operation.operate(n1, n2);
+
+                return result.toString();
+            });
+        }
+
+        return result;
+    }
+
+    try {
+        const result = evaluateExpression(input);
+
+        if (result === undefined) {
+            throw new Error('UnsupportedOperation');
+        }
+
+        // Format the result with the local number format
+        return `Hasil perhitungan adalah ${formatNumber(result)}.`;
+
+    } catch (error) {
+        switch (error.message) {
+            case 'DivisionByZero':
+                return "Kesalahan: Tidak dapat membagi dengan nol!";
+            case 'UnsupportedOperation':
+                return "Maaf, saya tidak dapat memahami operasi matematika tersebut. Gunakan format seperti '5 ditambah 5' atau '10 dikurang 3 kali 2'.";
+            default:
+                return "Terjadi kesalahan dalam perhitungan. Pastikan format input Anda benar.";
+        }
+    }
+}
+
+function generateResponse(input) {
+    input = input.toLowerCase().trim();
+
+    // First try math calculation
+    const mathResponse = calculateMathExpression(input);
+    if (mathResponse.startsWith("Hasil perhitungan")) {
+        return mathResponse;
+    }
+
     for (let key in responses) {
-        // Directly match the key (e.g., "halo", "selamat pagi")
         if (input.includes(key)) {
             return responses[key];
         }
     }
 
-    // If no match is found, return the default message
-    return "Maaf, saya tidak mengerti. Mungkin Kevin belum memprogram saya untuk menjawab pertanyaan seperti itu. 🤖 Saya hanya diprogram untuk menjadi asisten kelas, bukan super AI. 🙇 Mungkin beberapa bulan lagi, saya akan menjadi AI canggih yang hampir menyamai AI lainnya. 🤩";
+    return "Maaf, saya tidak mengerti. Mungkin Kevin belum memprogram saya untuk menjawab pertanyaan seperti itu. 🤖";
 }
 
-// Function to show the typing indicator while the bot is preparing a response
-function showTypingIndicator() {
-    let chatBox = document.getElementById("chat-box");
-    let typingDiv = document.createElement("div");
-    typingDiv.classList.add("message", "bot", "typing");
-    typingDiv.textContent = "Bot is typing...";
-    chatBox.appendChild(typingDiv);
-}
-
-// Function to display the bot's response in the chat box
-function displayBotResponse(responseText) {
-    let chatBox = document.getElementById("chat-box");
-    let messageDiv = document.createElement("div");
-    messageDiv.classList.add("message", "bot");
-    messageDiv.textContent = responseText;
-    chatBox.appendChild(messageDiv);
-
-    // Optionally, scroll to the bottom to show the latest message
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-// Function to send a message and get a response
-function sendMessage() {
-    let userInput = document.getElementById("user-input").value;
-    if (userInput.trim()) {
+    
+    
+    
+    // Function to show the typing indicator while the bot is preparing a response
+    function showTypingIndicator() {
         let chatBox = document.getElementById("chat-box");
-
-        // Create and display the user's message
+        let typingDiv = document.createElement("div");
+        typingDiv.classList.add("message", "bot", "typing");
+        typingDiv.textContent = "Bot is typing...";
+        chatBox.appendChild(typingDiv);
+    }
+    
+    // Function to display the bot's response in the chat box
+    function displayBotResponse(responseText) {
+        let chatBox = document.getElementById("chat-box");
         let messageDiv = document.createElement("div");
-        messageDiv.classList.add("message", "user");
-        messageDiv.textContent = userInput;
+        messageDiv.classList.add("message", "bot");
+        messageDiv.textContent = responseText;
         chatBox.appendChild(messageDiv);
-
-        // Clear the input field
-        document.getElementById("user-input").value = "";
-
-        // Show the typing indicator
-        showTypingIndicator();
-
-        // Simulate delay before the bot responds (3 seconds)
-        setTimeout(() => {
-            // Get the bot's response
-            let responseText = generateResponse(userInput);
-            // Display the bot's response in the chat box
-            displayBotResponse(responseText);
-        }, 3000); // 3 seconds delay to simulate thinking
+    
+        // Optionally, scroll to the bottom to show the latest message
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
-}
-
-// Optional: Add an event listener for pressing "Enter" to send the message
-document.getElementById("user-input").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        sendMessage();
-    }
-});
-
-
-        function displayBotResponse(responseText) {
+    
+    // Function to send a message and get a response
+    function sendMessage() {
+        let userInput = document.getElementById("user-input").value;
+        if (userInput.trim()) {
             let chatBox = document.getElementById("chat-box");
+    
+            // Create and display the user's message
             let messageDiv = document.createElement("div");
-            messageDiv.classList.add("message", "bot");
-            messageDiv.textContent = responseText;
+            messageDiv.classList.add("message", "user");
+            messageDiv.textContent = userInput;
             chatBox.appendChild(messageDiv);
-            document.getElementById("typing-indicator").style.display = "none";
-            chatBox.scrollTop = chatBox.scrollHeight;
+    
+            // Clear the input field
+            document.getElementById("user-input").value = "";
+    
+            // Show the typing indicator
+            showTypingIndicator();
+    
+            // Simulate delay before the bot responds (3 seconds)
+            setTimeout(() => {
+                // Get the bot's response
+                let responseText = generateResponse(userInput);
+                // Display the bot's response in the chat box
+                displayBotResponse(responseText);
+            }, 3000); // 3 seconds delay to simulate thinking
         }
-
-        function showTypingIndicator() {
-            let typingIndicator = document.getElementById("typing-indicator");
-            typingIndicator.style.display = "block";
+    }
+    
+    // Optional: Add an event listener for pressing "Enter" to send the message
+    document.getElementById("user-input").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
         }
-
-        function handleEnterKey(event) {
-            if (event.key === "Enter") {
-                sendMessage();
+    });
+    
+    
+            function displayBotResponse(responseText) {
+                let chatBox = document.getElementById("chat-box");
+                let messageDiv = document.createElement("div");
+                messageDiv.classList.add("message", "bot");
+                messageDiv.textContent = responseText;
+                chatBox.appendChild(messageDiv);
+                document.getElementById("typing-indicator").style.display = "none";
+                chatBox.scrollTop = chatBox.scrollHeight;
             }
-        }
-
-        function goBack() {
-            window.location.href = "tes.html";
-        }
-
-        setInterval(() => {
-            let currentTime = new Date();
-            document.getElementById("current-time").textContent = currentTime.toLocaleTimeString('id-ID', {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-            });
-        }, 1000);
-    </script>
+    
+            function showTypingIndicator() {
+                let typingIndicator = document.getElementById("typing-indicator");
+                typingIndicator.style.display = "block";
+            }
+    
+            function handleEnterKey(event) {
+                if (event.key === "Enter") {
+                    sendMessage();
+                }
+            }
+    
+            function goBack() {
+                window.location.href = "tes.html";
+            }
+    
+            setInterval(() => {
+                let currentTime = new Date();
+                document.getElementById("current-time").textContent = currentTime.toLocaleTimeString('id-ID', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                });
+            }, 1000);
+        </script>
+        
 </body>
 </html>
