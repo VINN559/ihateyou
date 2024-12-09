@@ -1,337 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Athena - Chatbot Kelas 8.3</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
         :root {
-      --primary-color: #FF4F8E; /* Neon Pink */
-      --secondary-color: #00C6FF; /* Neon Blue */
-      --accent-color: #F9C74F; /* Neon Yellow */
-      --background-light: #F3F4F6; /* Light pastel background */
-      --text-primary: #333; /* Darker text for readability */
-      --text-secondary: #666; /* Lighter gray text */
-  }
-  
-  * {
-      box-sizing: border-box;
-      transition: all 0.3s ease-in-out;
-  }
-  
-  body {
-      font-family: 'Fira Sans', Arial, sans-serif;
-      background: linear-gradient(135deg, var(--background-light) 0%, #D1F0FF 100%); /* Soft blue gradient */
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-  }
-  
-  .chat-container {
-      width: 100%;
-      max-width: 500px;
-      background: #fff;
-      border-radius: 30px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      height: 80vh;
-      border: 2px solid var(--primary-color);
-  }
-  
-  .chat-header {
-      background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); /* Bold gradient */
-      color: white;
-      padding: 20px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 3px solid #fff; /* Clean separation */
-  }
-  
-  .chat-header h2 {
-      margin: 0;
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 1px;
-  }
-  
-  .status-indicator {
-      width: 12px;
-      height: 12px;
-      background-color: #2ecc71; /* Green indicator for active status */
-      border-radius: 50%;
-      margin-right: 12px;
-  }
-  
-  .chat-box {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 20px;
-      background-color: var(--background-light);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      border-bottom: 2px solid #e0e0e0;
-  }
-  
-  .message {
-      padding: 15px 20px;
-      border-radius: 18px;
-      max-width: 75%;
-      word-wrap: break-word;
-      position: relative;
-      font-size: 1rem;
-      display: inline-block;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  }
-  
-  .message.user {
-      background: linear-gradient(to right, var(--secondary-color), var(--primary-color)); /* Gradient for user messages */
-      color: white;
-      align-self: flex-end;
-      border-radius: 18px 18px 0 18px;
-      margin-left: auto;
-      text-align: right;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .message.bot {
-      background: #F3F4F6;
-      color: var(--text-secondary);
-      align-self: flex-start;
-      border-radius: 18px 18px 18px 0;
-      margin-right: auto;
-      text-align: left;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .chat-input {
-      display: flex;
-      padding: 15px;
-      background-color: white;
-      border-top: 2px solid #e0e0e0;
-  }
-  
-  .chat-input input {
-      flex: 1;
-      padding: 15px;
-      border: 2px solid var(--primary-color);
-      border-radius: 25px;
-      outline: none;
-      font-family: 'Fira Sans', sans-serif;
-      font-size: 1rem;
-      transition: 0.3s;
-  }
-  
-  .chat-input input:focus {
-      border-color: var(--secondary-color);
-  }
-  
-  .chat-input button {
-      flex-shrink: 0;
-      margin-left: 10px;
-      padding: 12px 20px;
-      background-color: var(--secondary-color);
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1rem;
-      transition: 0.3s ease;
-  }
-  
-  .chat-input button:hover {
-      background-color: var(--primary-color);
-      transform: scale(1.05);
-  }
-  
-  .back-button {
-      margin-top: 15px;
-      padding: 12px 20px;
-      background-color: var(--accent-color);
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 1rem;
-      transition: 0.3s ease;
-  }
-  
-  .back-button:hover {
-      background-color: #e74c3c;
-      transform: scale(1.05);
-  }
-  
-  @media (max-width: 768px) {
-      .chat-header h2 {
-          font-size: 1.2rem;
-      }
-  
-      .message {
-          font-size: 0.95rem;
-      }
-  
-      .chat-input input {
-          font-size: 0.95rem;
-      }
-  
-      .chat-input button {
-          font-size: 0.95rem;
-      }
-  
-      .back-button {
-          font-size: 0.95rem;
-      }
-  
-      .chat-container {
-          width: 95%;
-          max-height: 95vh;
-      }
-  
-      .chat-box {
-          padding: 15px;
-      }
-  }
-  
-  @media (max-width: 480px) {
-      .chat-header {
-          flex-direction: column;
-          text-align: center;
-      }
-  
-      .status-indicator {
-          margin-bottom: 5px;
-      }
-  
-      .chat-header h2 {
-          font-size: 1.1rem;
-          margin-bottom: 5px;
-      }
-  
-      .chat-input input {
-          padding: 10px;
-          font-size: 0.95rem;
-      }
-  
-      .chat-input button {
-          padding: 10px 18px;
-          font-size: 0.95rem;
-      }
-  
-      .back-button {
-          font-size: 0.95rem;
-          padding: 10px 18px;
-      }
-  
-      .chat-box {
-          padding: 10px;
-      }
-  
-      .message {
-          max-width: 90%;
-          font-size: 0.9rem;
-      }
-  }
-  
-  /* New media query for very small screens */
-  @media (max-width: 380px) {
-      .chat-input {
-          flex-direction: column;
-      }
-  
-      .chat-input input {
-          width: 100%;
-          margin-bottom: 10px;
-      }
-  
-      .chat-input button {
-          width: 100%;
-          margin-left: 0;
-      }
-  }
-  
-  @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .message {
-      animation: fadeIn 0.3s ease;
-  }
-  
-  /* Typing indicator (3 dots animation) */
-  .typing-indicator {
-      display: none;
-      font-size: 1.2em;
-      color: var(--secondary-color);
-      font-weight: bold;
-      margin-top: 10px;
-      text-align: center;
-  }
-  
-  .typing-indicator span {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      margin: 0 4px;
-      background-color: var(--secondary-color);
-      border-radius: 50%;
-      animation: typing 1.5s infinite ease-in-out;
-  }
-  
-  .typing-indicator span:nth-child(1) {
-      animation-delay: 0s;
-  }
-  
-  .typing-indicator span:nth-child(2) {
-      animation-delay: 0.3s;
-  }
-  
-  .typing-indicator span:nth-child(3) {
-      animation-delay: 0.6s;
-  }
-  
-  @keyframes typing {
-      0% {
-          opacity: 0;
-      }
-      50% {
-          opacity: 1;
-      }
-      100% {
-          opacity: 0;
-      }
-  }
-  
-  /* Style for the Athena image */
-  .athena-img {
-      width: 60px;  /* Larger size */
-      height: 60px; /* Larger size */
-      border-radius: 50%;
-      margin-right: -10px; /* Reduced gap between image and text */
-      object-fit: cover; /* Ensures the image maintains its aspect ratio */
-  }
-  
-  
-      
-      </style>
-    
+            --primary-color: #FF4F8E;
+            /* Neon Pink */
+            --secondary-color: #00C6FF;
+            /* Neon Blue */
+            --accent-color: #F9C74F;
+            /* Neon Yellow */
+            --background-light: #F3F4F6;
+            /* Light pastel background */
+            --text-primary: #333;
+            /* Darker text for readability */
+            --text-secondary: #666;
+            /* Lighter gray text */
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Fira Sans', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--background-light) 0%, #D1F0FF 100%);
+            /* Soft blue gradient */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 500px;
+            background: #fff;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            border: 2px solid var(--primary-color);
+        }
+
+        .chat-header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            /* Bold gradient */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #fff;
+            /* Clean separation */
+        }
+
+        .chat-header h2 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            background-color: #2ecc71;
+            /* Green indicator for active status */
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: var(--background-light);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .message {
+            padding: 15px 20px;
+            border-radius: 18px;
+            max-width: 75%;
+            word-wrap: break-word;
+            position: relative;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .message.user {
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+            /* Gradient for user messages */
+            color: white;
+            align-self: flex-end;
+            border-radius: 18px 18px 0 18px;
+            margin-left: auto;
+            text-align: right;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .message.bot {
+            background: #F3F4F6;
+            color: var(--text-secondary);
+            align-self: flex-start;
+            border-radius: 18px 18px 18px 0;
+            margin-right: auto;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background-color: white;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            outline: none;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .chat-input input:focus {
+            border-color: var(--secondary-color);
+        }
+
+        .chat-input button {
+            flex-shrink: 0;
+            margin-left: 10px;
+            padding: 12px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            transition: 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .back-button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1rem;
+            transition: 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #e74c3c;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .chat-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .message {
+                font-size: 0.95rem;
+            }
+
+            .chat-input input {
+                font-size: 0.95rem;
+            }
+
+            .chat-input button {
+                font-size: 0.95rem;
+            }
+
+            .back-button {
+                font-size: 0.95rem;
+            }
+
+            .chat-container {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .chat-box {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .status-indicator {
+                margin-bottom: 5px;
+            }
+
+            .chat-header h2 {
+                font-size: 1.1rem;
+                margin-bottom: 5px;
+            }
+
+            .chat-input input {
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+
+            .chat-input button {
+                padding: 10px 18px;
+                font-size: 0.95rem;
+            }
+
+            .back-button {
+                font-size: 0.95rem;
+                padding: 10px 18px;
+            }
+
+            .chat-box {
+                padding: 10px;
+            }
+
+            .message {
+                max-width: 90%;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* New media query for very small screens */
+        @media (max-width: 380px) {
+            .chat-input {
+                flex-direction: column;
+            }
+
+            .chat-input input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .chat-input button {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Typing indicator (3 dots animation) */
+        .typing-indicator {
+            display: none;
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 4px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            animation: typing 1.5s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes typing {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Style for the Athena image */
+        .athena-img {
+            width: 60px;
+            /* Larger size */
+            height: 60px;
+            /* Larger size */
+            border-radius: 50%;
+            margin-right: -10px;
+            /* Reduced gap between image and text */
+            object-fit: cover;
+            /* Ensures the image maintains its aspect ratio */
+        }
+    </style>
+
 </head>
+
 <body>
     <div class="chat-container">
         <div class="chat-header">
@@ -344,12 +368,14 @@
 
         <div class="chat-box" id="chat-box">
             <div class="message bot">
-                Hai teman-teman Kelas 8.3! 👋 Aku Athena Nova 2.3.1 versi terbaru dari Athena sebelumnya, asisten digital kelas kalian! 🤖✨
-                Kalian bisa tanya apa saja tentang jadwal pelajaran 📅, tugas-tugas 📚, atau hal lainnya yang berkaitan dengan kelas kita! 🎓 Jangan ragu untuk bertanya ya, aku siap membantu kapan saja! 😊
+                Hai teman-teman Kelas 8.3! 👋 Aku Athena Nova 2.3.1 versi terbaru dari Athena sebelumnya, asisten
+                digital kelas kalian! 🤖✨
+                Kalian bisa tanya apa saja tentang jadwal pelajaran 📅, tugas-tugas 📚, atau hal lainnya yang berkaitan
+                dengan kelas kita! 🎓 Jangan ragu untuk bertanya ya, aku siap membantu kapan saja! 😊
                 Yuk, semangat belajar bersama! 💪📖
+            </div>
         </div>
-    </div>
-        
+
 
         <div class="chat-input">
             <input type="text" id="user-input" placeholder="Tanyakan sesuatu..." onkeydown="handleEnterKey(event)">
@@ -365,14 +391,14 @@
 
     <script>
         // The responses object, where each key corresponds to a user input phrase.
-    const responses = {
-        "halo": "👋 Hai! Selamat datang, semoga harimu luar biasa! 😄",
-        "selamat pagi": "🌅 Selamat pagi! Semoga hari ini penuh semangat dan kebahagiaan! ☀️",
-        "selamat siang": "🌞 Selamat siang! Semoga semua berjalan lancar hari ini! 😎",
-        "selamat sore": "🌇 Selamat sore! Semoga sore ini menyenangkan! 🌻",
-        "selamat malam": "🌙 Selamat malam! Semoga tidurmu nyenyak dan bermimpi indah! 💤",
-        "hai semuanya": "👋 Hai semuanya! Semoga hari kalian menyenankan! ✨",
-        "terima kasih": "🤗 Terima kasih juga,sudah menggunakan Athena Nova! Semoga kalian selalu bahagia! 😊",
+        const responses = {
+            "halo": "👋 Hai! Selamat datang, semoga harimu luar biasa! 😄",
+            "selamat pagi": "🌅 Selamat pagi! Semoga hari ini penuh semangat dan kebahagiaan! ☀️",
+            "selamat siang": "🌞 Selamat siang! Semoga semua berjalan lancar hari ini! 😎",
+            "selamat sore": "🌇 Selamat sore! Semoga sore ini menyenangkan! 🌻",
+            "selamat malam": "🌙 Selamat malam! Semoga tidurmu nyenyak dan bermimpi indah! 💤",
+            "hai semuanya": "👋 Hai semuanya! Semoga hari kalian menyenankan! ✨",
+            "terima kasih": "🤗 Terima kasih juga,sudah menggunakan Athena Nova! Semoga kalian selalu bahagia! 😊",
             "halo teman-teman": "👋 Halo teman-teman! Semangat selalu ya! 💪",
             "apa kabar": "🙋‍♂️ Apa kabar? Semoga baik-baik saja! 😊",
             "howdy": "🤠 Howdy! Semoga harimu penuh keceriaan! 🥳",
@@ -387,7 +413,7 @@
             "yo yo": "👊 Yo yo! Ayo kita buat hari ini luar biasa! 😈",
             "yo everyone": "👋 Yo semuanya! Ayo, mari kita buat hari ini tak terlupakan! 💥",
             "jadwal pelajaran hari senin": "📅 Jadwal Senin:\n- Ilmu Pengetahuan Sosial\n- Matematika\n- Bahasa Sunda\n- Bahasa Inggris\nWah, banyak pelajaran menarik di hari Senin! 😎",
-            "jadwal pelajaran hariselasa": "📅 Jadwal Selasa:\n- Pendidikan Kewarganegaraan\n- Ilmu Pengetahuan Alam\n- Pendidikan Agama Islam\nMinggu ini, Selasa penuh dengan pelajaran seru! 🧠",
+            "jadwal pelajaran hari selasa": "📅 Jadwal Selasa:\n- Pendidikan Kewarganegaraan\n- Ilmu Pengetahuan Alam\n- Pendidikan Agama Islam\nMinggu ini, Selasa penuh dengan pelajaran seru! 🧠",
             "jadwal pelajaran hari rabu": "📅 Jadwal Rabu:\n- Bahasa Indonesia\n- Seni Budaya\n- Olahraga\nRabu saatnya beraktivitas, ada olahraga juga lho! 💪🎨",
             "jadwal pelajaran hari kamis": "📅 Jadwal Kamis:\n- Ilmu Pengetahuan Alam\n- Bahasa Inggris\n- Matematika\n- Informatika\nKamis, penuh ilmu dan teknologi! 📚💻",
             "jadwal pelajaran hari jumat": "📅 Jadwal Jumat:\n- Informatika\n- Ilmu Pengetahuan Sosial\n- Bahasa Indonesia\nSelamat belajar di Jumat yang penuh semangat! ✨",
@@ -444,301 +470,280 @@
             "absen 35": "Siti Nurul Zakhiah Maulidah",
             "absen 36": "Widya Raissa Annazura",
             "absen 37": "Zhahira Syailla",
-            "ayat harian katolik": "Katolik: 'Kasihilah sesamamu manusia seperti dirimu sendiri.' - Matius 22:39",
-      "ayat harian islam": "Islam: 'Dan barang siapa yang bertakwa kepada Allah, niscaya Dia akan memberikan jalan keluar untuknya.' - QS. At-Talaq 65:2",
-      "ayat harian protestan": "Protestan: 'Janganlah kamu khawatir akan hidupmu, apa yang akan kamu makan atau minum, dan jangan pula akan tubuhmu, apa yang akan kamu pakai.' - Matius 6:25",
-      "ayat harian hindu": "Hindu: 'Hanya mereka yang tidak terbiasa dengan ketidakberuntungan yang takut pada waktu-waktu sulit. Orang bijaksana tidak takut pada perubahan.' - Bhagavad Gita 2:14",
-      "ayat harian buddha": "Buddha: 'Hanya dengan pengendalian diri seseorang dapat mencapai kedamaian sejati.' - Dhammapada 223",
-      "ayat harian konghucu": "Konghucu: 'Hormat kepada orang tua adalah kebajikan utama dalam kehidupan manusia.' - Analekta 1:3",
             "piket senin": "📋 Piket Senin: Kevin, Bayu, Hayfa, Haikal, Prabu, Rizki, Septia, Widya\nSiap menjaga kelas hari Senin! 💪",
             "piket selasa": "📋 Piket Selasa: Alya, Devara, Jovanka, Fauzan, Rapi, Robi, Shalsabela, Zhahira\nPiket Selasa, pastikan kelas tetap bersih ya! ✨",
             "piket rabu": "📋 Piket Rabu: Alycia, Evita, Owen, Ibnu, Resti, Safa, Hana\nAyo Rabu, kita bersihkan kelas bareng! 🧹",
             "piket kamis": "📋 Piket Kamis: Andien, Fanny, Syahril, Fayumi, Reyhan, Sahira, Linda\nKamis penuh semangat, bersihkan kelas yuk! 🧽",
             "piket jumat": "📋 Piket Jumat: Aulia, Febri, Marsya, Novi, Sandi, Salma, Nurul\nJumat bersih, kelas jadi makin nyaman! 🌟",
-        "struktur kelas 8.3": "Pak Mussopa S.Pd.I 👨‍🏫 - Wali Kelas, bertanggung jawab untuk membimbing, mengawasi, dan memberi arahan kepada kelas, serta menjadi penghubung antara siswa dan pihak sekolah./Albertus Kevin Daniswara 👑, Ketua Kelas, memimpin seluruh kegiatan kelas, memastikan komunikasi yang baik antara guru dan siswa, serta mengelola organisasi kelas.Aulia Irsa Supandi 🏅,/ Wakil Ketua Kelas, membantu ketua kelas dalam menjalankan tugasnya dan menggantikan ketua jika tidak hadir./Sahira Aulya ✍️ sebagai Sekretaris mencatat hasil rapat dan kegiatan kelas, menyusun agenda, dan bertanggung jawab atas administrasi kelas,/sedangkan Septia Fitriani 📝, Wakil Sekretaris, mendokumentasikan kegiatan dan rapat kelas./ Muamar Khaikal Al-Kahfi 💰, Bendahara, mengelola keuangan kelas, termasuk pendapatan dan pengeluaran,/ sementara Siti Maulinda 💵, Wakil Bendahara, membantu dalam pengelolaan keuangan dan memastikan transaksi tercatat dengan benar./ Muhammad Ibnu Rajib 💻 sebagai Informatika bertanggung jawab atas perangkat teknologi kelas, termasuk komputer dan proyektor,/sementara Shalsabela Suherman 🖥️, Wakil Informatika, mendukung penggunaan teknologi untuk kegiatan pembelajaran./M. Syahril Syahputra 🛡️, Keamanan, menjaga ketertiban dan keamanan kelas, serta memastikan lingkungan yang aman,/sementara Siti Hana 🔒, Wakil Keamanan, membantu dalam pengawasan kelas./Muhammad Fauzan Faddilah 🧹 sebagai Kebersihan memastikan kelas terjaga kebersihannya dan mengorganisir jadwal pembersihan,/dengan bantuan Alya 🧼, Wakil Kebersihan, yang mendukung kebersihan kelas./ Febrian Aryanto 🤲 sebagai Rohis mengorganisir kegiatan rohani kelas,/sementara Andien Maulidina Rizki 🙏, Wakil Rohis, membantu merencanakan kegiatan spiritual.",
-        "kalender 1": "9-13 Desember 2024 📚 Pelaksanaan Sumatif Akhir Ganjil (SAS) - Ujian Semester Ganjil",
-        "kalender 2": "16-19 Desember 2024 ✈️ Libur Pasca Sumatif Akhir Semester Ganjil (SAS) & Outing Class Ke Yogyakarta",
-        "kalender 3": "20-23 Desember 2024 🎉 Pelaksanaan Classmeeting - Kegiatan Kelas dan Hiburan",
-        "kalender 4": "24 Desember 2024 - 4 Januari 2025 🎄 Libur Semester Ganjil - Liburan Semester Ganjil",
-        "kalender 5": "6 Januari 2025 🏫 Hari Pertama Masuk Sekolah Semester Genap - Awal Semester Genap",
-        "kalender 6": "11 Januari 2025 📊 Pembagian Rapot Sumatif Akhir Semester Ganjil (SAS) - Pembagian Hasil Ujian",
-        "greating": "Ada 15 Opsi 🤝 - Pilihan untuk salam atau sapaan",
-        "pelajaran": "Ada 5 Opsi 📚 - Pilihan terkait materi atau subjek pelajaran",
-        "seragam": "Ada 5 Opsi 👚 - Pilihan terkait seragam atau pakaian sekolah",
-        "piket": "Ada 5 Opsi 🧹 - Pilihan tugas piket atau kebersihan",
-        "struktur": "Ada 14 Opsi 🏗️ - Pilihan terkait struktur organisasi atau hierarki",
-        "kalender": "Ada 6 Opsi 📅 - Pilihan terkait jadwal atau kalender kegiatan",
-        "agama": "Ada 6 Opsi ✝️☪️🕉️ - Pilihan terkait kegiatan atau pembelajaran agama",
-        "absen": "Ada 37 Opsi 📝 - Pilihan untuk kehadiran atau absensi",
-        "informasi": "Ada 5 Opsi ℹ️ - Pilihan terkait informasi atau pengumuman",
-        "eskul": "Ada 5 Opsi ⚽🎨 - Pilihan terkait kegiatan ekstrakurikuler",
-        "siapa presiden indonesia saat ini?": "H. Prabowo Subianto 🇮🇩 - Presiden Indonesia saat ini adalah H. Prabowo Subianto.",
-    "siapa presiden indonesia yang pertama?": "Ir. Soekarno 🇮🇩 - Ir. Soekarno adalah Presiden Indonesia yang pertama.",
-    "apa ibukota indonesia?": "Jakarta 🏙️ - Ibukota Indonesia adalah Jakarta.",
-    "apa bahasa resmi indonesia?": "Bahasa Indonesia 🗣️ - Bahasa resmi Indonesia adalah Bahasa Indonesia.",
-    "apa mata uang yang digunakan di indonesia?": "Rupiah 💰 - Mata uang yang digunakan di Indonesia adalah Rupiah (IDR).",
-    "berapa jumlah provinsi di indonesia?": "38 provinsi 🏞️ - Indonesia terdiri dari 38 provinsi.",
-    "apa nama pulau terbesar di indonesia?": "Papua 🌍 - Pulau terbesar di Indonesia adalah Papua.",
-    "siapa pendiri google?": "Larry Page dan Sergey Brin 🔍 - Google didirikan oleh Larry Page dan Sergey Brin.",
-    "siapa penulis novel 'laskar pelangi'?": "Andrea Hirata 📚 - Penulis novel 'Laskar Pelangi' adalah Andrea Hirata.",
-    "apa tujuan dari deklarasi kemerdekaan indonesia?": "Untuk menyatakan kemerdekaan Indonesia dari penjajahan 🕊️ - Tujuan deklarasi kemerdekaan Indonesia adalah untuk merdeka dari penjajahan.",
-    "apa simbol negara indonesia?": "Garuda Pancasila 🇮🇩 - Simbol negara Indonesia adalah Garuda Pancasila.",
-    "siapa yang menemukan lampu pijar?": "Thomas Edison 💡 - Penemu lampu pijar adalah Thomas Edison.",
-    "siapa penulis novel 'harry potter'?": "J.K. Rowling 📖 - Penulis novel 'Harry Potter' adalah J.K. Rowling.",
-    "apa ibu kota negara jepang?": "Tokyo 🗾 - Ibukota Jepang adalah Tokyo.",
-    "apa nama planet terdekat dengan matahari?": "Merkurius 🌞 - Planet terdekat dengan Matahari adalah Merkurius.",
-    "apa nama sungai terpanjang di dunia?": "Sungai Nil 🌊 - Sungai terpanjang di dunia adalah Sungai Nil.",
-    "siapa tokoh yang dikenal sebagai 'bapak proklamator' indonesia?": "Ir. Soekarno 🇮🇩 - Ir. Soekarno dikenal sebagai 'Bapak Proklamator' Indonesia.",
-    "apa nama hewan nasional indonesia?": "Garuda 🦅 - Hewan nasional Indonesia adalah Garuda.",
-    "siapa pencipta lagu kebangsaan indonesia 'indonesia raya'?": "W.R. Supratman 🎶 - Pencipta lagu kebangsaan Indonesia 'Indonesia Raya' adalah W.R. Supratman.",
-    "apa nama pulau terpadat penduduknya di indonesia?": "Jawa 🏝️ - Pulau terpadat penduduknya di Indonesia adalah Jawa.",
-    "siapa yang menemukan telepon?": "Alexander Graham Bell 📞 - Penemu telepon adalah Alexander Graham Bell.",
-    "siapa yang menemukan teori relativitas?": "Albert Einstein 🌌 - Penemu teori relativitas adalah Albert Einstein.",
-    "siapa yang menciptakan komputer pertama?": "Charles Babbage 💻 - Penemu komputer pertama adalah Charles Babbage.",
-    "siapa yang menemukan teori evolusi?": "Charles Darwin 🌱 - Penemu teori evolusi adalah Charles Darwin.",
-    "siapa yang menemukan vaksin pertama?": "Edward Jenner 💉 - Penemu vaksin pertama adalah Edward Jenner."
-    }
-
-    // Fungsi untuk menghasilkan respons dari bot
-function generateResponse(input) {
-    // Ubah input menjadi huruf kecil agar pencocokan tidak terpengaruh kapitalisasi
-    input = input.toLowerCase().trim();
-
-    // Cek jika ada respons yang cocok berdasarkan input
-    for (let key in responses) {
-        if (input.includes(key)) {
-            return responses[key];
-        }
-    }
-}
-
-    function calculateMathExpression(input) {
-    // Enhanced input normalization and preprocessing
-    input = input.toLowerCase().trim()
-        .replace(/\s+/g, ' ')  // Normalize multiple spaces
-        .replace(/,/g, '.')    // Replace comma with period for decimal support
-        .replace(/\./g, (match, offset, string) => {
-            // Ensure only valid decimal points are used
-            return (string[offset-1] && /\d/.test(string[offset-1])) ? match : '';
-        });
-
-    // More robust number extraction with advanced parsing
-    function extractNumbers(inputStr) {
-        // Improved regex to handle:
-        // - Integers
-        // - Decimal numbers
-        // - Negative numbers
-        // - Numbers with thousand separators
-        const numberMatches = inputStr.match(/[-]?\d{1,3}(?:\.\d{3})*(?:,\d+)?/g);
-
-        return numberMatches ? numberMatches.map(num => {
-            // Remove thousand separators and convert comma decimals
-            const cleanedNum = num.replace(/\./g, '').replace(',', '.');
-            return parseFloat(cleanedNum);
-        }) : [];
-    }
-
-    // Advanced number formatting with localization
-    function formatNumber(num, options = {}) {
-        const {
-            style = 'decimal',
-            minimumFractionDigits = 0,
-            maximumFractionDigits = 2
-        } = options;
-
-        // Use Indonesian locale with advanced formatting
-        const formatter = new Intl.NumberFormat('id-ID', {
-            style,
-            minimumFractionDigits,
-            maximumFractionDigits
-        });
-
-        // Special handling for very large or very small numbers
-        if (Math.abs(num) > 1e15 || (Math.abs(num) < 1e-5 && num !== 0)) {
-            return formatter.format(num.toExponential(2));
+            "struktur kelas 8.3": "Pak Mussopa S.Pd.I 👨‍🏫 - Wali Kelas, bertanggung jawab untuk membimbing, mengawasi, dan memberi arahan kepada kelas, serta menjadi penghubung antara siswa dan pihak sekolah./Albertus Kevin Daniswara 👑, Ketua Kelas, memimpin seluruh kegiatan kelas, memastikan komunikasi yang baik antara guru dan siswa, serta mengelola organisasi kelas.Aulia Irsa Supandi 🏅,/ Wakil Ketua Kelas, membantu ketua kelas dalam menjalankan tugasnya dan menggantikan ketua jika tidak hadir./Sahira Aulya ✍️ sebagai Sekretaris mencatat hasil rapat dan kegiatan kelas, menyusun agenda, dan bertanggung jawab atas administrasi kelas,/sedangkan Septia Fitriani 📝, Wakil Sekretaris, mendokumentasikan kegiatan dan rapat kelas./ Muamar Khaikal Al-Kahfi 💰, Bendahara, mengelola keuangan kelas, termasuk pendapatan dan pengeluaran,/ sementara Siti Maulinda 💵, Wakil Bendahara, membantu dalam pengelolaan keuangan dan memastikan transaksi tercatat dengan benar./ Muhammad Ibnu Rajib 💻 sebagai Informatika bertanggung jawab atas perangkat teknologi kelas, termasuk komputer dan proyektor,/sementara Shalsabela Suherman 🖥️, Wakil Informatika, mendukung penggunaan teknologi untuk kegiatan pembelajaran./M. Syahril Syahputra 🛡️, Keamanan, menjaga ketertiban dan keamanan kelas, serta memastikan lingkungan yang aman,/sementara Siti Hana 🔒, Wakil Keamanan, membantu dalam pengawasan kelas./Muhammad Fauzan Faddilah 🧹 sebagai Kebersihan memastikan kelas terjaga kebersihannya dan mengorganisir jadwal pembersihan,/dengan bantuan Alya 🧼, Wakil Kebersihan, yang mendukung kebersihan kelas./ Febrian Aryanto 🤲 sebagai Rohis mengorganisir kegiatan rohani kelas,/sementara Andien Maulidina Rizki 🙏, Wakil Rohis, membantu merencanakan kegiatan spiritual.",
+            "kalender 1": "9-13 Desember 2024 📚 Pelaksanaan Sumatif Akhir Ganjil (SAS) - Ujian Semester Ganjil",
+            "kalender 2": "16-19 Desember 2024 ✈️ Libur Pasca Sumatif Akhir Semester Ganjil (SAS) & Outing Class Ke Yogyakarta",
+            "kalender 3": "20-23 Desember 2024 🎉 Pelaksanaan Classmeeting - Kegiatan Kelas dan Hiburan",
+            "kalender 4": "24 Desember 2024 - 4 Januari 2025 🎄 Libur Semester Ganjil - Liburan Semester Ganjil",
+            "kalender 5": "6 Januari 2025 🏫 Hari Pertama Masuk Sekolah Semester Genap - Awal Semester Genap",
+            "kalender 6": "11 Januari 2025 📊 Pembagian Rapot Sumatif Akhir Semester Ganjil (SAS) - Pembagian Hasil Ujian",
+            "greating": "Ada 15 Opsi 🤝 - Pilihan untuk salam atau sapaan",
+            "pelajaran": "Ada 5 Opsi 📚 - Pilihan terkait materi atau subjek pelajaran",
+            "seragam": "Ada 5 Opsi 👚 - Pilihan terkait seragam atau pakaian sekolah",
+            "piket": "Ada 5 Opsi 🧹 - Pilihan tugas piket atau kebersihan",
+            "struktur": "Ada 14 Opsi 🏗️ - Pilihan terkait struktur organisasi atau hierarki",
+            "kalender": "Ada 6 Opsi 📅 - Pilihan terkait jadwal atau kalender kegiatan",
+            "absen": "Ada 37 Opsi 📝 - Pilihan untuk kehadiran atau absensi",
+            "informasi": "Ada 5 Opsi ℹ️ - Pilihan terkait informasi atau pengumuman",
+            "eskul": "Ada 5 Opsi ⚽🎨 - Pilihan terkait kegiatan ekstrakurikuler",
+            "siapa presiden indonesia saat ini?": "H. Prabowo Subianto 🇮🇩 - Presiden Indonesia saat ini adalah H. Prabowo Subianto.",
+            "siapa presiden indonesia yang pertama?": "Ir. Soekarno 🇮🇩 - Ir. Soekarno adalah Presiden Indonesia yang pertama.",
+            "apa ibukota indonesia?": "Jakarta 🏙️ - Ibukota Indonesia adalah Jakarta.",
+            "apa bahasa resmi indonesia?": "Bahasa Indonesia 🗣️ - Bahasa resmi Indonesia adalah Bahasa Indonesia.",
+            "apa mata uang yang digunakan di indonesia?": "Rupiah 💰 - Mata uang yang digunakan di Indonesia adalah Rupiah (IDR).",
+            "berapa jumlah provinsi di indonesia?": "38 provinsi 🏞️ - Indonesia terdiri dari 38 provinsi.",
+            "apa nama pulau terbesar di indonesia?": "Papua 🌍 - Pulau terbesar di Indonesia adalah Papua.",
+            "siapa pendiri google?": "Larry Page dan Sergey Brin 🔍 - Google didirikan oleh Larry Page dan Sergey Brin.",
+            "siapa penulis novel 'laskar pelangi'?": "Andrea Hirata 📚 - Penulis novel 'Laskar Pelangi' adalah Andrea Hirata.",
+            "apa tujuan dari deklarasi kemerdekaan indonesia?": "Untuk menyatakan kemerdekaan Indonesia dari penjajahan 🕊️ - Tujuan deklarasi kemerdekaan Indonesia adalah untuk merdeka dari penjajahan.",
+            "apa simbol negara indonesia?": "Garuda Pancasila 🇮🇩 - Simbol negara Indonesia adalah Garuda Pancasila.",
+            "siapa yang menemukan lampu pijar?": "Thomas Edison 💡 - Penemu lampu pijar adalah Thomas Edison.",
+            "siapa penulis novel 'harry potter'?": "J.K. Rowling 📖 - Penulis novel 'Harry Potter' adalah J.K. Rowling.",
+            "apa ibu kota negara jepang?": "Tokyo 🗾 - Ibukota Jepang adalah Tokyo.",
+            "apa nama planet terdekat dengan matahari?": "Merkurius 🌞 - Planet terdekat dengan Matahari adalah Merkurius.",
+            "apa nama sungai terpanjang di dunia?": "Sungai Nil 🌊 - Sungai terpanjang di dunia adalah Sungai Nil.",
+            "siapa tokoh yang dikenal sebagai 'bapak proklamator' indonesia?": "Ir. Soekarno 🇮🇩 - Ir. Soekarno dikenal sebagai 'Bapak Proklamator' Indonesia.",
+            "apa nama hewan nasional indonesia?": "Garuda 🦅 - Hewan nasional Indonesia adalah Garuda.",
+            "siapa pencipta lagu kebangsaan indonesia 'indonesia raya'?": "W.R. Supratman 🎶 - Pencipta lagu kebangsaan Indonesia 'Indonesia Raya' adalah W.R. Supratman.",
+            "apa nama pulau terpadat penduduknya di indonesia?": "Jawa 🏝️ - Pulau terpadat penduduknya di Indonesia adalah Jawa.",
+            "siapa yang menemukan telepon?": "Alexander Graham Bell 📞 - Penemu telepon adalah Alexander Graham Bell.",
+            "siapa yang menemukan teori relativitas?": "Albert Einstein 🌌 - Penemu teori relativitas adalah Albert Einstein.",
+            "siapa yang menciptakan komputer pertama?": "Charles Babbage 💻 - Penemu komputer pertama adalah Charles Babbage.",
+            "siapa yang menemukan teori evolusi?": "Charles Darwin 🌱 - Penemu teori evolusi adalah Charles Darwin.",
+            "siapa yang menemukan vaksin pertama?": "Edward Jenner 💉 - Penemu vaksin pertama adalah Edward Jenner.",
+            "media sosial": "Instagram 📸 8.3_charming dan Email 📧 kelas8.3pgri@gmail.com",
+            "info pr": "Saat ini tidak ada pr 🗒️"
         }
 
-        return formatter.format(num).replace(/,/g, '.');
-    }
 
-    // Comprehensive operation mapping with advanced error handling
-    const operations = {
-        'ditambah': {
-            operate: (a, b) => a + b,
-            symbol: '+'
-        },
-        'dikurang': {
-            operate: (a, b) => a - b,
-            symbol: '-'
-        },
-        'kali': {
-            operate: (a, b) => a * b,
-            symbol: '×'
-        },
-        'dibagi': {
-            operate: (a, b) => {
-                if (b === 0) throw new Error('DivisionByZero');
-                return a / b;
-            },
-            symbol: '÷'
-        }
-    };
+        function calculateMathExpression(input) {
+            // Enhanced input normalization and preprocessing
+            input = input.toLowerCase().trim()
+                .replace(/\s+/g, ' ')  // Normalize multiple spaces
+                .replace(/,/g, '.')    // Replace comma with period for decimal support
+                .replace(/\./g, (match, offset, string) => {
+                    // Ensure only valid decimal points are used
+                    return (string[offset - 1] && /\d/.test(string[offset - 1])) ? match : '';
+                });
 
-    // Function to handle precedence of operators
-    function evaluateExpression(input) {
-        // Handle precedence of operators (e.g., "kali" and "dibagi" first, then "ditambah" and "dikurang")
-        let result;
-        let regex = /(\d+(?:[.,]\d+)?)\s*(ditambah|dikurang|kali|dibagi)\s*(\d+(?:[.,]\d+)?)/i;
+            // More robust number extraction with advanced parsing
+            function extractNumbers(inputStr) {
+                // Improved regex to handle:
+                // - Integers
+                // - Decimal numbers
+                // - Negative numbers
+                // - Numbers with thousand separators
+                const numberMatches = inputStr.match(/[-]?\d{1,3}(?:\.\d{3})*(?:,\d+)?/g);
 
-        while (regex.test(input)) {
-            input = input.replace(regex, (match, num1, operator, num2) => {
-                const n1 = parseFloat(num1.replace(',', '.'));
-                const n2 = parseFloat(num2.replace(',', '.'));
-
-                const operation = operations[operator];
-                result = operation.operate(n1, n2);
-
-                return result.toString();
-            });
-        }
-
-        return result;
-    }
-
-    try {
-        const result = evaluateExpression(input);
-
-        if (result === undefined) {
-            throw new Error('UnsupportedOperation');
-        }
-
-        // Format the result with the local number format
-        return `Hasil perhitungan adalah ${formatNumber(result)}.`;
-
-    } catch (error) {
-        switch (error.message) {
-            case 'DivisionByZero':
-                return "Kesalahan: Tidak dapat membagi dengan nol!";
-            case 'UnsupportedOperation':
-                return "Maaf, saya tidak dapat memahami operasi matematika tersebut. Gunakan format seperti '5 ditambah 5' atau '10 dikurang 3 kali 2'.";
-            default:
-                return "Terjadi kesalahan dalam perhitungan. Pastikan format input Anda benar.";
-        }
-    }
-}
-
-function generateResponse(input) {
-    input = input.toLowerCase().trim();
-
-    // First try math calculation
-    const mathResponse = calculateMathExpression(input);
-    if (mathResponse.startsWith("Hasil perhitungan")) {
-        return mathResponse;
-    }
-
-    for (let key in responses) {
-        if (input.includes(key)) {
-            return responses[key];
-        }
-    }
-
-    return "Maaf, saya tidak mengerti. Mungkin Kevin belum memprogram saya untuk menjawab pertanyaan seperti itu. 🤖";
-}
-
-    
-    
-    
-    // Function to show the typing indicator while the bot is preparing a response
-    function showTypingIndicator() {
-        let chatBox = document.getElementById("chat-box");
-        let typingDiv = document.createElement("div");
-        typingDiv.classList.add("message", "bot", "typing");
-        typingDiv.textContent = "Bot is typing...";
-        chatBox.appendChild(typingDiv);
-    }
-    
-    // Function to display the bot's response in the chat box
-    function displayBotResponse(responseText) {
-        let chatBox = document.getElementById("chat-box");
-        let messageDiv = document.createElement("div");
-        messageDiv.classList.add("message", "bot");
-        messageDiv.textContent = responseText;
-        chatBox.appendChild(messageDiv);
-    
-        // Optionally, scroll to the bottom to show the latest message
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
-    
-    // Function to send a message and get a response
-    function sendMessage() {
-        let userInput = document.getElementById("user-input").value;
-        if (userInput.trim()) {
-            let chatBox = document.getElementById("chat-box");
-    
-            // Create and display the user's message
-            let messageDiv = document.createElement("div");
-            messageDiv.classList.add("message", "user");
-            messageDiv.textContent = userInput;
-            chatBox.appendChild(messageDiv);
-    
-            // Clear the input field
-            document.getElementById("user-input").value = "";
-    
-            // Show the typing indicator
-            showTypingIndicator();
-    
-            // Simulate delay before the bot responds (3 seconds)
-            setTimeout(() => {
-                // Get the bot's response
-                let responseText = generateResponse(userInput);
-                // Display the bot's response in the chat box
-                displayBotResponse(responseText);
-            }, 3000); // 3 seconds delay to simulate thinking
-        }
-    }
-    
-    // Optional: Add an event listener for pressing "Enter" to send the message
-    document.getElementById("user-input").addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            sendMessage();
-        }
-    });
-    
-    
-            function displayBotResponse(responseText) {
-                let chatBox = document.getElementById("chat-box");
-                let messageDiv = document.createElement("div");
-                messageDiv.classList.add("message", "bot");
-                messageDiv.textContent = responseText;
-                chatBox.appendChild(messageDiv);
-                document.getElementById("typing-indicator").style.display = "none";
-                chatBox.scrollTop = chatBox.scrollHeight;
+                return numberMatches ? numberMatches.map(num => {
+                    // Remove thousand separators and convert comma decimals
+                    const cleanedNum = num.replace(/\./g, '').replace(',', '.');
+                    return parseFloat(cleanedNum);
+                }) : [];
             }
-    
-            function showTypingIndicator() {
-                let typingIndicator = document.getElementById("typing-indicator");
-                typingIndicator.style.display = "block";
+
+            // Comprehensive operation mapping with advanced error handling
+            const operations = {
+                'ditambah': {
+                    operate: (a, b) => a + b,
+                    symbol: '+'
+                },
+                'dikurang': {
+                    operate: (a, b) => a - b,
+                    symbol: '-'
+                },
+                'kali': {
+                    operate: (a, b) => a * b,
+                    symbol: '×'
+                },
+                'dibagi': {
+                    operate: (a, b) => {
+                        if (b === 0) throw new Error('DivisionByZero');
+                        return a / b;
+                    },
+                    symbol: '÷'
+                }
+            };
+
+            // Function to handle precedence of operators
+            function evaluateExpression(input) {
+                // Handle precedence of operators (e.g., "kali" and "dibagi" first, then "ditambah" and "dikurang")
+                let result;
+                let regex = /(\d+(?:[.,]\d+)?)\s*(ditambah|dikurang|kali|dibagi)\s*(\d+(?:[.,]\d+)?)/i;
+
+                // Prioritize multiplication and division first
+                while (regex.test(input)) {
+                    input = input.replace(regex, (match, num1, operator, num2) => {
+                        const n1 = parseFloat(num1.replace(',', '.'));
+                        const n2 = parseFloat(num2.replace(',', '.'));
+
+                        const operation = operations[operator];
+                        result = operation.operate(n1, n2);
+
+                        return result.toString();
+                    });
+                }
+
+                // Then handle addition and subtraction
+                while (/(\d+(?:[.,]\d+)?)\s*(ditambah|dikurang)\s*(\d+(?:[.,]\d+)?)/i.test(input)) {
+                    input = input.replace(/(\d+(?:[.,]\d+)?)\s*(ditambah|dikurang)\s*(\d+(?:[.,]\d+)?)/i, (match, num1, operator, num2) => {
+                        const n1 = parseFloat(num1.replace(',', '.'));
+                        const n2 = parseFloat(num2.replace(',', '.'));
+
+                        const operation = operations[operator];
+                        result = operation.operate(n1, n2);
+
+                        return result.toString();
+                    });
+                }
+
+                return result;
             }
-    
-            function handleEnterKey(event) {
-                if (event.key === "Enter") {
-                    sendMessage();
+
+            try {
+                const result = evaluateExpression(input);
+
+                if (result === undefined) {
+                    throw new Error('UnsupportedOperation');
+                }
+
+                return `Hasil perhitungan adalah ${result.toLocaleString()}.`;
+
+            } catch (error) {
+                switch (error.message) {
+                    case 'DivisionByZero':
+                        return "Kesalahan: Tidak dapat membagi dengan nol!";
+                    case 'UnsupportedOperation':
+                        return "Maaf, saya tidak dapat memahami operasi matematika tersebut. Gunakan format seperti '5 ditambah 5' atau '10 dikurang 3 kali 2'.";
+                    default:
+                        return "Terjadi kesalahan dalam perhitungan. Pastikan format input Anda benar.";
                 }
             }
-    
-            function goBack() {
-                window.location.href = "tes.html";
+        }
+
+        function generateResponse(input) {
+            input = input.toLowerCase().trim();
+
+            // First try math calculation
+            const mathResponse = calculateMathExpression(input);
+            if (mathResponse.startsWith("Hasil perhitungan")) {
+                return mathResponse;
             }
-    
-            setInterval(() => {
-                let currentTime = new Date();
-                document.getElementById("current-time").textContent = currentTime.toLocaleTimeString('id-ID', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                });
-            }, 1000);
-        </script>
-        
+
+
+
+            // Check if the input contains any of the response keys
+            for (let key in responses) {
+                if (input.includes(key)) {
+                    return responses[key];
+                }
+            }
+
+            return "Maaf, saya tidak mengerti. Mungkin Kevin belum memprogram saya untuk menjawab pertanyaan seperti itu. 🤖";
+        }
+
+
+
+
+
+
+        // Function to show the typing indicator while the bot is preparing a response
+        function showTypingIndicator() {
+            let chatBox = document.getElementById("chat-box");
+            let typingDiv = document.createElement("div");
+            typingDiv.classList.add("message", "bot", "typing");
+            typingDiv.textContent = "Bot is typing...";
+            chatBox.appendChild(typingDiv);
+        }
+
+        // Function to display the bot's response in the chat box
+        function displayBotResponse(responseText) {
+            let chatBox = document.getElementById("chat-box");
+            let messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", "bot");
+            messageDiv.textContent = responseText;
+            chatBox.appendChild(messageDiv);
+
+            // Optionally, scroll to the bottom to show the latest message
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Function to send a message and get a response
+        function sendMessage() {
+            let userInput = document.getElementById("user-input").value;
+            if (userInput.trim()) {
+                let chatBox = document.getElementById("chat-box");
+
+                // Create and display the user's message
+                let messageDiv = document.createElement("div");
+                messageDiv.classList.add("message", "user");
+                messageDiv.textContent = userInput;
+                chatBox.appendChild(messageDiv);
+
+                // Clear the input field
+                document.getElementById("user-input").value = "";
+
+                // Show the typing indicator
+                showTypingIndicator();
+
+                // Simulate delay before the bot responds (3 seconds)
+                setTimeout(() => {
+                    // Get the bot's response
+                    let responseText = generateResponse(userInput);
+                    // Display the bot's response in the chat box
+                    displayBotResponse(responseText);
+                }, 3000); // 3 seconds delay to simulate thinking
+            }
+        }
+
+        // Optional: Add an event listener for pressing "Enter" to send the message
+        document.getElementById("user-input").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+
+
+        function displayBotResponse(responseText) {
+            let chatBox = document.getElementById("chat-box");
+            let messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", "bot");
+            messageDiv.textContent = responseText;
+            chatBox.appendChild(messageDiv);
+            document.getElementById("typing-indicator").style.display = "none";
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            let typingIndicator = document.getElementById("typing-indicator");
+            typingIndicator.style.display = "block";
+        }
+
+        function handleEnterKey(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+
+        function goBack() {
+            window.location.href = "tes.html";
+        }
+
+        setInterval(() => {
+            let currentTime = new Date();
+            document.getElementById("current-time").textContent = currentTime.toLocaleTimeString('id-ID', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+            });
+        }, 1000);
+    </script>
+
 </body>
+
 </html>
