@@ -275,7 +275,7 @@
         <!-- Tombol Kembali -->
         <a href="tes.html" class="back-btn">Kembali ke Halaman Utama</a>
 
-     <!-- Daily Reflection -->
+    <!-- Daily Reflection -->
 <div class="daily-reflection">
     <div class="reflection-title">Renungan Harian</div>
     <p id="reflection-text">"Kedamaian sejati datang dari hati yang penuh kasih dan rasa saling menghargai."</p>
@@ -286,43 +286,50 @@
     <!-- Card Katolik -->
     <div class="verse-card" data-religion="katolik">
         <h3>Katolik</h3>
-        <div class="verse-content">"Kasihilah Tuhan, Allahmu, dengan segenap hati, jiwamu, dan akal budi mu."</div>
-        <div class="verse-reference">Matius 22:37</div>
+        <div class="verse-content">"Sebab di mana hartamu berada, di situ juga hatimu berada."</div>
+        <div class="verse-reference">Matius 6:21</div>
     </div>
 
     <!-- Card Islam -->
     <div class="verse-card" data-religion="islam">
         <h3>Islam</h3>
-        <div class="verse-content">"Sesungguhnya Allah hanya menginginkan untuk menghilangkan kotoran dari kalian, wahai Ahlul Bait, dan mensucikan kalian sebersih-bersihnya."</div>
-        <div class="verse-reference">Al-Ahzab 33:33</div>
+        <div class="verse-content">"Dan barang siapa yang bertakwa kepada Allah, niscaya Dia akan memberikan jalan keluar untuknya."</div>
+        <div class="verse-reference">At-Talaq 65:2</div>
     </div>
 
     <!-- Card Kristen -->
     <div class="verse-card" data-religion="kristen">
         <h3>Kristen</h3>
-        <div class="verse-content">"Kasih adalah sabar, kasih adalah murah hati; ia tidak cemburu, tidak memegahkan diri, tidak sombong."</div>
-        <div class="verse-reference">1 Korintus 13:4</div>
+        <div class="verse-content">"Janganlah kamu khawatir tentang apa yang harus kamu makan atau apa yang harus kamu pakai, karena hidupmu lebih penting daripada itu."</div>
+        <div class="verse-reference">Matius 6:25</div>
     </div>
 
     <!-- Card Hindu -->
     <div class="verse-card" data-religion="hindu">
         <h3>Hindu</h3>
-        <div class="verse-content">"Hanya yang bebas dari keinginan dan penuh kasih yang dapat mencapai kebahagiaan sejati."</div>
-        <div class="verse-reference">Bhagavad Gita 4:19</div>
+        <div class="verse-content">"Jangan biarkan pikiran yang kacau menghalangi jalanmu menuju kedamaian." </div>
+        <div class="verse-reference">Bhagavad Gita 6:5</div>
     </div>
 
     <!-- Card Buddha -->
     <div class="verse-card" data-religion="buddha">
         <h3>Buddha</h3>
-        <div class="verse-content">"Jangan mencari kebahagiaan di luar dirimu, tetapi temukanlah kedamaian dalam hati yang tenang."</div>
-        <div class="verse-reference">Dhammapada 223</div>
+        <div class="verse-content">"Kebahagiaan tidak datang dari luar, tetapi datang dari dalam diri kita sendiri." </div>
+        <div class="verse-reference">Dhammapada 199</div>
     </div>
 
     <!-- Card Konghucu -->
     <div class="verse-card" data-religion="konghucu">
         <h3>Konghucu</h3>
-        <div class="verse-content">"Hidup dengan rasa hormat kepada orang lain adalah kunci menuju kedamaian dan kebahagiaan."</div>
-        <div class="verse-reference">Analek Konghucu 12:2</div>
+        <div class="verse-content">"Hidup yang baik adalah hidup yang penuh dengan kesederhanaan dan rasa hormat terhadap orang lain." </div>
+        <div class="verse-reference">Analek Konghucu 4:15</div>
+    </div>
+
+    <!-- Card Sikhism -->
+    <div class="verse-card" data-religion="sikhism">
+        <h3>Sikhism</h3>
+        <div class="verse-content">"Jadilah penghubung cinta yang mendalam, maka kedamaian akan hadir dalam hidupmu." </div>
+        <div class="verse-reference">Guru Granth Sahib, Ang 303</div>
     </div>
 </div>
 
@@ -334,13 +341,14 @@
 
     // Renungan Harian per Agama
     const reflections = {
-        katolik: '"Kasih yang sejati berasal dari Tuhan dan membawa kedamaian bagi sesama."',
-        islam: '"Hidup yang penuh dengan takwa dan kasih sayang membawa kedamaian dalam hidup."',
-        kristen: '"Kasih sesama adalah bentuk nyata dari kasih Allah yang tak terbatas."',
-        hindu: '"Kasih dan ketulusan hati adalah jalan menuju kedamaian sejati."',
-        buddha: '"Buddha mengajarkan bahwa kedamaian dimulai dengan pikiran yang bersih dan niat yang baik."',
-        konghucu: '"Dalam hidup, hormat terhadap sesama adalah pondasi untuk mencapai kedamaian dan kebijaksanaan."',
-        all: '"Kehidupan yang penuh kasih dan kedamaian dimulai dengan menghargai perbedaan dan hidup dalam harmoni."'
+        katolik: '"Hidup yang dipenuhi dengan kasih sejati adalah hidup yang penuh dengan kedamaian dan kebahagiaan."',
+        islam: '"Takwa dan ketulusan hati adalah jalan menuju kedamaian sejati."',
+        kristen: '"Kedamaian sejati datang ketika kita percaya dan bergantung pada kasih Allah."',
+        hindu: '"Kedamaian batin hanya dapat ditemukan ketika kita mampu mengendalikan pikiran dan keinginan."',
+        buddha: '"Kedamaian dimulai dari dalam hati yang bebas dari segala gangguan dan kecemasan."',
+        konghucu: '"Hidup dengan menghormati orang lain adalah jalan menuju kebijaksanaan dan kedamaian."',
+        sikhism: '"Dalam kasih yang mendalam, kita menemukan kedamaian yang sejati dan kebahagiaan abadi."',
+        all: '"Kedamaian dunia ini dimulai dengan menghargai perbedaan dan hidup dalam harmoni."'
     };
 
     // Function to filter the verses
@@ -360,6 +368,8 @@
             reflectionText.textContent = reflections[religion];
         });
     });
+</script>
+
 
 
 
