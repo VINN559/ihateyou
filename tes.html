@@ -17,145 +17,150 @@
     <style>
         /* Enhanced Color Palette */
         :root {
-            --primary-color: #2c3e50;      /* Deep Navy Blue */
-            --secondary-color: #3498db;    /* Soft Blue */
-            --accent-color: #e74c3c;       /* Vibrant Red */
-            --background-light: #f4f6f7;   /* Light Gray-Blue */
-            --text-primary: #2c3e50;       /* Dark Blue-Gray */
-            --text-secondary: #34495e;     /* Slightly Lighter Blue-Gray */
+            --blue-dark: #1E3A8A;      /* Deep Blue */
+            --blue-main: #2563EB;      /* Primary Blue */
+            --blue-light: #60A5FA;     /* Light Blue */
+            --blue-pale: #EFF6FF;      /* Very Light Blue */
+            --white: #FFFFFF;          /* Pure White */
+            --gray-light: #F3F4F6;     /* Light Gray */
+            --text-dark: #1F2937;      /* Dark Text */
+            --text-gray: #6B7280;      /* Gray Text */
         }
-
+    
         /* Default Light Mode Styles */
         body {
-            background: linear-gradient(to bottom, var(--primary-color), var(--background-light)); 
+            background: linear-gradient(to bottom, var(--blue-main), var(--blue-pale)); 
             font-family: 'Poppins', sans-serif;
-            color: var(--text-primary);
+            color: var(--text-dark);
             transition: background 0.3s ease, color 0.3s ease;
         }
-
+    
         details {
-            background: #fff;
-            padding: 1rem;
+            background: var(--white);
+            padding: 1.2rem;
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
-
+    
         summary {
             cursor: pointer;
             font-weight: bold;
-            color: var(black);
+            color: var(--black);
             margin-bottom: 0.5rem;
         }
-
+    
+        /* Running Text */
         .running-text {
             white-space: nowrap;
             overflow: hidden;
             box-sizing: border-box;
-            background-color: var(--accent-color);
-            color: #fff;
+            background-color: var(--blue-light);
+            color: var(--white);
             padding: 0.5rem;
             font-weight: bold;
         }
-
+    
         .running-text span {
             display: inline-block;
             animation: marquee 30s linear infinite;
         }
-
+    
         @keyframes marquee {
             0% {
                 transform: translateX(100%);
             }
-
             100% {
                 transform: translateX(-100%);
             }
         }
-
+    
+        /* Info Section */
         .info-section {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1.5rem;
             padding: 2rem;
-            background-color: var(--background-light);
+            background-color: var(--blue-pale);
             border-radius: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
+    
+        /* Info Card */
         .info-card {
-            background-color: #fff;
+            background-color: var(--white);
             border-radius: 1rem;
             padding: 1.25rem;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
             border: 1px solid rgba(44, 62, 80, 0.1);
         }
-
+    
         .info-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
         }
-
+    
         .info-card h3 {
             font-size: 1.4rem;
             font-weight: 600;
-            color: var(--primary-color);
+            color: var(--blue-dark);
         }
-
+    
         .info-card p {
             font-size: 1.05rem;
-            color: var(--text-secondary);
+            color: var(--text-gray);
             line-height: 1.6;
         }
-
+    
         .hover-effect:hover {
             background-color: rgba(52, 152, 219, 0.1);
-            color: var(--primary-color);
+            color: var(--blue-dark);
             transition: background-color 0.3s, color 0.3s;
         }
-
+    
+        /* Mobile Menu */
         #mobile-menu {
             position: absolute;
             top: 100%;
             left: 0;
             right: 0;
-            background-color: #ffffff;
+            background-color: var(--white);
             z-index: 10;
             display: none;
         }
-
+    
         .mobile-menu-link {
             padding: 1rem;
             text-align: center;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--blue-dark);
             border-bottom: 1px solid #ddd;
         }
-
+    
         .mobile-menu-link:hover {
             background-color: rgba(52, 152, 219, 0.1);
-            color: var(--primary-color);
+            color: var(--blue-dark);
         }
-
+    
         #menu-toggle {
             z-index: 20;
         }
-
+    
         .navbar-logo img {
             max-width: 60px;
             height: auto;
             margin-left: 10px;
         }
-
-        /* Back to Top Button CSS */
+    
+        /* Back to Top Button */
         #backToTop {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #ffffff;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+            background-color: var(--white);
+            color: var(--blue-dark);
+            border: 2px solid var(--blue-dark);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -170,26 +175,26 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
-
+    
         #backToTop::before {
             content: '↑';
             font-size: 24px;
             font-weight: bold;
         }
-
+    
         #backToTop:hover {
-            background-color: var(--primary-color);
-            color: #ffffff;
+            background-color: var(--blue-dark);
+            color: var(--white);
             transform: translateY(0) scale(1.1);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
-
+    
         #backToTop.show {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-
+    
         /* Dynamic Island */
         #dynamicIsland {
             position: fixed;
@@ -197,7 +202,7 @@
             left: 50%;
             transform: translateX(-50%) translateY(-20px);
             z-index: 20;
-            background-color: var(--primary-color);
+            background-color: var(--blue-dark);
             display: flex;
             justify-content: space-evenly;
             padding: 0.5rem 1rem;
@@ -209,34 +214,37 @@
             visibility: hidden;
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
-
+    
         /* When Dynamic Island is shown */
         #dynamicIsland.show {
             opacity: 1;
             visibility: visible;
             transform: translateX(-50%) translateY(0);
         }
-
+    
         .dynamic-icon {
             cursor: pointer;
             transition: transform 0.3s ease, color 0.3s ease;
-            color: var(--secondary-color);
+            color: var(--blue-light);
         }
-
+    
         .dynamic-icon:hover {
             transform: scale(1.2);
-            color: var(--accent-color);
+            color: var(--blue-main);
         }
-
+    
         .dynamic-icon i {
             font-size: 1.5rem;
         }
-
+    
         /* Navbar */
         nav {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color)) !important;
+            background: linear-gradient(to right, var(--blue-dark), var(--blue-main)) !important;
         }
     </style>
+    
+    
+    
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -295,15 +303,6 @@
     <a href="#" class="dynamic-icon" target="_blank" onclick="window.location.href='hera.html'; return false;">
         <i class="fas fa-robot"></i>
     </a>
-    
-    <!-- Ikon Agama -->
-    <a href="#" class="dynamic-icon" target="_blank" onclick="window.location.href='agama.html'; return false;">
-        <i class="fas fa-praying-hands"></i>
-    </a>
-
-   <!-- Ikon Uang -->
-   <a href="#" class="dynamic-icon" target="_blank" onclick="window.location.href='nabung.html'; return false;">
-    <i class="fas fa-money-bill-wave"></i>
 </a>
 </div>
 
